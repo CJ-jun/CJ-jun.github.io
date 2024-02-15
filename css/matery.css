@@ -4,6 +4,9 @@
     .container {
         width: 95%;
     }
+    header .brand-logo .logo-img{
+        display: none;
+    }
 }
 
 /*中等屏幕下(平板类)的样式*/
@@ -241,11 +244,11 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background-image: linear-gradient(to right, #2f4154 0%, #708090 100%);
 }
 
 .text-color {
-    color: #0f9d58 !important;
+    color: #2f4154 !important;
 }
 
 .white-color {
@@ -257,7 +260,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(to right, #2f4154 0%, #708090 100%);
     opacity: 0.8;
 }
 
@@ -550,10 +553,10 @@ header .go-back i {
     height: 40vh !important;
 }
 
-.bg-cover:after {
+/*.bg-cover:after {
     -webkit-animation: rainbow 60s infinite;
     animation: rainbow 60s infinite;
-}
+}*/
 
 .bg-cover:before,
 .bg-cover:after {
@@ -2294,3 +2297,8 @@ body.DarkMode .theme-btn:hover {
     font-weight: 900;
     color: #d9534f;
 }
+.reprint__type{
+      display: inline-block;
+      width: 100%;
+      overflow: hidden;
+   }
