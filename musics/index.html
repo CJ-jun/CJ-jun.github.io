@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: 技巧, CJ-blog">
+    <meta name="keywords" content="musics, CJ-blog">
     <meta name="description" content="天青色等烟雨，我已在被窝里">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>分类: 技巧 | CJ-blog</title>
+    <title>musics | CJ-blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -419,7 +419,14 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
+    <style type="text/css">
+    /* don't remove. */
+    .about-cover {
+        height: 75vh;
+    }
+</style>
+
+<div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -466,91 +473,118 @@
 </div>
 
 <main class="content">
+    <div id="aboutme" class="container about-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="music-player">
+                    
+                        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
 
     
-
-<div id="category-cloud" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-bookmark"></i>&nbsp;&nbsp;文章分类
-            </div>
-            <div class="tag-chips">
-                
-                
-                
-                <a href="/categories/%E6%8A%80%E5%B7%A7/" title="技巧: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #F9EBEA;">技巧
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-            </div>
+</style>
+<div class="music-player">
+    
+        <div class="title center-align">
+            <i class="fa fa-music"></i>&nbsp;&nbsp;听听音乐
         </div>
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2779826002"
+                   fixed='false'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.4'
+                   listMaxHeight='666px'
+                   list-folded='false'
+        >
+        </meting-js>
     </div>
 </div>
 
 
-    
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2024/02/15/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="加密文章">
-                            
-                            <span class="card-title">加密文章</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-15
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%8A%80%E5%B7%A7/" class="post-category">
-                                    技巧
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
 
-                    
-                    <div class="card-action article-tags">
+
+                        <style>
+                        .bubbles > .particle {
+                            /*初始透明度为0*/
+                            opacity: 0;
+                            position: absolute;
+                            /*初始颜色为荧光色，透明度为0.7*/
+                            background-color: rgba(128,255,0,0.7);
+                            /*使用bubbles动画，持续时间18秒，缓慢进入，无限循环*/
+                            animation: bubbles 18s ease-in infinite;
+                            border-radius: 100%;
+                        }
+                        /*css keyframes 动画*/
+                        @keyframes bubbles {
+                            0% {
+                                opacity: 0;
+                            }
+                            5% {
+                                opacity: 1;
+                                transform: translate(0, -20%);
+                            }
+                            /*这里-8000%表示是气泡的8000%*/
+                            100% {
+                                opacity: 0;
+                                transform: translate(0, -8000%);
+                            }
+                        }
+                        </style>
+                        <!-- 这里让元素宽度100%（和页面等宽） -->
+                        <div style="width: 100%; height: 100%; position: relative; bottom: 0px;" class="particletext bubbles">
+
+
+
+                        </div>
+                        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+                        <script>
+                          function bubbles() {
+                             $.each($(".particletext.bubbles"), function(){
+                                var bubblecount = ($(this).width()/50)*10;
+                                for(var i = 0; i <= bubblecount; i++) {
+                                   var size = ($.rnd(40,80)/10);
+                                   //这里的animation-delay很重要，关系到你的特效是否看上去是连续无断层的，上一步中css是18秒，所以这一步中延迟时间就设置成$.rnd(0,180)/10)
+                                   $(this).append('<span class="particle" style="top:' + $.rnd(20,80) + '%; left:' + $.rnd(0,95) + '%;width:' + size + 'px; height:' + size + 'px;animation-delay: ' + ($.rnd(0,180)/10) + 's;"></span>');
+                                }
+                             });
+                          }
+                          jQuery.rnd = function(m,n) {
+                              m = parseInt(m);
+                              n = parseInt(n);
+                              return Math.floor( Math.random() * (n - m + 1) ) + m;
+                          }
+                          bubbles();
+                        </script>
                         
-                        <a href="/tags/%E6%8A%80%E5%B7%A7/">
-                            <span class="chip bg-color">技巧</span>
-                        </a>
-                        
-                    </div>
                     
                 </div>
             </div>
-            
         </div>
-    </article>
+    </div>
 </main>
-
-
-
 
     <footer class="page-footer bg-color">
     

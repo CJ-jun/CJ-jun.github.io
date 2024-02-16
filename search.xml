@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>算法篇1反转链表</title>
+      <link href="/2024/02/16/%E7%AE%97%E6%B3%95%E7%AF%871%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
+      <url>/2024/02/16/%E7%AE%97%E6%B3%95%E7%AF%871%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、描述"><a href="#一、描述" class="headerlink" title="一、描述"></a>一、描述</h2><p>给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。</p><p>数据范围： 0≤<em>n</em>≤1000</p><p>要求：空间复杂度 O*(1) ，时间复杂度<em>O</em>(*n) 。</p><p>如当输入链表{1,2,3}时，</p><p>经反转后，原链表变为{3,2,1}，所以对应的输出为{3,2,1}。</p><p>以上转换过程如下图所示：</p><p><img src="/%E7%AE%97%E6%B3%95%E7%AF%871%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/4A47A0DB6E60853DEDFCFDF08A5CA249.png" alt="&quot;x&quot;"></p><h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：{1,2,3}</p><p>返回值：{3,2,1}</p><h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><p>输入：{}</p><p>返回值：{}</p><p>说明： 空链表则输出空             </p><h2 id="二、题目解析"><a href="#二、题目解析" class="headerlink" title="二、题目解析"></a>二、题目解析</h2><p>反转链表是非常经典的一道算法题，它的解法非常之多，而递归、迭代是我们最需要掌握的两种，其中<strong>递归</strong>的代码非常简洁，但很难理解。</p><p>我们再来回顾一下递归的模板，终止条件，递归调用，逻辑处理。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public ListNode reverseList(参数0) &#123;</span><br><span class="line">    if (终止条件)</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    逻辑处理（可能有，也可能没有，具体问题具体分析）</span><br><span class="line"></span><br><span class="line">    //递归调用</span><br><span class="line">    ListNode reverse = reverseList(参数1);</span><br><span class="line"></span><br><span class="line">    逻辑处理（可能有，也可能没有，具体问题具体分析）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>终止条件就是链表为空，或者是链表没有尾结点的时候，直接返回</p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>)</span><br><span class="line">    <span class="keyword">return</span> head;</span><br></pre></td></tr></table></figure><p>递归调用是要从当前节点的下一个结点开始递归。逻辑处理这块是要把当前节点挂到递归之后的链表的末尾，看下代码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">//建节点</span><br><span class="line">/*</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *   int val;</span><br><span class="line"> *   ListNode next = null;</span><br><span class="line"> *   public ListNode(int val) &#123;</span><br><span class="line"> *     this.val = val;</span><br><span class="line"> *   &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span><br><span class="line">     *</span><br><span class="line">     * </span><br><span class="line">     * @param head ListNode类 </span><br><span class="line">     * @return ListNode类</span><br><span class="line">     */</span><br><span class="line">    public ListNode ReverseList (ListNode head) &#123;</span><br><span class="line">        // write code here</span><br><span class="line">        //终止条件</span><br><span class="line">        if(head == null || head.next == null)&#123;</span><br><span class="line">        return head;</span><br><span class="line">&#125;</span><br><span class="line">//cur到5后返回head=4</span><br><span class="line">ListNode cur = ReverseList(head.next);</span><br><span class="line">//head的下下节点指向前一个</span><br><span class="line">head.next.next = head;</span><br><span class="line">//head=4本来指向5，现在断开了指向空</span><br><span class="line">head.next = null;</span><br><span class="line"></span><br><span class="line">return cur</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 数据结构与算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQL常用语句</title>
+      <link href="/2024/02/16/SQL%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/"/>
+      <url>/2024/02/16/SQL%E5%B8%B8%E7%94%A8%E8%AF%AD%E5%8F%A5/</url>
+      
+        <content type="html"><![CDATA[<h3 id="MySQL的基础"><a href="#MySQL的基础" class="headerlink" title="MySQL的基础"></a>MySQL的基础</h3>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>加密文章</title>
+      <link href="/2024/02/15/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
+      <url>/2024/02/15/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="hexo文章设置加密访问"><a href="#hexo文章设置加密访问" class="headerlink" title="hexo文章设置加密访问"></a>hexo文章设置加密访问</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: typora-vue-theme主题介绍</span><br><span class="line">date: 2018-09-07 09:25:00</span><br><span class="line">author: 赵奇</span><br><span class="line">img: /source/images/xxx.jpg</span><br><span class="line">top: true</span><br><span class="line">cover: true</span><br><span class="line">coverImg: /images/1.jpg</span><br><span class="line">password:8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92</span><br><span class="line">toc: false</span><br><span class="line">mathjax: false</span><br><span class="line">summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要</span><br><span class="line">categories: Markdown</span><br><span class="line">tags:</span><br><span class="line">  - Typora</span><br><span class="line">  - Markdown</span><br><span class="line">---</span><br></pre></td></tr></table></figure><p>加密密码要小写</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技巧 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技巧 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>java面试技巧与学习路线</title>
+      <link href="/2024/02/11/java%E9%9D%A2%E8%AF%95%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
+      <url>/2024/02/11/java%E9%9D%A2%E8%AF%95%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
+      
+        <content type="html"><![CDATA[<h2 id="面试准备"><a href="#面试准备" class="headerlink" title="面试准备"></a>面试准备</h2><h5 id="准备简历"><a href="#准备简历" class="headerlink" title="准备简历"></a>准备简历</h5><p>（具体可以查看博主介绍<a href="https://javaguide.cn/interview-preparation/resume-guide.html">https://javaguide.cn/interview-preparation/resume-guide.html</a>)</p><p><strong>1.个人介绍没太多实用的信息。</strong></p><p><strong>2.项目经历过于简单，完全没有质量可言</strong></p><p>如果有项目的话，技术面试第一步，面试官一般都是让你自己介绍一下你的项目。你可以从下面几个方向来考虑：</p><ol><li>你对项目整体设计的一个感受（面试官可能会让你画系统的架构图）</li><li>你在这个项目中你负责了什么、做了什么、担任了什么角色。</li><li>从这个项目中你学会了那些东西，使用到了那些技术，学会了那些新技术的使用。</li><li>你在这个项目中是否解决过什么问题？怎么解决的？收获了什么？</li><li>你的项目用到了哪些技术？这些技术你吃透了没有？</li><li>你在这个项目中犯过的错误，最后是怎么弥补的？</li></ol><h5 id="提前准备自我介绍"><a href="#提前准备自我介绍" class="headerlink" title="提前准备自我介绍"></a>提前准备自我介绍</h5><p><strong>社招：</strong></p><p>面试官，您好！我叫xx。我目前有 三个月的实习工作经验，熟练使用 Spring、MyBatis 等框架、了解 Java 底层原理比如 JVM 调优并且有着丰富的分布式开发经验。离开上一家公司是因为我想在技术上得到更多的锻炼。在上一个公司我参与了一个分布式电子交易系统的开发，负责搭建了整个项目的基础架构并且通过分库分表解决了原始数据库以及一些相关表过于庞大的问题，目前这个网站最高支持 10 万人同时访问。工作之余，我利用自己的业余时间写了一个简单的 RPC 框架，这个框架用到了 Netty 进行网络通信， 目前我已经将这个项目开源，在 GitHub 上收获了 2k 的 Star! 说到业余爱好的话，我比较喜欢通过博客整理分享自己所学知识，现在已经是多个博客平台的认证作者。 生活中我是一个比较积极乐观的人，一般会通过运动打球的方式来放松。我一直都非常想加入贵公司，我觉得贵公司的文化和技术氛围我都非常喜欢，期待能与你共事！</p><hr><p><strong>校招：</strong></p><p>面试官，您好！我叫秀儿。大学时间我主要利用课外时间学习了 Java 以及 Spring、MyBatis 等框架 。在校期间参与过一个考试系统的开发，这个系统的主要用了 Spring、MyBatis 和 shiro 这三种框架。我在其中主要担任后端开发，主要负责了权限管理功能模块的搭建。另外，我在大学的时候参加过一次软件编程大赛，我和我的团队做的在线订餐系统成功获得了第二名的成绩。我还利用自己的业余时间写了一个简单的 RPC 框架，这个框架用到了 Netty 进行网络通信， 目前我已经将这个项目开源，在 GitHub 上收获了 2k 的 Star! 说到业余爱好的话，我比较喜欢通过博客整理分享自己所学知识，现在已经是多个博客平台的认证作者。 生活中我是一个比较积极乐观的人，一般会通过运动打球的方式来放松。我一直都非常想加入贵公司，我觉得贵公司的文化和技术氛围我都非常喜欢，期待能与你共事！</p><h5 id="背八股文和算法"><a href="#背八股文和算法" class="headerlink" title="背八股文和算法"></a>背八股文和算法</h5><p>​<strong>如何更高效地准备八股文？</strong></p><p>对于技术八股文来说，尽量不要死记硬背，我一直觉得面试八股文最好是和实际应用场景和实战相结合。很多同学现在的方向都错了，上来就是直接背八股文，硬生生学成了文科，那当然无趣了。</p><p>举个例子：你的项目中需要用到 Redis 来做缓存，你对照着官网简单了解并实践了简单使用 Redis 之后，你去看了 Redis 对应的八股文。你发现 Redis 可以用来做限流、分布式锁，于是你去在项目中实践了一下并掌握了对应的八股文。紧接着，你又发现 Redis 内存不够用的情况下，还能使用 Redis Cluster 来解决，于是你就又去实践了一下并掌握了对应的八股文。</p><h2 id="面试八股文"><a href="#面试八股文" class="headerlink" title="面试八股文"></a>面试八股文</h2><h3 id="♠基础篇"><a href="#♠基础篇" class="headerlink" title="♠基础篇"></a>♠基础篇</h3><ol><li><p><strong>说一下java的特点</strong></p><p><strong>Java是一门面向对象的编程语言</strong>。（封装，继承，多态）</p><p><strong>Java具有平台独立性和移植性</strong>。</p><ul><li>Java有一句口号：<code>Write once, run anywhere</code>，一次编写、到处运行。这也是Java的魅力所在。而实现这种特性的正是Java虚拟机JVM。已编译的Java程序可以在任何带有JVM的平台上运行。你可以在windows平台编写代码，然后拿到linux上运行。只要你在编写完代码后，将代码编译成.class文件，再把class文件打成Java包，这个jar包就可以在不同的平台上运行了。</li></ul><p><strong>Java具有稳健性</strong>。</p><ul><li>Java是一个强类型语言，它允许扩展编译时检查潜在类型不匹配问题的功能。Java要求显式的方法声明，它不支持C风格的隐式声明。这些严格的要求保证编译程序能捕捉调用错误，这就导致更可靠的程序。</li><li>异常处理是Java中使得程序更稳健的另一个特征。异常是某种类似于错误的异常条件出现的信号。使用<code>try/catch/finally</code>语句，程序员可以找到出错的处理代码，这就简化了出错处理和恢复的任务</li></ul><p><strong>Java支持多线程</strong></p><ul><li>C++ 语言没有内置的多线程机制，因此必须调用操作系统的多线程功能来进行多线程程序设计，而 Java 语言却提供了多线程支持；</li></ul></li><li><p><strong>说一下JVM、JDK 和 JRE 有什么区别？</strong></p><p><code>JVM</code>：Java Virtual Machine，Java虚拟机，Java程序运行在Java虚拟机上。针对不同系统的实现（Windows，Linux，macOS）不同的JVM，因此Java语言可以实现跨平台。</p><p><code>JRE</code>： Java 运⾏时环境。它是运⾏已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，Java 命令和其他的⼀些基础构件。但是，它不能⽤于创建新程序。</p><p><code>JDK</code>: Java Development Kit，java开发工具包。它拥有 JRE 所拥有的⼀切，还有编译器（javac）和⼯具（如 javadoc 和 jdb）。它能够创建和编译程序。</p><p>简单来说，JDK包含JRE，JRE包含JVM。</p></li></ol><h3 id="♠JVM篇"><a href="#♠JVM篇" class="headerlink" title="♠JVM篇"></a>♠JVM篇</h3><h3 id="♠多线程-并发篇"><a href="#♠多线程-并发篇" class="headerlink" title="♠多线程&amp;并发篇"></a>♠多线程&amp;并发篇</h3><h3 id="♠Spring篇"><a href="#♠Spring篇" class="headerlink" title="♠Spring篇"></a>♠Spring篇</h3><h3 id="♠MyBatis篇"><a href="#♠MyBatis篇" class="headerlink" title="♠MyBatis篇"></a>♠MyBatis篇</h3><h3 id="♠SpringBoot篇"><a href="#♠SpringBoot篇" class="headerlink" title="♠SpringBoot篇"></a>♠SpringBoot篇</h3><h3 id="♠MySQL篇"><a href="#♠MySQL篇" class="headerlink" title="♠MySQL篇"></a>♠MySQL篇</h3><h3 id="♠Redis篇"><a href="#♠Redis篇" class="headerlink" title="♠Redis篇"></a>♠Redis篇</h3><h3 id="♠RabbitMQ篇"><a href="#♠RabbitMQ篇" class="headerlink" title="♠RabbitMQ篇"></a>♠RabbitMQ篇</h3><h3 id="♠SpringMVC篇"><a href="#♠SpringMVC篇" class="headerlink" title="♠SpringMVC篇"></a>♠SpringMVC篇</h3><h3 id="♠SpringCloud篇"><a href="#♠SpringCloud篇" class="headerlink" title="♠SpringCloud篇"></a>♠SpringCloud篇</h3><h3 id="♠设计模式篇"><a href="#♠设计模式篇" class="headerlink" title="♠设计模式篇"></a>♠设计模式篇</h3><h3 id="♠Linux篇"><a href="#♠Linux篇" class="headerlink" title="♠Linux篇"></a>♠Linux篇</h3><h3 id="♠Tomcat篇"><a href="#♠Tomcat篇" class="headerlink" title="♠Tomcat篇"></a>♠Tomcat篇</h3><h3 id="♠计算机网络篇"><a href="#♠计算机网络篇" class="headerlink" title="♠计算机网络篇"></a>♠计算机网络篇</h3><h3 id="♠数据结构与算法篇"><a href="#♠数据结构与算法篇" class="headerlink" title="♠数据结构与算法篇"></a>♠数据结构与算法篇</h3><h3 id="♠Git篇"><a href="#♠Git篇" class="headerlink" title="♠Git篇"></a>♠Git篇</h3><h3 id="♠Nginx篇"><a href="#♠Nginx篇" class="headerlink" title="♠Nginx篇"></a>♠Nginx篇</h3><h1 id="java学习路线"><a href="#java学习路线" class="headerlink" title="java学习路线"></a>java学习路线</h1><p><img src="http://img.topjavaer.cn/img/20220530232715.png" alt="学习路线"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

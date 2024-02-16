@@ -150,6 +150,49 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>其他</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>视频</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>画廊</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -253,6 +296,51 @@
 			
 			友情链接
 		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			其他
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:28px" ></i>
+			      
+		          <span>视频</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/musics " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:28px" ></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:28px" ></i>
+			      
+		          <span>画廊</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -418,12 +506,15 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="hexo文章设置加密访问"><a href="#hexo文章设置加密访问" class="headerlink" title="hexo文章设置加密访问"></a>hexo文章设置加密访问</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: typora-vue-theme主题介绍</span><br><span class="line">date: 2018-09-07 09:25:00</span><br><span class="line">author: 赵奇</span><br><span class="line">img: /source/images/xxx.jpg</span><br><span class="line">top: true</span><br><span class="line">cover: true</span><br><span class="line">coverImg: /images/1.jpg</span><br><span class="line">password:8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92</span><br><span class="line">toc: false</span><br><span class="line">mathjax: false</span><br><span class="line">summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要</span><br><span class="line">categories: Markdown</span><br><span class="line">tags:</span><br><span class="line">  - Typora</span><br><span class="line">  - Markdown</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+                <h2 id="hexo文章设置加密访问"><a href="#hexo文章设置加密访问" class="headerlink" title="hexo文章设置加密访问"></a>hexo文章设置加密访问</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: typora-vue-theme主题介绍</span><br><span class="line">date: 2018-09-07 09:25:00</span><br><span class="line">author: 赵奇</span><br><span class="line">img: /source/images/xxx.jpg</span><br><span class="line">top: true</span><br><span class="line">cover: true</span><br><span class="line">coverImg: /images/1.jpg</span><br><span class="line">password:8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92</span><br><span class="line">toc: false</span><br><span class="line">mathjax: false</span><br><span class="line">summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要</span><br><span class="line">categories: Markdown</span><br><span class="line">tags:</span><br><span class="line">  - Typora</span><br><span class="line">  - Markdown</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>加密密码要小写</p>
 
@@ -935,6 +1026,9 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
