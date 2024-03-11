@@ -1,0 +1,1839 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SQLServer高级, CJ-blog">
+    <meta name="description" content="数据库设计一、数据库结构设计三范式第一范式：是对属性的原子性，要求属性具有原子性，不可再分解。
+如有如下表结构设计：
+create table Student --学生表(	StuId varchar(20) primary key,--学">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="baidu-site-verification" content="codeva-qcrmNgx22N" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>SQLServer高级 | CJ-blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">CJ-blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>其他</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>视频</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>画廊</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">CJ-blog</div>
+        <div class="logo-desc">
+            
+            天青色等烟雨，我已在被窝里
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			其他
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:28px" ></i>
+			      
+		          <span>视频</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/musics " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:28px" ></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:28px" ></i>
+			      
+		          <span>画廊</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/CJ-jun" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/CJ-jun" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">SQLServer高级</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/SqlServer/">
+                                <span class="chip bg-color">SqlServer</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-03-12
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    10.3k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h1><h2 id="一、数据库结构设计三范式"><a href="#一、数据库结构设计三范式" class="headerlink" title="一、数据库结构设计三范式"></a>一、数据库结构设计三范式</h2><p><strong>第一范式：</strong>是对属性的原子性，要求属性具有原子性，不可再分解。</p>
+<p>如有如下表结构设计：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Student --学生表</span><br><span class="line">(</span><br><span class="line">	StuId varchar(20) primary key,--学号</span><br><span class="line">	StuName varchar(20) not null,--学生姓名</span><br><span class="line">	StuContact varchar(50) not null, --联系方式</span><br><span class="line">)</span><br><span class="line">insert into Student(StuId,StuName,StuContact) </span><br><span class="line">values(&#x27;001&#x27;,&#x27;刘备&#x27;,&#x27;QQ:185699887;Tel:13885874587&#x27;)</span><br><span class="line">select * from Student</span><br></pre></td></tr></table></figure>
+
+<p>上述设计则不满足第一范式，联系方式这一列并不是不可再分的最小单元,应修改为如下结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Student --学生表</span><br><span class="line">(</span><br><span class="line">	StuId varchar(20) primary key,--学号</span><br><span class="line">	StuName varchar(20) not null,--学生姓名</span><br><span class="line">  	Tel varchar(20) not null, --联系电话</span><br><span class="line">  	QQ varchar(20) not null,  --联系QQ</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>第二范式：</strong>是对记录的惟一性，要求记录有惟一标识，即实体的惟一性，即不存在部分依赖；</p>
+<p>如有如下表结构设计：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--选课成绩表</span><br><span class="line">create table StudentCourse</span><br><span class="line">(</span><br><span class="line">	StuId varchar(20),--学号</span><br><span class="line">	StuName varchar(20) not null,--学生姓名</span><br><span class="line">	CourseId varchar(20) not null,--课程编号</span><br><span class="line">	CourseName varchar(20) not null, --选课课程名称</span><br><span class="line">	CourseScore int not null, --考试成绩</span><br><span class="line">)</span><br><span class="line">insert into StudentCourse(StuId,StuName,CourseId,CourseName,CourseScore)</span><br><span class="line">values(&#x27;001&#x27;,&#x27;刘备&#x27;,&#x27;001&#x27;,&#x27;语文&#x27;,80)</span><br><span class="line">insert into StudentCourse(StuId,StuName,CourseId,CourseName,CourseScore)</span><br><span class="line">values(&#x27;001&#x27;,&#x27;刘备&#x27;,&#x27;002&#x27;,&#x27;数学&#x27;,70)</span><br><span class="line">insert into StudentCourse(StuId,StuName,CourseId,CourseName,CourseScore)</span><br><span class="line">values(&#x27;002&#x27;,&#x27;关羽&#x27;,&#x27;003&#x27;,&#x27;英语&#x27;,80)</span><br><span class="line">insert into StudentCourse(StuId,StuName,CourseId,CourseName,CourseScore)</span><br><span class="line">values(&#x27;003&#x27;,&#x27;张飞&#x27;,&#x27;003&#x27;,&#x27;英语&#x27;,90)</span><br></pre></td></tr></table></figure>
+
+<p>上述设计中有两个事物，一个学生信息，一个课程信息，很显然这两个事物都没有保证实体的唯一性，这里的姓名依赖学号，课程名称依赖课程编号，所以不符合二范式。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Course --课程</span><br><span class="line">(</span><br><span class="line">	CourseId int primary key identity(1,1),--课程编号</span><br><span class="line">	CourseName varchar(30) not null, --课程名称</span><br><span class="line">	CourseContent text --课程介绍</span><br><span class="line">)</span><br><span class="line">insert into Course(CourseName,CourseContent) values(&#x27;HTML&#x27;,&#x27;静态网页的制作&#x27;)</span><br><span class="line">insert into Course(CourseName,CourseContent) values(&#x27;WinForm&#x27;,&#x27;Windows应用程序开发&#x27;)</span><br><span class="line"></span><br><span class="line">create table Student --学生</span><br><span class="line">(</span><br><span class="line">	StuId int primary key identity(1,1), --学生编号</span><br><span class="line">	StuName varchar(50) not null, --学生名字</span><br><span class="line">	StuSex char(2) not null --学生性别</span><br><span class="line">)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;刘备&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;关羽&#x27;,&#x27;男&#x27;)</span><br><span class="line"></span><br><span class="line">create Table Exam --考试信息表</span><br><span class="line">(</span><br><span class="line">	ExamId int primary key identity(1,1), --选课成绩编号</span><br><span class="line">	StuId int not null, --学生编号</span><br><span class="line">	CourseId int not null,  --课程编号</span><br><span class="line">	Score int not null, --考试分数</span><br><span class="line">)</span><br><span class="line">insert into Exam(StuId,CourseId,Score) values(1,1,90)</span><br><span class="line">insert into Exam(StuId,CourseId,Score) values(1,2,80)</span><br><span class="line">insert into Exam(StuId,CourseId,Score) values(2,2,85)</span><br><span class="line"></span><br><span class="line">select * from Student inner join Exam on Student.StuId = Exam.StuId</span><br><span class="line">inner join Course on Course.CourseId = Exam.CourseId</span><br></pre></td></tr></table></figure>
+
+<p><strong>第三范式：</strong>要求任何字段不能由其他字段派生出来，它要求字段没有冗余，即不存在传递依赖 ；</p>
+<p>如有如下表结构设计：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Student</span><br><span class="line">(</span><br><span class="line">	StuId varchar(20) primary key,--学号</span><br><span class="line">	StuName varchar(20) not null,--学生姓名</span><br><span class="line">	ProfessionalId int not null,--专业编号</span><br><span class="line">	ProfessionalName varchar(50),--专业名称</span><br><span class="line">	ProfessionalRemark varchar(200), --专业介绍</span><br><span class="line">)</span><br><span class="line">insert into Student(StuId,StuName,ProfessionalId,ProfessionalName,ProfessionalRemark)</span><br><span class="line">values(&#x27;001&#x27;,&#x27;刘备&#x27;,1,&#x27;计算机&#x27;,&#x27;最牛的专业&#x27;)</span><br><span class="line">insert into Student(StuId,StuName,ProfessionalId,ProfessionalName,ProfessionalRemark)</span><br><span class="line">values(&#x27;002&#x27;,&#x27;关羽&#x27;,2,&#x27;工商管理&#x27;,&#x27;管理学的基础专业&#x27;)</span><br><span class="line">insert into Student(StuId,StuName,ProfessionalId,ProfessionalName,ProfessionalRemark)</span><br><span class="line">values(&#x27;003&#x27;,&#x27;张飞&#x27;,1,&#x27;计算机&#x27;,&#x27;最牛的专业&#x27;)</span><br><span class="line">select * from Student</span><br></pre></td></tr></table></figure>
+
+<p>上述设计种专业名称字段和专业介绍字段，在数据库种会产生很多冗余数据，不满足第二范式，优化方案如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Professional</span><br><span class="line">(</span><br><span class="line">	ProfessionalId int primary key identity(1,1),--专业编号</span><br><span class="line">	ProfessionalName varchar(50),--专业名称</span><br><span class="line">	ProfessionalRemark varchar(200), --专业介绍</span><br><span class="line">)</span><br><span class="line">create table Student</span><br><span class="line">(</span><br><span class="line">	StuId varchar(20) primary key,--学号</span><br><span class="line">	StuName varchar(20) not null,--学生姓名</span><br><span class="line">	ProfessionalId int not null,--专业编号</span><br><span class="line">)</span><br><span class="line">insert into Professional(ProfessionalName,ProfessionalRemark) values(&#x27;计算机&#x27;,&#x27;最牛的专业&#x27;)</span><br><span class="line">insert into Professional(ProfessionalName,ProfessionalRemark) values(&#x27;工商管理&#x27;,&#x27;管理学的基础专业&#x27;)</span><br><span class="line">insert into Student(StuId,StuName,ProfessionalId) values(&#x27;001&#x27;,&#x27;刘备&#x27;,1)</span><br><span class="line">insert into Student(StuId,StuName,ProfessionalId) values(&#x27;002&#x27;,&#x27;关羽&#x27;,2)</span><br><span class="line">insert into Student(StuId,StuName,ProfessionalId) values(&#x27;003&#x27;,&#x27;张飞&#x27;,1)</span><br><span class="line">select * from Student</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、表关系"><a href="#二、表关系" class="headerlink" title="二、表关系"></a>二、表关系</h2><p><strong>（1）一对多关系（专业–学生）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Profession  --专业</span><br><span class="line">(</span><br><span class="line">	ProId int primary key identity(1,1), --专业编号</span><br><span class="line">	ProName varchar(50) not null --专业名称</span><br><span class="line">)</span><br><span class="line">create table Student --学生</span><br><span class="line">(</span><br><span class="line">	StuId int primary key identity(1,1), --学生编号</span><br><span class="line">	ProId int references Profession(ProId),</span><br><span class="line">	StuName varchar(50) not null, --学生名字</span><br><span class="line">	StuSex char(2) not null --学生性别</span><br><span class="line">)</span><br><span class="line">insert into Profession(ProName) values(&#x27;软件开发&#x27;)</span><br><span class="line">insert into Profession(ProName) values(&#x27;企业信息化&#x27;)</span><br><span class="line">insert into Student(ProId,StuName,StuSex) values(1,&#x27;刘备&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(ProId,StuName,StuSex) values(1,&#x27;关羽&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(ProId,StuName,StuSex) values(2,&#x27;张飞&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(ProId,StuName,StuSex) values(2,&#x27;赵云&#x27;,&#x27;男&#x27;)</span><br><span class="line">select * from Student left join Profession on Student.ProId = Profession.ProId</span><br></pre></td></tr></table></figure>
+
+<p><strong>（2）一对一关系（学生基本信息–学生详情）</strong></p>
+<p><strong>方案一：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table StudentBasicInfo  --学生基本信息</span><br><span class="line">(</span><br><span class="line">	StuNo varchar(20) primary key not null,  --学号</span><br><span class="line">	StuName varchar(20) not null, --姓名</span><br><span class="line">	StuSex nvarchar(1) not null  --性别</span><br><span class="line">)</span><br><span class="line">create table StudentDetailInfo  --学生详细信息</span><br><span class="line">(</span><br><span class="line">	StuNo varchar(20) primary key not null,</span><br><span class="line">	StuQQ varchar(20), --QQ</span><br><span class="line">	stuPhone varchar(20), --电话</span><br><span class="line">	StuMail varchar(100), --邮箱</span><br><span class="line">	StuBirth date         --生日</span><br><span class="line">)</span><br><span class="line">--插入数据的时候按照顺序先插入刘备的基本信息，在插入关羽的基本信息</span><br><span class="line">--insert into StudentBasicInfo(StuNo,StuName,StuSex) values(&#x27;QH001&#x27;,&#x27;刘备&#x27;,&#x27;男&#x27;)</span><br><span class="line">--insert into StudentBasicInfo(StuNo,StuName,StuSex) values(&#x27;QH002&#x27;,&#x27;关羽&#x27;,&#x27;男&#x27;)</span><br><span class="line">--插入数据的时候按照顺序先插入关羽的详细信息，在插入刘备的详细信息</span><br><span class="line">--insert into StudentDetailInfo(StuNo,StuQQ,stuPhone,StuMail,StuBirth)</span><br><span class="line">--values(&#x27;QH002&#x27;,&#x27;156545214&#x27;,&#x27;13654525478&#x27;,&#x27;guanyu@163.com&#x27;,&#x27;1996-6-6&#x27;)</span><br><span class="line">--insert into StudentDetailInfo(StuNo,StuQQ,stuPhone,StuMail,StuBirth)</span><br><span class="line">--values(&#x27;QH001&#x27;,&#x27;186587854&#x27;,&#x27;15326545214&#x27;,&#x27;liubei@163.com&#x27;,&#x27;1998-8-8&#x27;)</span><br><span class="line"></span><br><span class="line">--或者如下结构也行：</span><br><span class="line">create table StudentBasicInfo  --学生基本信息</span><br><span class="line">(</span><br><span class="line">	StuNo int primary key identity(1,1),  --学号</span><br><span class="line">	StuName varchar(20) not null, --姓名</span><br><span class="line">	StuSex nvarchar(1) not null  --性别</span><br><span class="line">)</span><br><span class="line">create table StudentDetailInfo  --学生详细信息</span><br><span class="line">(</span><br><span class="line">	StuNo int primary key,  --学号</span><br><span class="line">	StuQQ varchar(20), --QQ</span><br><span class="line">	stuPhone varchar(20), --电话</span><br><span class="line">	StuMail varchar(100), --邮箱</span><br><span class="line">	StuBirth date         --生日</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>此方案要求两个表的主键相等关系确定一个学生，所以此设计必须保证主键是可以维护和编辑的，如果主键是自动增长，将很大程度增加了数据维护的难度。</p>
+<p><strong>方案二：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table StudentBasicInfo  --学生基本信息</span><br><span class="line">(</span><br><span class="line">	StuNo int primary key identity(1,1),  --学号</span><br><span class="line">	StuName varchar(20) not null, --姓名</span><br><span class="line">	StuSex nvarchar(1) not null  --性别</span><br><span class="line">)</span><br><span class="line">create table StudentDetailInfo  --学生详细信息</span><br><span class="line">(</span><br><span class="line">	StuDetailNo int primary key identity(1,1),  --详细信息编号</span><br><span class="line">	StuNo int references StudentBasicInfo(StuNo) --学号,外键</span><br><span class="line">	StuQQ varchar(20), --QQ</span><br><span class="line">	stuPhone varchar(20), --电话</span><br><span class="line">	StuMail varchar(100), --邮箱</span><br><span class="line">	StuBirth date         --生日</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>此方案中实际上我们是使用一对多的模式来表示一对一，保证多的表中只有一条对应数据即可。</p>
+<p><strong>（3）多对多关系：（选课成绩–学生）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Course --课程</span><br><span class="line">(</span><br><span class="line">	CourseId int primary key identity(1,1),--课程编号</span><br><span class="line">	CourseName varchar(30) not null, --课程名称</span><br><span class="line">	CourseContent text --课程介绍</span><br><span class="line">)</span><br><span class="line">insert into Course(CourseName,CourseContent) values(&#x27;HTML&#x27;,&#x27;静态网页的制作&#x27;)</span><br><span class="line">insert into Course(CourseName,CourseContent) values(&#x27;WinForm&#x27;,&#x27;Windows应用程序开发&#x27;)</span><br><span class="line"></span><br><span class="line">create table Student --学生</span><br><span class="line">(</span><br><span class="line">	StuId int primary key identity(1,1), --学生编号</span><br><span class="line">	StuName varchar(50) not null, --学生名字</span><br><span class="line">	StuSex char(2) not null --学生性别</span><br><span class="line">)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;刘备&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;关羽&#x27;,&#x27;男&#x27;)</span><br><span class="line"></span><br><span class="line">create Table Exam --考试信息表</span><br><span class="line">(</span><br><span class="line">	ExamId int primary key identity(1,1), --选课成绩编号</span><br><span class="line">	StuId int not null, --学生编号</span><br><span class="line">	CourseId int not null,  --课程编号</span><br><span class="line">	Score int not null, --考试分数</span><br><span class="line">)</span><br><span class="line">insert into Exam(StuId,CourseId,Score) values(1,1,90)</span><br><span class="line">insert into Exam(StuId,CourseId,Score) values(1,2,80)</span><br><span class="line">insert into Exam(StuId,CourseId,Score) values(2,2,85)</span><br><span class="line"></span><br><span class="line">select * from Student inner join Exam on Student.StuId = Exam.StuId</span><br><span class="line">inner join Course on Course.CourseId = Exam.CourseId</span><br></pre></td></tr></table></figure>
+
+<p>此方案中，一个学生可以有多门选课，一门课程也可以被多个学生选择，我们称之为多对多关系，在处理多对多关系的时候，我们需要建立一个中间关联表，该关联表中需要有另外两张表的主键字段。</p>
+<h2 id="三、数据库设计案例"><a href="#三、数据库设计案例" class="headerlink" title="三、数据库设计案例"></a>三、数据库设计案例</h2><p><strong>业务需求说明：</strong><br>模拟银行业务，设计简易版的银行数据库表结构，要求可以完成以下基本功能需求：<br>1.银行开户（注册个人信息）及开卡（办理银行卡）（一个人可以办理多张银行卡，但是最多只能办理3张）<br>2.存钱<br>3.查询余额<br>4.取钱<br>5.转账<br>6.查看交易记录<br>7.账户挂失<br>8.账户注销</p>
+<p><strong>表设计：</strong></p>
+<p>1.账户信息表：存储个人信息。<br>2.银行卡表：存储银行卡信息。<br>3.交易信息表（存储存钱和取钱的记录）<br>4.转账信息表（存储转账信息记录）<br>5.状态信息变化表（存储银行卡状态变化的记录，状态有1:正常,2:挂失,3:冻结,4:注销）</p>
+<p><strong>表结构设计：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--账户信息表：存储个人信息</span><br><span class="line">create table AccountInfo</span><br><span class="line">(</span><br><span class="line">	AccountId int primary key identity(1,1), --账户编号</span><br><span class="line">	AccountCode varchar(20) not null, --身份证号码</span><br><span class="line">	AccountPhone varchar(20) not null, --电话号码</span><br><span class="line">	RealName varchar(20) not null, --真实姓名</span><br><span class="line">	OpenTime smalldatetime not null, --开户时间</span><br><span class="line">)</span><br><span class="line">--银行卡表：存储银行卡信息</span><br><span class="line">create table BankCard</span><br><span class="line">(</span><br><span class="line">	CardNo varchar(30) primary key, --银行卡卡号</span><br><span class="line">	AccountId int not null, --账户编号（与账户信息表形成主外键关系）</span><br><span class="line">	CardPwd varchar(30) not null, --银行卡密码</span><br><span class="line">	CardMoney money not null, --银行卡余额</span><br><span class="line">	CardState int not null,--1:正常,2:挂失,3:冻结,4:注销</span><br><span class="line">	CardTime smalldatetime default(getdate()) --开卡时间</span><br><span class="line">)</span><br><span class="line">--交易信息表（存储存钱和取钱的记录）</span><br><span class="line">create table CardExchange</span><br><span class="line">(</span><br><span class="line">	ExchangeId int primary key identity(1,1), --交易自动编号</span><br><span class="line">	CardNo varchar(30) not null, --银行卡号(与银行卡表形成主外键关系)</span><br><span class="line">	MoneyInBank money not null, --存钱金额</span><br><span class="line">	MoneyOutBank money not null, --取钱金额</span><br><span class="line">	ExchangeTime smalldatetime not null, --交易时间</span><br><span class="line">)</span><br><span class="line">--转账信息表（存储转账信息记录）</span><br><span class="line">create table CardTransfer</span><br><span class="line">(</span><br><span class="line">	TransferId int primary key identity(1,1),--转账自动编号</span><br><span class="line">	CardNoOut varchar(30) not null, --转出银行卡号(与银行卡表形成主外键关系)</span><br><span class="line">	CardNoIn varchar(30) not null, --转入银行卡号(与银行卡表形成主外键关系)</span><br><span class="line">	TransferMoney money not null,--交易金额</span><br><span class="line">	TransferTime smalldatetime not null, --交易时间</span><br><span class="line">)</span><br><span class="line">--状态信息变化表（存储银行卡状态变化的记录，状态有1:正常,2:挂失,3:冻结,4:注销）</span><br><span class="line">create table CardStateChange</span><br><span class="line">(</span><br><span class="line">	StateId int primary key identity(1,1),--状态信息自动编号</span><br><span class="line">	CardNo varchar(30) not null, --银行卡号(与银行卡表形成主外键关系)</span><br><span class="line">	OldState int not null, --银行卡原始状态</span><br><span class="line">	NewState int not null, --银行卡新状态</span><br><span class="line">	StateWhy varchar(200) not null, --状态变化原因</span><br><span class="line">	StateTime smalldatetime not null, --记录产生时间</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加测试数据：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--为刘备，关羽，张飞三个人进行开户开卡的操作</span><br><span class="line">--刘备身份证：420107198905064135</span><br><span class="line">--关羽身份证：420107199507104133</span><br><span class="line">--张飞身份证：420107199602034138</span><br><span class="line">insert into AccountInfo(AccountCode,AccountPhone,RealName,OpenTime)</span><br><span class="line">values(&#x27;420107198905064135&#x27;,&#x27;13554785425&#x27;,&#x27;刘备&#x27;,GETDATE())</span><br><span class="line">insert into BankCard(CardNo,AccountId,CardPwd,CardMoney,CardState)</span><br><span class="line">values(&#x27;6225125478544587&#x27;,1,&#x27;123456&#x27;,0,1)</span><br><span class="line"></span><br><span class="line">insert into AccountInfo(AccountCode,AccountPhone,RealName,OpenTime)</span><br><span class="line">values(&#x27;420107199507104133&#x27;,&#x27;13454788854&#x27;,&#x27;关羽&#x27;,GETDATE())</span><br><span class="line">insert into BankCard(CardNo,AccountId,CardPwd,CardMoney,CardState)</span><br><span class="line">values(&#x27;6225547858741263&#x27;,2,&#x27;123456&#x27;,0,1)</span><br><span class="line"></span><br><span class="line">insert into AccountInfo(AccountCode,AccountPhone,RealName,OpenTime)</span><br><span class="line">values(&#x27;420107199602034138&#x27;,&#x27;13456896321&#x27;,&#x27;张飞&#x27;,GETDATE())</span><br><span class="line">insert into BankCard(CardNo,AccountId,CardPwd,CardMoney,CardState)</span><br><span class="line">values(&#x27;6225547854125656&#x27;,3,&#x27;123456&#x27;,0,1)</span><br><span class="line"></span><br><span class="line">select * from AccountInfo</span><br><span class="line">select * from BankCard</span><br><span class="line"></span><br><span class="line">--进行存钱操作，刘备存钱2000元，关羽存钱：8000元，张飞存钱：500000元</span><br><span class="line">select * from AccountInfo</span><br><span class="line">update BankCard set CardMoney = CardMoney + 2000 where CardNo = &#x27;6225125478544587&#x27;</span><br><span class="line">insert into CardExchange(CardNo,MoneyInBank,MoneyOutBank,ExchangeTime)</span><br><span class="line">values(&#x27;6225125478544587&#x27;,2000,0,GETDATE())</span><br><span class="line"></span><br><span class="line">update BankCard set CardMoney = CardMoney + 8000 where CardNo = &#x27;6225547858741263&#x27;</span><br><span class="line">insert into CardExchange(CardNo,MoneyInBank,MoneyOutBank,ExchangeTime)</span><br><span class="line">values(&#x27;6225547858741263&#x27;,8000,0,GETDATE())</span><br><span class="line"></span><br><span class="line">update BankCard set CardMoney = CardMoney + 500000 where CardNo = &#x27;6225547854125656&#x27;</span><br><span class="line">insert into CardExchange(CardNo,MoneyInBank,MoneyOutBank,ExchangeTime)</span><br><span class="line">values(&#x27;6225547854125656&#x27;,500000,0,GETDATE())</span><br><span class="line"></span><br><span class="line">--转账：刘备给张飞转账1000元</span><br><span class="line">update BankCard set CardMoney = CardMoney -1000 where CardNo = &#x27;6225125478544587&#x27;</span><br><span class="line">update BankCard set CardMoney = CardMoney + 1000 where CardNo = &#x27;6225547854125656&#x27;</span><br><span class="line">insert into CardTransfer(CardNoOut,CardNoIn,TransferMoney,TransferTime)</span><br><span class="line">values(&#x27;6225125478544587&#x27;,&#x27;6225547854125656&#x27;,1000,GETDATE())</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用T-SQL编程"><a href="#使用T-SQL编程" class="headerlink" title="使用T-SQL编程"></a>使用T-SQL编程</h1><h2 id="一、信息打印"><a href="#一、信息打印" class="headerlink" title="一、信息打印"></a>一、信息打印</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--print:直接打印消息</span><br><span class="line">--select:在表格中打印消息，可以设置多列，以及每一列的名字</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、变量"><a href="#二、变量" class="headerlink" title="二、变量"></a>二、变量</h2><p><strong>T-SQL中变量分为局部变量和全局变量</strong></p>
+<p><strong>局部变量：（1）以@作为前缀（2）先声明，在赋值</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @str varchar(20)</span><br><span class="line">set @str = &#x27;我爱数据库编程&#x27; --或者select @str = &#x27;我爱数据库编程&#x27;</span><br><span class="line">print @str</span><br></pre></td></tr></table></figure>
+
+<p>备注：set赋值和select赋值区别：</p>
+<p>set：赋给变量指定的值</p>
+<p>select：一般用于从表中查询出的数据，查询记录如果有多条，将最后一条记录的值赋给变量，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select @变量名 = 字段名 from 表名</span><br></pre></td></tr></table></figure>
+
+<p>在赋值过程中，如果是表中查询的数据，如果记录只有一条，使用set和select都可以，但是习惯上使用select。</p>
+<p><strong>全局变量：（1）以@@作为前缀（2）由系统进行定义和维护,只读</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--@@ERROR：返回执行的上一个语句的错误号</span><br><span class="line">--@@IDENTITY：返回最后插入的标识值</span><br><span class="line">--@@MAX_CONNECTIONS：返回允许同时进行的最大用户连接数</span><br><span class="line">--@@ROWCOUNT：返回受上一语句影响的行数</span><br><span class="line">--@@SERVERNAME：返回运行 SQL Server 的本地服务器的名称</span><br><span class="line">--@@SERVICENAME：返回 SQL Server 正在其下运行的注册表项的名称</span><br><span class="line">--@@TRANCOUNT：返回当前连接的活动事务数</span><br><span class="line">--@@LOCK_TIMEOUT：返回当前会话的当前锁定超时设置（毫秒）</span><br></pre></td></tr></table></figure>
+
+<p><strong>变量示例：</strong></p>
+<p>（1）为赵云此人进行开户开卡操作，赵云身份证：420107199904054233</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @AccountId int</span><br><span class="line">insert into AccountInfo(AccountCode,AccountPhone,RealName,OpenTime)</span><br><span class="line">values(&#x27;420107199904054233&#x27;,&#x27;15878547898&#x27;,&#x27;赵云&#x27;,GETDATE())</span><br><span class="line">set @AccountId = @@identity</span><br><span class="line">insert into BankCard(CardNo,AccountId,CardPwd,CardMoney,CardState)</span><br><span class="line">values(&#x27;6225123412357896&#x27;,@AccountId,&#x27;123456&#x27;,0,1)</span><br></pre></td></tr></table></figure>
+
+<p>（2）需要求出张飞的银行卡卡号和余额，张飞身份证：420107199602034138</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：连接查询</span><br><span class="line">select CardNo 卡号, CardMoney 余额 from BankCard </span><br><span class="line">left join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">where AccountCode = &#x27;420107199602034138&#x27;</span><br><span class="line">--方案二：使用变量</span><br><span class="line">declare @AccountId int</span><br><span class="line">select @AccountId =  (select AccountId from AccountInfo where AccountCode = &#x27;420107199602034138&#x27;)</span><br><span class="line">select CardNo 卡号, CardMoney 余额 from BankCard where BankCard.AccountId = @AccountId</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、go语句"><a href="#三、go语句" class="headerlink" title="三、go语句"></a>三、go语句</h2><p>go语句：</p>
+<p>（1）等待go语句前的代码执行完成后，再执行go后面的代码。</p>
+<p>（2）批处理语句的结束标志。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--下面的@num变量作用域为全局</span><br><span class="line">--declare @num int</span><br><span class="line">--set @num = 0</span><br><span class="line"></span><br><span class="line">--下面的@num变量的作用域是局部，只在两个go之间可以使用，最后一行代码会报错</span><br><span class="line">--.........sql代码</span><br><span class="line">--go</span><br><span class="line">--declare @num int</span><br><span class="line">--set @num = 0</span><br><span class="line">--go</span><br><span class="line">--set @num = 1</span><br></pre></td></tr></table></figure>
+
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><p>T-SQL中使用的运算符分为7种</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">算数运算符：加（+）、减（-）、乘（*）、除（/）、模（%） </span><br><span class="line">逻辑运算符：AND、OR、LIKE、BETWEEN、IN、EXISTS、NOT、ALL、ANY、 </span><br><span class="line">赋值运算符：= </span><br><span class="line">字符串运算符：+ </span><br><span class="line">比较运算符：=、&gt;、&lt;、&gt;=、&lt;=、&lt;&gt; </span><br><span class="line">位运算符：|、&amp;、^ </span><br><span class="line">复合运算符：+=、-=、/=、%=、*=</span><br></pre></td></tr></table></figure>
+
+<h2 id="运算符示例"><a href="#运算符示例" class="headerlink" title="运算符示例"></a>运算符示例</h2><p>（1）已知长方形的长和宽，求长方形的周长和面积</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @c int = 5</span><br><span class="line">declare @k int = 10</span><br><span class="line">declare @zc int</span><br><span class="line">declare @mj int</span><br><span class="line">set @zc = (@c+@k)*2</span><br><span class="line">set @mj = @c * @k</span><br><span class="line">print &#x27;周长为:&#x27; + Convert(varchar(20),@zc)</span><br><span class="line">print &#x27;面积为:&#x27; + Convert(varchar(20),@mj)</span><br></pre></td></tr></table></figure>
+
+<p>（2）查询银行卡状态为冻结，并且余额超过1000000的银行卡信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from BankCard where CardState = 3 and CardMoney &gt; 1000000</span><br></pre></td></tr></table></figure>
+
+<p>（3）查询出银行卡状态为冻结或者余额等于0的银行卡信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from BankCard where CardState = 3 or CardMoney = 0</span><br></pre></td></tr></table></figure>
+
+<p>（4）查询出姓名中含有’刘’的账户信息以及银行卡信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from AccountInfo left join BankCard on AccountInfo.AccountId = BankCard.AccountId where RealName like &#x27;%刘%&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（5）查询出余额在2000-5000之间的银行卡信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from BankCard where CardMoney between 2000 and 5000</span><br></pre></td></tr></table></figure>
+
+<p>（6）查询出银行卡状态为冻结或者注销的银行卡信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from BankCard where CardState in(3,4)</span><br></pre></td></tr></table></figure>
+
+<p>（7）关羽身份证：420107199507104133，关羽到银行来开户，查询身份证在账户表是否存在，不存在则进行开户开卡，存在则不开户直接开卡。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @AccountId int</span><br><span class="line">if exists(select * from AccountInfo where AccountCode = &#x27;420107199507104133&#x27;)</span><br><span class="line">	begin		</span><br><span class="line">		select @AccountId = (select AccountId from AccountInfo where AccountCode = &#x27;420107199507104133&#x27;)</span><br><span class="line">		insert into BankCard(CardNo,AccountId,CardPwd,CardMoney,CardState)</span><br><span class="line">		values(&#x27;6225456875357896&#x27;,@AccountId,&#x27;123456&#x27;,0,1)				</span><br><span class="line">	end</span><br><span class="line">else</span><br><span class="line">	begin</span><br><span class="line">		insert into AccountInfo(AccountCode,AccountPhone,RealName,OpenTime)</span><br><span class="line">		values(&#x27;420107199507104133&#x27;,&#x27;13335645213&#x27;,&#x27;关羽&#x27;,GETDATE())</span><br><span class="line">		set @AccountId = @@identity</span><br><span class="line">		insert into BankCard(CardNo,AccountId,CardPwd,CardMoney,CardState)</span><br><span class="line">		values(&#x27;6225456875357896&#x27;,@AccountId,&#x27;123456&#x27;,0,1)		</span><br><span class="line">	end</span><br></pre></td></tr></table></figure>
+
+<p>上述代码也可以使用not exists进行判断，表示不存在。</p>
+<p>扩展：上面需求添加一个限制即一个人最多只能开3张银行卡。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @AccountId int</span><br><span class="line">declare @count int</span><br><span class="line">if exists(select * from AccountInfo where AccountCode = &#x27;420107199507104133&#x27;)</span><br><span class="line">	begin		</span><br><span class="line">		select @AccountId = (select AccountId from AccountInfo where AccountCode = &#x27;420107199507104133&#x27;)</span><br><span class="line">		select @count = (select COUNT(*) from BankCard where AccountId = @AccountId)</span><br><span class="line">		if @count &lt;= 2</span><br><span class="line">            begin</span><br><span class="line">                insert into BankCard(CardNo,AccountId,CardPwd,CardMoney,CardState)</span><br><span class="line">                values(&#x27;6225456875357898&#x27;,@AccountId,&#x27;123456&#x27;,0,1)	</span><br><span class="line">            end	</span><br><span class="line">		else</span><br><span class="line">            begin</span><br><span class="line">                print &#x27;一个人最多只能办理三张银行卡&#x27;</span><br><span class="line">            end		</span><br><span class="line">	end</span><br><span class="line">else</span><br><span class="line">	begin</span><br><span class="line">		insert into AccountInfo(AccountCode,AccountPhone,RealName,OpenTime)</span><br><span class="line">		values(&#x27;420107199507104133&#x27;,&#x27;13335645213&#x27;,&#x27;关羽&#x27;,GETDATE())</span><br><span class="line">		set @AccountId = @@identity</span><br><span class="line">		insert into BankCard(CardNo,AccountId,CardPwd,CardMoney,CardState)</span><br><span class="line">		values(&#x27;6225456875357898&#x27;,@AccountId,&#x27;123456&#x27;,0,1)		</span><br><span class="line">	end</span><br></pre></td></tr></table></figure>
+
+<p>（8）查询银行卡账户余额，是不是所有的账户余额都超过了3000。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if 3000 &lt; ALL(select CardMoney from BankCard) </span><br><span class="line">	print &#x27;所有账户余额都超过了3000&#x27;</span><br><span class="line">else</span><br><span class="line">	print &#x27;存在有余额不超过3000的账户&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（9）查询银行卡账户余额，是否含有账户余额超过30000000的信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if 30000000 &lt; ANY(select CardMoney from BankCard) </span><br><span class="line">	print &#x27;存在账户余额超过30000000的账户&#x27;</span><br><span class="line">else</span><br><span class="line">	print &#x27;不存在账户余额超过30000000的账户&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><h2 id="一、选择分之结构"><a href="#一、选择分之结构" class="headerlink" title="一、选择分之结构"></a>一、选择分之结构</h2><p>（1）某用户银行卡号为“6225547854125656”，该用户执行取钱操作，取钱5000元，余额充足则进行取钱操作，并提示”取钱成功”，否则提示“余额不足”。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @balance money</span><br><span class="line">select @balance = (select CardMoney from BankCard where CardNo=&#x27;6225547854125656&#x27;)</span><br><span class="line">if @balance &gt;= 5000</span><br><span class="line">	begin</span><br><span class="line">		update BankCard set CardMoney = CardMoney - 5000</span><br><span class="line">		insert into CardExchange(CardNo,MoneyInBank,MoneyOutBank,ExchangeTime)</span><br><span class="line">		values(&#x27;6225547854125656&#x27;,0,5000,GETDATE())</span><br><span class="line">	end</span><br><span class="line">else</span><br><span class="line">	print &#x27;余额不足&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（2）查询银行卡信息，将银行卡状态1,2,3,4分别转换为汉字“正常,挂失,冻结,注销”，并且根据银行卡余额显示银行卡等级 30万以下为“普通用户”,30万及以上为”VIP用户”，显示列分别为卡号，身份证，姓名，余额，用户等级，银行卡状态。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额,</span><br><span class="line">case</span><br><span class="line">	when CardMoney &lt; 300000 then &#x27;普通用户&#x27;</span><br><span class="line">	else &#x27;VIP用户&#x27; </span><br><span class="line">end 用户等级,</span><br><span class="line">case</span><br><span class="line">	when CardState = 1 then &#x27;正常&#x27;</span><br><span class="line">	when CardState = 2 then &#x27;挂失&#x27;</span><br><span class="line">	when CardState = 3 then &#x27;冻结&#x27;</span><br><span class="line">	when CardState = 4 then &#x27;注销&#x27;</span><br><span class="line">	else &#x27;异常&#x27;</span><br><span class="line">end 卡状态</span><br><span class="line">from BankCard inner join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br></pre></td></tr></table></figure>
+
+<p>或如下写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额,</span><br><span class="line">case</span><br><span class="line">	when CardMoney &lt; 300000 then &#x27;普通用户&#x27;</span><br><span class="line">	else &#x27;VIP用户&#x27; </span><br><span class="line">end 用户等级,</span><br><span class="line">case CardState</span><br><span class="line">	when 1 then &#x27;正常&#x27;</span><br><span class="line">	when 2 then &#x27;挂失&#x27;</span><br><span class="line">	when 3 then &#x27;冻结&#x27;</span><br><span class="line">	when 4 then &#x27;注销&#x27;</span><br><span class="line">	else &#x27;异常&#x27;</span><br><span class="line">end 卡状态</span><br><span class="line">from BankCard inner join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、循环结构"><a href="#二、循环结构" class="headerlink" title="二、循环结构"></a>二、循环结构</h2><p>（1）循环打印1-10。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @i int  = 1</span><br><span class="line">while @i &lt;= 10</span><br><span class="line">begin</span><br><span class="line">	print @i</span><br><span class="line">	set @i = @i + 1</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>（2）循环打印九九乘法表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @i int = 1</span><br><span class="line">declare @str varchar(1000)</span><br><span class="line">while @i&lt;=9</span><br><span class="line">begin</span><br><span class="line">	declare @j int = 1</span><br><span class="line">	set @str = &#x27;&#x27;</span><br><span class="line">	while @j &lt;= @i</span><br><span class="line">	begin</span><br><span class="line">		--方案一</span><br><span class="line">		--set @str = @str + cast(@i as varchar(2)) + &#x27;*&#x27; + cast(@j as varchar(2)) + </span><br><span class="line">		--&#x27;=&#x27; + cast(@i*@j as varchar(2)) + CHAR(9)</span><br><span class="line">		--方案二</span><br><span class="line">		set @str = @str + Convert(varchar(2),@i) + &#x27;*&#x27; + Convert(varchar(2),@j) + </span><br><span class="line">		&#x27;=&#x27; + Convert(varchar(2),@i*@j) + CHAR(9)		</span><br><span class="line">		set @j = @j + 1</span><br><span class="line">	end</span><br><span class="line">	print @str</span><br><span class="line">	set @i = @i + 1</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>备注：</p>
+<p>（1）特殊字符：制表符	CHAR(9)；换行符	CHAR(10)；回车	CHAR(13)；</p>
+<p>（2）循环中若出现break和CONTINUE,作用与Java，C#等语言一致。</p>
+<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><p>（1）关羽的银行卡号为”6225547858741263”，查询出余额比关羽多的银行卡信息，显示卡号，身份证，姓名，余额。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">declare @gyBalance money</span><br><span class="line">select @gyBalance = (select CardMoney from BankCard where CardNo=&#x27;6225547858741263&#x27;)</span><br><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额 from BankCard </span><br><span class="line">left join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">where CardMoney &gt; @gyBalance</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案二:</span><br><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额 from BankCard </span><br><span class="line">left join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">where CardMoney &gt; </span><br><span class="line">(select CardMoney from BankCard where CardNo=&#x27;6225547858741263&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（2）从所有账户信息中查询出余额最高的交易明细(存钱取钱信息)。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select * from CardExchange where CardNo in </span><br><span class="line">(select CardNo from BankCard where CardMoney = </span><br><span class="line">  (select MAX(CardMoney) from BankCard)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案二：（如果有多个银行卡余额相等并且最高，此方案只能求出其中一个人的明细）</span><br><span class="line">select * from CardExchange where CardNo = </span><br><span class="line">(select top 1 CardNo from BankCard order by CardMoney desc)</span><br></pre></td></tr></table></figure>
+
+<p>（3）查询有取款记录的银行卡及账户信息，显示卡号，身份证，姓名，余额。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额 from BankCard </span><br><span class="line">left join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">where CardNo in</span><br><span class="line">(select CardNo from CardExchange where MoneyOutBank &lt;&gt; 0)</span><br></pre></td></tr></table></figure>
+
+<p>（4）查询出没有存款记录的银行卡及账户信息，显示卡号，身份证，姓名，余额。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额 from BankCard </span><br><span class="line">left join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">where CardNo not in</span><br><span class="line">(select CardNo from CardExchange where MoneyInBank &lt;&gt; 0)</span><br></pre></td></tr></table></figure>
+
+<p>（5）关羽的银行卡号为”6225547858741263”,查询当天是否有收到转账。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if exists(select * from CardTransfer where CardNoIn = &#x27;6225547858741263&#x27;</span><br><span class="line">and convert(varchar(10),TransferTime, 120) = convert(varchar(10),getdate(), 120)</span><br><span class="line">)</span><br><span class="line">	print &#x27;有转账记录&#x27;</span><br><span class="line">else</span><br><span class="line">	print &#x27;没有转账记录&#x27;</span><br><span class="line">--备注：上述例子也可以使用not exists来实现，表示不不存在记录</span><br></pre></td></tr></table></figure>
+
+<p>（6）查询出交易次数（存款取款操作）最多的银行卡账户信息，显示：卡号，身份证，姓名，余额，交易次数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一</span><br><span class="line">select top 1 BankCard.CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额,</span><br><span class="line">exchangeCount 交易次数 from BankCard </span><br><span class="line">inner join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">inner join</span><br><span class="line">(select CardNo,COUNT(*) exchangeCount from CardExchange group by CardNo) CarcExchageTemp</span><br><span class="line">on BankCard.CardNo = CarcExchageTemp.CardNo</span><br><span class="line">order by exchangeCount desc</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案二(如果有多个人交易次数相同，都是交易次数最多，则使用以下方案)</span><br><span class="line">select  BankCard.CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额,交易次数 </span><br><span class="line">from AccountInfo</span><br><span class="line">inner join BankCard on AccountInfo.AccountId = BankCard.AccountId</span><br><span class="line">inner join</span><br><span class="line">(select CardNo,COUNT(*) 交易次数 from CardExchange group by CardNo) Temp </span><br><span class="line">on BankCard.CardNo = Temp.CardNo</span><br><span class="line">where 交易次数 = (select max(交易次数) from</span><br><span class="line">(select CardNo,COUNT(*) 交易次数 from CardExchange group by CardNo) Temp )</span><br></pre></td></tr></table></figure>
+
+<p>（7）查询出没有转账交易记录的银行卡账户信息，显示卡号，身份证，姓名，余额。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额 from BankCard </span><br><span class="line">left join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">where BankCard.CardNo not in (select CardNoIn from CardTransfer)</span><br><span class="line">and BankCard.CardNo not in (select CardNoOut from CardTransfer)</span><br></pre></td></tr></table></figure>
+
+<p>（8）分页。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--数据结构和数据如下：</span><br><span class="line">create table Student</span><br><span class="line">(</span><br><span class="line">	StuId int primary key identity(1,2), --自动编号</span><br><span class="line">	StuName varchar(20),</span><br><span class="line">	StuSex varchar(4)</span><br><span class="line">)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;刘备&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;关羽&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;张飞&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;赵云&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;马超&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;黄忠&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;魏延&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;简雍&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;诸葛亮&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;徐庶&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;周仓&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;关平&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;张苞&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;曹操&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;曹仁&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;曹丕&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;曹植&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;曹彰&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;典韦&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;许褚&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;夏侯敦&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;郭嘉&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;荀彧&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;贾诩&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;孙权&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;孙坚&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;孙策&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;太史慈&#x27;,&#x27;男&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;大乔&#x27;,&#x27;女&#x27;)</span><br><span class="line">insert into Student(StuName,StuSex) values(&#x27;小乔&#x27;,&#x27;女&#x27;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：使用row_number分页</span><br><span class="line">declare @PageSize int = 5</span><br><span class="line">declare @PageIndex int = 1</span><br><span class="line">select * from (select ROW_NUMBER() over(order by StuId) RowId,Student.* from Student) TempStu</span><br><span class="line">where RowId between (@PageIndex-1)*@PageSize+1 and @PageIndex*@PageSize</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案二：使用top分页</span><br><span class="line">declare @PageSize int = 5</span><br><span class="line">declare @PageIndex int = 1</span><br><span class="line">select top(@PageSize) * from Student</span><br><span class="line">where StuId not in (select top((@PageIndex-1)*@PageSize) StuId from Student)</span><br></pre></td></tr></table></figure>
+
+<h1 id="事务-索引-视图-游标"><a href="#事务-索引-视图-游标" class="headerlink" title="事务-索引-视图-游标"></a>事务-索引-视图-游标</h1><h2 id="一、事务"><a href="#一、事务" class="headerlink" title="一、事务"></a>一、事务</h2><p>人员信息如下：（第二列是身份证号，第三列是银行卡卡号）</p>
+<p>–刘备  420107198905064135  6225125478544587<br>–关羽  420107199507104133  6225547858741263<br>–张飞  420107199602034138  6225547854125656</p>
+<p>（1）假设刘备取款6000，(添加check约束，设置账户余额必须&gt;&#x3D;0)，要求：使用事务实现，修改余额和添加取款记录两步操作使用事务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin transaction</span><br><span class="line">declare @MyError int = 0</span><br><span class="line">update BankCard set CardMoney = CardMoney-6000 where CardNo = &#x27;6225125478544587&#x27;</span><br><span class="line">set @MyError = @MyError + @@ERROR</span><br><span class="line">insert into CardExchange(CardNo,MoneyInBank,MoneyOutBank,ExchangeTime)</span><br><span class="line">values(&#x27;6225125478544587&#x27;,0,6000,GETDATE())</span><br><span class="line">set @MyError = @MyError + @@ERROR</span><br><span class="line">if @MyError = 0</span><br><span class="line">begin</span><br><span class="line">	commit transaction</span><br><span class="line">	print &#x27;取款成功&#x27;</span><br><span class="line">end	</span><br><span class="line">else</span><br><span class="line">begin</span><br><span class="line">	rollback transaction</span><br><span class="line">	print &#x27;余额不足&#x27;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>（2）假设刘备向张飞转账1000元，(添加check约束，设置账户余额必须&gt;&#x3D;0)；分析步骤有三步（1）张飞添加1000元，（2）刘备扣除1000元，（3）生成转账记录；使用事务解决此问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">begin transaction</span><br><span class="line">declare @Error int = 0</span><br><span class="line">update BankCard set CardMoney = CardMoney -1000 where CardNo = &#x27;6225125478544587&#x27;</span><br><span class="line">set @Error = @@ERROR + @Error</span><br><span class="line">update BankCard set CardMoney = CardMoney + 1000 where CardNo = &#x27;6225547854125656&#x27;</span><br><span class="line">set @Error = @@ERROR + @Error</span><br><span class="line">insert into CardTransfer(CardNoOut,CardNoIn,TransferMoney,TransferTime)</span><br><span class="line">values(&#x27;6225125478544587&#x27;,&#x27;6225547854125656&#x27;,1000,GETDATE())</span><br><span class="line">set @Error = @@ERROR + @Error</span><br><span class="line">if @Error = 0</span><br><span class="line">	begin</span><br><span class="line">		commit</span><br><span class="line">		print &#x27;转账成功&#x27;</span><br><span class="line">	end</span><br><span class="line">else</span><br><span class="line">	begin</span><br><span class="line">		rollback</span><br><span class="line">		print &#x27;转账失败&#x27;		</span><br><span class="line">	end</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、索引"><a href="#二、索引" class="headerlink" title="二、索引"></a>二、索引</h2><p>索引：提高检索查询效率。</p>
+<p><strong>SQL SERVER索引类型：</strong>按存储结构区分：“聚集索引（又称聚类索引，簇集索引）”，“非聚集索引（非聚类索引，非簇集索引）”；</p>
+<p>聚集索引：根据数据行的键值在表或视图中的排序存储这些数据行，每个表只有一个聚集索引。聚集索引是一种对磁盘上实际数据重新组织以按指定的一列或多列值排序(类似字典中的拼音索引)(物理存储顺序)。</p>
+<p>非聚集索引：具有独立于数据行的结构，包含非聚集索引键值，且每个键值项都有指向包含该键值的数据行的指针。（类似字典中的偏旁部首索引）（逻辑存储顺序）。</p>
+<p><strong>SQL SERVER索引其他分类：</strong></p>
+<p>按数据唯一性区分：“唯一索引”，“非唯一索引”；按键列个数区分：“单列索引”，“多列索引”。</p>
+<p><strong>创建索引的方式：</strong></p>
+<ol>
+<li>通过显式的CREATE INDEX命令 </li>
+<li>在创建约束时作为隐含的对象 <ol>
+<li>主键约束(聚集索引) </li>
+<li>唯一约束(唯一索引)</li>
+</ol>
+</li>
+</ol>
+<p><strong>创建索引语法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE [UNIQUE] [CLUSTERED | NONCLUSTERED]</span><br><span class="line">INDEX &lt;index name&gt; ON &lt;table or view name&gt;(&lt;column name&gt; [ASC|DESC][,...n])</span><br></pre></td></tr></table></figure>
+
+<p><strong>索引基本示例语法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--exp:创建一个非聚集索引</span><br><span class="line">--create nonclustered index indexAccount on AccountInfo(AccountCode)</span><br><span class="line">--删除一个索引</span><br><span class="line">--drop index indexAccount on AccountInfo</span><br></pre></td></tr></table></figure>
+
+<p>备注：索引信息存储在系统视图sys.indexes中。</p>
+<p><strong>按照指定索引进行查询</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from AccountInfo with(index=indexAccount) where AccountCode=&#x27;6225125478544587&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、视图"><a href="#三、视图" class="headerlink" title="三、视图"></a>三、视图</h2><p>视图：可以理解成虚拟表。</p>
+<p>（1）编写视图实现查询出所有银行卡账户信息，显示卡号，身份证，姓名，余额。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create view CardAndAccount as</span><br><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额 from BankCard </span><br><span class="line">left join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>如果要进行相应信息的查询，不需要编写复杂的SQL语句，直接使用视图，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from CardAndAccount</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、游标"><a href="#四、游标" class="headerlink" title="四、游标"></a>四、游标</h2><p>游标：定位到结果集中某一行。</p>
+<p>游标分类：<br>（1）静态游标(Static)：在操作游标的时候，数据发生变化，游标中数据不变<br>（2）动态游标(Dynamic)：在操作游标的时候，数据发生变化，游标中数据改变，默认值。<br>（3）键集驱动游标(KeySet)：在操作游标的时候，被标识的列发生改变，游标中数据改变，其他列改变，游标中数据不变。</p>
+<p>假设有如下表结构和数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Member</span><br><span class="line">(</span><br><span class="line">	MemberId int primary key identity(1,1),</span><br><span class="line">	MemberAccount nvarchar(20) unique check(len(MemberAccount) between 6 and 12),</span><br><span class="line">	MemberPwd nvarchar(20),</span><br><span class="line">	MemberNickname nvarchar(20),</span><br><span class="line">	MemberPhone nvarchar(20)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">insert into Member(MemberAccount,MemberPwd,MemberNickname,MemberPhone)</span><br><span class="line">values(&#x27;liubei&#x27;,&#x27;123456&#x27;,&#x27;刘备&#x27;,&#x27;4659874564&#x27;)</span><br><span class="line">insert into Member(MemberAccount,MemberPwd,MemberNickname,MemberPhone)</span><br><span class="line">values(&#x27;guanyu&#x27;,&#x27;123456&#x27;,&#x27;关羽&#x27;,&#x27;42354234124&#x27;)</span><br><span class="line">insert into Member(MemberAccount,MemberPwd,MemberNickname,MemberPhone)</span><br><span class="line">values(&#x27;zhangfei&#x27;,&#x27;123456&#x27;,&#x27;张飞&#x27;,&#x27;41253445&#x27;)</span><br><span class="line">insert into Member(MemberAccount,MemberPwd,MemberNickname,MemberPhone)</span><br><span class="line">values(&#x27;zhangyun&#x27;,&#x27;123456&#x27;,&#x27;赵云&#x27;,&#x27;75675676547&#x27;)</span><br><span class="line">insert into Member(MemberAccount,MemberPwd,MemberNickname,MemberPhone)</span><br><span class="line">values(&#x27;machao&#x27;,&#x27;123456&#x27;,&#x27;马超&#x27;,&#x27;532523523&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建游标：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--1.创建游标(Scroll代表滚动游标，不加Scroll则是只进的，只能支持fetch next)</span><br><span class="line">declare CURSORMember cursor scroll </span><br><span class="line">for select MemberAccount from Member</span><br></pre></td></tr></table></figure>
+
+<p><strong>打开游标：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">open  CURSORMember</span><br></pre></td></tr></table></figure>
+
+<p><strong>提取数据：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fetch first from CURSORMember --结果集的第一行</span><br><span class="line">fetch last from CURSORMember  --最后一行</span><br><span class="line">fetch absolute 1 from CURSORMember --从游标的第一行开始数，第n行。</span><br><span class="line">fetch relative 3 from CURSORMember --从当前位置数，第n行。</span><br><span class="line">fetch next from CURSORMember --当前位置的下一行</span><br><span class="line">fetch prior from CURSORMember --当前位置的上一行</span><br></pre></td></tr></table></figure>
+
+<p><strong>提取数据给变量以供它用（取出第3行用户名，查询该用户详细信息）：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @MemberAccount varchar(30)</span><br><span class="line">fetch absolute 3 from CURSORMember into @MemberAccount</span><br><span class="line">select * from Member where MemberAccount = @MemberAccount</span><br></pre></td></tr></table></figure>
+
+<p><strong>利用游标提取所有的账户信息：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">fetch absolute 1 from CURSORMember</span><br><span class="line">while @@FETCH_STATUS = 0  --@@FETCH_STATUS=0,提取成功，-1提取失败，-2行不存在</span><br><span class="line">	begin</span><br><span class="line">		fetch next from CURSORMember</span><br><span class="line">	end</span><br><span class="line">	</span><br><span class="line">--方案二：</span><br><span class="line">declare @MemberAccount varchar(30)</span><br><span class="line">--fetch next from CURSORMember into @MemberAccount</span><br><span class="line">fetch absolute 1 from CURSORMember into @MemberAccount</span><br><span class="line">while @@FETCH_STATUS = 0  --@@FETCH_STATUS=0,提取成功，-1提取失败，-2行不存在</span><br><span class="line">	begin</span><br><span class="line">		print &#x27;提取成功:&#x27; + @MemberAccount</span><br><span class="line">		fetch next from CURSORMember into @MemberAccount</span><br><span class="line">	end</span><br></pre></td></tr></table></figure>
+
+<p><strong>利用游标修改和删除数据：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fetch absolute 3 from CURSORMember</span><br><span class="line">update Member set MemberPwd = &#x27;1234567&#x27; where Current of CURSORMember</span><br><span class="line"></span><br><span class="line">fetch absolute 3 from CURSORMember</span><br><span class="line">delete Member where Current of CURSORMember</span><br></pre></td></tr></table></figure>
+
+<p><strong>关闭游标：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">close CURSORMember</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除游标：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deallocate CURSORMember</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建游标指向某行多列数据,并循环显示数据：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--此处如果指向所有数据，可以将for后面的语句修改成select * from Member</span><br><span class="line">declare CURSORMember cursor scroll</span><br><span class="line">for select MemberAccount,MemberPwd,MemberNickname,MemberPhone from Member</span><br><span class="line"></span><br><span class="line">open CURSORMember</span><br><span class="line"></span><br><span class="line">declare @MemberAccount varchar(30)</span><br><span class="line">declare	@MemberPwd nvarchar(20)</span><br><span class="line">declare	@MemberNickname nvarchar(20)</span><br><span class="line">declare	@MemberPhone nvarchar(20)</span><br><span class="line">fetch next from CURSORMember into @MemberAccount,@MemberPwd,@MemberNickname,@MemberPhone</span><br><span class="line">while @@FETCH_STATUS = 0  --@@FETCH_STATUS=0,提取成功，-1提取失败，-2行不存在</span><br><span class="line">	begin</span><br><span class="line">		print &#x27;提取成功:&#x27; + @MemberAccount+&#x27;,&#x27;+@MemberPwd+&#x27;,&#x27;+@MemberNickname+&#x27;,&#x27;+@MemberPhone</span><br><span class="line">		fetch next from CURSORMember into @MemberAccount,@MemberPwd,@MemberNickname,@MemberPhone</span><br><span class="line">	end</span><br><span class="line">close CURSORMember</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="函数-存储过程-触发器"><a href="#函数-存储过程-触发器" class="headerlink" title="函数-存储过程-触发器"></a>函数-存储过程-触发器</h1><h2 id="一、函数"><a href="#一、函数" class="headerlink" title="一、函数"></a>一、函数</h2><p>函数分为（1）系统函数，（2）自定义函数。</p>
+<p>其中自定义函数又可以分为（1）标量值函数（返回单个值），（2）表值函数（返回查询结果）</p>
+<p>本文主要介绍自定义函数的使用。</p>
+<p>（1）编写一个函数求该银行的金额总和</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create function GetSumCardMoney()</span><br><span class="line">returns money </span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">	declare @AllMOney money</span><br><span class="line">	select @AllMOney = (select SUM(CardMoney) from BankCard)</span><br><span class="line">	return @AllMOney</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>函数调用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select dbo.GetSumCardMoney()</span><br></pre></td></tr></table></figure>
+
+<p>上述函数没有参数，下面介绍有参数的函数的定义及使用</p>
+<p>（2）传入账户编号，返回账户真实姓名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create function GetNameById(@AccountId int)</span><br><span class="line">returns  varchar(20)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">	declare @RealName varchar(20)</span><br><span class="line">	select @RealName = (select RealName from AccountInfo where AccountId = @AccountId)</span><br><span class="line">	return @RealName</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>函数调用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print dbo.GetNameById(2)</span><br></pre></td></tr></table></figure>
+
+<p>（3）传递开始时间和结束时间，返回交易记录（存钱取钱），交易记录中包含 真实姓名，卡号，存钱金额，取钱金额，交易时间。</p>
+<p>方案一（逻辑复杂，函数内容除了返回结果的sql语句还有其他内容，例如定义变量等）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create function GetExchangeByTime(@StartTime varchar(30),@EndTime varchar(30))</span><br><span class="line">returns @ExchangeTable table</span><br><span class="line">(</span><br><span class="line">	RealName varchar(30),  --真实姓名</span><br><span class="line">	CardNo varchar(30),    --卡号</span><br><span class="line">	MoneyInBank money,     --存钱金额</span><br><span class="line">	MoneyOutBank money,    --取钱金额</span><br><span class="line">	ExchangeTime smalldatetime  --交易时间</span><br><span class="line">)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">	insert into @ExchangeTable</span><br><span class="line">	select AccountInfo.RealName,CardExchange.CardNo,CardExchange.MoneyInBank,</span><br><span class="line">	CardExchange.MoneyOutBank,CardExchange.ExchangeTime from CardExchange</span><br><span class="line">	left join BankCard on CardExchange.CardNo = BankCard.CardNo</span><br><span class="line">	left join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">	where CardExchange.ExchangeTime between @StartTime+&#x27; 00:00:00&#x27; and @EndTime+&#x27; 23:59:59&#x27;</span><br><span class="line">	return</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>函数调用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from GetExchangeByTime(&#x27;2018-6-1&#x27;,&#x27;2018-7-1&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>方案二（逻辑简单，函数内容直接是一条sql查询语句）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create function GetExchangeByTime(@StartTime varchar(30),@EndTime varchar(30))</span><br><span class="line">returns table</span><br><span class="line">as</span><br><span class="line">	return</span><br><span class="line">	select AccountInfo.RealName,CardExchange.CardNo,CardExchange.MoneyInBank,</span><br><span class="line">	CardExchange.MoneyOutBank,CardExchange.ExchangeTime from CardExchange</span><br><span class="line">	left join BankCard on CardExchange.CardNo = BankCard.CardNo</span><br><span class="line">	left join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">	where CardExchange.ExchangeTime between @StartTime+&#x27; 00:00:00&#x27; and @EndTime+&#x27; 23:59:59&#x27;</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>函数调用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from GetExchangeByTime(&#x27;2018-6-19&#x27;,&#x27;2018-6-19&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（4）查询银行卡信息，将银行卡状态1,2,3,4分别转换为汉字“正常,挂失,冻结,注销”，根据银行卡余额显示银行卡等级 30万以下为“普通用户”,30万及以上为”VIP用户”，分别显示卡号，身份证，姓名，余额，用户等级，银行卡状态。</p>
+<p>方案一：直接在sql语句中使用case when</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from AccountInfo</span><br><span class="line">select * from BankCard</span><br><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额,</span><br><span class="line">case</span><br><span class="line">	when CardMoney &lt; 300000 then &#x27;普通用户&#x27;</span><br><span class="line">	else &#x27;VIP用户&#x27; </span><br><span class="line">end 用户等级,</span><br><span class="line">case</span><br><span class="line">	when CardState = 1 then &#x27;正常&#x27;</span><br><span class="line">	when CardState = 2 then &#x27;挂失&#x27;</span><br><span class="line">	when CardState = 3 then &#x27;冻结&#x27;</span><br><span class="line">	when CardState = 4 then &#x27;注销&#x27;</span><br><span class="line">	else &#x27;异常&#x27;</span><br><span class="line">end 卡状态</span><br><span class="line">from BankCard inner join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br></pre></td></tr></table></figure>
+
+<p>方案二：将等级和状态用函数实现</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create function GetGradeByMoney(@myMoney int)</span><br><span class="line">returns varchar(10)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">	declare @result varchar(10)</span><br><span class="line">	if @myMoney &lt; 3000 </span><br><span class="line">		set @result = &#x27;普通用户&#x27;</span><br><span class="line">	else</span><br><span class="line">		set @result = &#x27;VIP用户&#x27;</span><br><span class="line">	return @result</span><br><span class="line">end</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line">create function GetStatusByNumber(@myNum int)</span><br><span class="line">returns varchar(10)</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">	declare @result varchar(10)</span><br><span class="line">	if @myNum = 1</span><br><span class="line">		set @result = &#x27;正常&#x27;</span><br><span class="line">	else if @myNum = 2</span><br><span class="line">		set @result = &#x27;挂失&#x27;</span><br><span class="line">	else if @myNum = 3</span><br><span class="line">		set @result = &#x27;冻结&#x27;</span><br><span class="line">	else if @myNum = 4</span><br><span class="line">		set @result = &#x27;注销&#x27;</span><br><span class="line">	else</span><br><span class="line">		set @result = &#x27;异常&#x27;	</span><br><span class="line">	return @result</span><br><span class="line">end</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>函数调用实现查询功能</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select CardNo 卡号,AccountCode 身份证,RealName 姓名,CardMoney 余额,</span><br><span class="line">dbo.GetGradeByMoney(CardMoney) 账户等级,dbo.GetStatusByNumber(CardState) 卡状态</span><br><span class="line">from BankCard inner join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br></pre></td></tr></table></figure>
+
+<p>（5）编写函数，根据出生日期求年龄，年龄求实岁，例如：</p>
+<p>​		生日为2000-5-5，当前为2018-5-4，年龄为17岁<br>​		生日为2000-5-5，当前为2018-5-6，年龄为18岁</p>
+<p>测试数据如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Emp</span><br><span class="line">(</span><br><span class="line">	EmpId int primary key identity(1,2), --自动编号</span><br><span class="line">	empName varchar(20), --姓名</span><br><span class="line">	empSex varchar(4),   --性别</span><br><span class="line">	empBirth smalldatetime --生日</span><br><span class="line">)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;刘备&#x27;,&#x27;男&#x27;,&#x27;2008-5-8&#x27;)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;关羽&#x27;,&#x27;男&#x27;,&#x27;1998-10-10&#x27;)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;张飞&#x27;,&#x27;男&#x27;,&#x27;1999-7-5&#x27;)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;赵云&#x27;,&#x27;男&#x27;,&#x27;2003-12-12&#x27;)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;马超&#x27;,&#x27;男&#x27;,&#x27;2003-1-5&#x27;)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;黄忠&#x27;,&#x27;男&#x27;,&#x27;1988-8-4&#x27;)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;魏延&#x27;,&#x27;男&#x27;,&#x27;1998-5-2&#x27;)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;简雍&#x27;,&#x27;男&#x27;,&#x27;1992-2-20&#x27;)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;诸葛亮&#x27;,&#x27;男&#x27;,&#x27;1993-3-1&#x27;)</span><br><span class="line">insert into Emp(empName,empSex,empBirth) values(&#x27;徐庶&#x27;,&#x27;男&#x27;,&#x27;1994-8-5&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>函数定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create function GetAgeByBirth(@birth smalldatetime)</span><br><span class="line">returns int</span><br><span class="line">as</span><br><span class="line">begin</span><br><span class="line">	declare @age int</span><br><span class="line">	set @age = year(getdate()) - year(@birth)</span><br><span class="line">	if month(getdate()) &lt; month(@birth)</span><br><span class="line">		set @age = @age - 1</span><br><span class="line">	if month(getdate()) = month(@birth) and day(getdate()) &lt; day(@birth)</span><br><span class="line">		set @age = @age -1</span><br><span class="line">	return @age</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>函数调用实现查询</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select *,dbo.GetAgeByBirth(empBirth) 年龄 from Emp</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、触发器"><a href="#二、触发器" class="headerlink" title="二、触发器"></a>二、触发器</h2><p>触发器分类：（1） “Instead of”触发器（2）“After”触发器<br>“Instead of”触发器：在执行操作之前被执行<br>“After”触发器：在执行操作之后被执行</p>
+<p>触发器中后面的案例中需要用到的表及测试数据如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--部门</span><br><span class="line">create table Department</span><br><span class="line">(</span><br><span class="line">	DepartmentId varchar(10) primary key , --主键，自动增长</span><br><span class="line">	DepartmentName nvarchar(50), --部门名称</span><br><span class="line">)</span><br><span class="line">--人员信息</span><br><span class="line">create table People</span><br><span class="line">(</span><br><span class="line">	PeopleId int primary key identity(1,1), --主键,自动增长</span><br><span class="line">	DepartmentId varchar(10), --部门编号,外键,与部门表关联</span><br><span class="line">	PeopleName nvarchar(20), --人员姓名</span><br><span class="line">	PeopleSex nvarchar(2), --人员性别</span><br><span class="line">	PeoplePhone nvarchar(20), --电话，联系方式</span><br><span class="line">)</span><br><span class="line">insert into Department(DepartmentId,DepartmentName)</span><br><span class="line">values(&#x27;001&#x27;,&#x27;总经办&#x27;)</span><br><span class="line">insert into Department(DepartmentId,DepartmentName)</span><br><span class="line">values(&#x27;002&#x27;,&#x27;市场部&#x27;)</span><br><span class="line">insert into Department(DepartmentId,DepartmentName)</span><br><span class="line">values(&#x27;003&#x27;,&#x27;人事部&#x27;)</span><br><span class="line">insert into Department(DepartmentId,DepartmentName)</span><br><span class="line">values(&#x27;004&#x27;,&#x27;财务部&#x27;)</span><br><span class="line">insert into Department(DepartmentId,DepartmentName)</span><br><span class="line">values(&#x27;005&#x27;,&#x27;软件部&#x27;)</span><br><span class="line">insert into People(DepartmentId,PeopleName,PeopleSex,PeoplePhone)</span><br><span class="line">values(&#x27;001&#x27;,&#x27;刘备&#x27;,&#x27;男&#x27;,&#x27;13558785478&#x27;)</span><br><span class="line">insert into People(DepartmentId,PeopleName,PeopleSex,PeoplePhone)</span><br><span class="line">values(&#x27;001&#x27;,&#x27;关羽&#x27;,&#x27;男&#x27;,&#x27;13558788785&#x27;)</span><br><span class="line">insert into People(DepartmentId,PeopleName,PeopleSex,PeoplePhone)</span><br><span class="line">values(&#x27;002&#x27;,&#x27;张飞&#x27;,&#x27;男&#x27;,&#x27;13698547125&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（1）假设有部门表和员工表，在添加员工的时候，该员工的部门编号如果在部门表中找不到，则自动添加部门信息，部门名称为”新部门”。</p>
+<p>编写触发器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create trigger tri_InsertPeople on People</span><br><span class="line">after insert</span><br><span class="line">as</span><br><span class="line">if not exists(select * from Department where DepartmentId = (select DepartmentId from inserted))</span><br><span class="line">	insert into Department(DepartmentId,DepartmentName)</span><br><span class="line">	values((select DepartmentId from inserted),&#x27;新部门&#x27;)</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>测试触发器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert People(DepartmentId,PeopleName,PeopleSex,PeoplePhone)</span><br><span class="line">values(&#x27;009&#x27;,&#x27;赵云&#x27;,&#x27;男&#x27;,&#x27;13854587456&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>我们会发现，当插入赵云这个员工的时候会自动向部门表中添加数据。</p>
+<p>（2）触发器实现，删除一个部门的时候将部门下所有员工全部删除。</p>
+<p>编写触发器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create trigger tri_DeleteDept on Department</span><br><span class="line">after delete</span><br><span class="line">as</span><br><span class="line">delete from People where People.DepartmentId = </span><br><span class="line">(select DepartmentId from deleted)</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>测试触发器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete Department where DepartmentId = &#x27;001&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>我们会发现当我们删除此部门的时候，同时会删除该部门下的所有员工</p>
+<p>（3）创建一个触发器，删除一个部门的时候判断该部门下是否有员工，有则不删除，没有则删除。</p>
+<p>编写触发器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">drop trigger tri_DeleteDept	--删除掉之前的触发器，因为当前触发器也叫这个名字</span><br><span class="line">create trigger tri_DeleteDept on Department</span><br><span class="line">Instead of delete</span><br><span class="line">as</span><br><span class="line">  if not exists(select * from People where DepartmentId = (select DepartmentId from deleted))</span><br><span class="line">  begin</span><br><span class="line">	delete from Department where DepartmentId = (select DepartmentId from deleted)</span><br><span class="line">  end</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>测试触发器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">delete Department where DepartmentId = &#x27;001&#x27;</span><br><span class="line">delete Department where DepartmentId = &#x27;002&#x27;</span><br><span class="line">delete Department where DepartmentId = &#x27;003&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>我们会发现，当部门下没有员工的部门信息可以成功删除，而部门下有员工的部门并没有被删除。</p>
+<p>（4）修改一个部门编号之后，将该部门下所有员工的部门编号同步进行修改</p>
+<p>编写触发器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create trigger tri_UpdateDept on Department</span><br><span class="line">after update</span><br><span class="line">as</span><br><span class="line">	update People set DepartmentId = (select DepartmentId from inserted)</span><br><span class="line">	where DepartmentId = (select DepartmentId from deleted)</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>测试触发器：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update Department set DepartmentId = &#x27;zjb001&#x27; where DepartmentId=&#x27;001&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>我们会发现不但部门信息表中的部门编号进行了修改，员工信息表中部门编号为001的信息也被一起修改了。</p>
+<h2 id="三、存储过程"><a href="#三、存储过程" class="headerlink" title="三、存储过程"></a>三、存储过程</h2><p>存储过程（Procedure）是SQL语句和流程控制语句的预编译集合。</p>
+<p>（1）没有输入参数，没有输出参数的存储过程。</p>
+<p>定义存储过程实现查询出账户余额最低的银行卡账户信息,显示银行卡号，姓名，账户余额</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一</span><br><span class="line">create proc proc_MinMoneyCard</span><br><span class="line">as</span><br><span class="line">    select top 1 CardNo 银行卡号,RealName 姓名,CardMoney 余额</span><br><span class="line">    from BankCard inner join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">    order by CardMoney asc</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line">--方案二：（余额最低，有多个人则显示结果是多个）</span><br><span class="line">create proc proc_MinMoneyCard</span><br><span class="line">as</span><br><span class="line">    select CardNo 银行卡号,RealName 姓名,CardMoney 余额</span><br><span class="line">    from BankCard inner join AccountInfo on BankCard.AccountId = AccountInfo.AccountId</span><br><span class="line">    where CardMoney=(select MIN(CardMoney) from BankCard)</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>执行存储过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec proc_MinMoneyCard</span><br></pre></td></tr></table></figure>
+
+<p>（2）有输入参数，没有输出参数的存储过程</p>
+<p>模拟银行卡存钱操作，传入银行卡号，存钱金额，实现存钱操作</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create proc proc_CunQian</span><br><span class="line">@CardNo varchar(30),</span><br><span class="line">@MoneyInBank money</span><br><span class="line">as</span><br><span class="line">    update BankCard set CardMoney = CardMoney + @MoneyInBank where CardNo = @CardNo</span><br><span class="line">    insert into CardExchange(CardNo,MoneyInBank,MoneyOutBank,ExchangeTime)</span><br><span class="line">    values(@CardNo,@MoneyInBank,0,GETDATE())</span><br><span class="line">--go</span><br></pre></td></tr></table></figure>
+
+<p>执行存储过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">exec proc_CunQian &#x27;6225125478544587&#x27;,3000</span><br></pre></td></tr></table></figure>
+
+<p>（3）有输入参数，没有输出参数，但是有返回值的存储过程（返回值必须整数）。</p>
+<p>模拟银行卡取钱操作，传入银行卡号，取钱金额，实现取钱操作，取钱成功，返回1，取钱失败返回-1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create proc proc_QuQian</span><br><span class="line">@CardNo varchar(30),</span><br><span class="line">@MoneyOutBank money</span><br><span class="line">as</span><br><span class="line">    update BankCard set CardMoney = CardMoney - @MoneyOutBank where CardNo = @CardNo</span><br><span class="line">    if @@ERROR &lt;&gt; 0</span><br><span class="line">        return -1</span><br><span class="line">    insert into CardExchange(CardNo,MoneyInBank,MoneyOutBank,ExchangeTime)</span><br><span class="line">    values(@CardNo,0,@MoneyOutBank,GETDATE())</span><br><span class="line">    return 1</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>执行存储过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @returnValue int</span><br><span class="line">exec @returnValue = proc_QuQian &#x27;662018092100000002&#x27;,1000000</span><br><span class="line">print @returnValue</span><br></pre></td></tr></table></figure>
+
+<p>（4）有输入参数，有输出参数的存储过程</p>
+<p>查询出某时间段的银行存取款信息以及存款总金额，取款总金额，传入开始时间，结束时间，显示存取款交易信息的同时，返回存款总金额，取款总金额。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create proc proc_SelectExchange</span><br><span class="line">    @startTime varchar(20),  --开始时间</span><br><span class="line">    @endTime varchar(20),    --结束时间</span><br><span class="line">    @SumIn money output,     --存款总金额</span><br><span class="line">    @SumOut money output    --取款总金额</span><br><span class="line">as</span><br><span class="line">select @SumIn = (select SUM(MoneyInBank) from CardExchange </span><br><span class="line">				where ExchangeTime between @startTime+&#x27; 00:00:00&#x27; and @endTime+&#x27; 23:59:59&#x27;)</span><br><span class="line">select @SumOut = (select SUM(MoneyOutBank) from CardExchange </span><br><span class="line">				where ExchangeTime between @startTime+&#x27; 00:00:00&#x27; and @endTime+&#x27; 23:59:59&#x27;)</span><br><span class="line">select * from CardExchange </span><br><span class="line">where ExchangeTime between @startTime+&#x27; 00:00:00&#x27; and @endTime+&#x27; 23:59:59&#x27;</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>执行存储过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">declare @SumIn money     --存款总金额</span><br><span class="line">declare @SumOut money   --取款总金额</span><br><span class="line">exec proc_SelectExchange &#x27;2018-1-1&#x27;,&#x27;2018-12-31&#x27;,@SumIn output,@SumOut output</span><br><span class="line">select @SumIn</span><br><span class="line">select @SumOut</span><br></pre></td></tr></table></figure>
+
+<p>（5）具有同时输入输出参数的存储过程</p>
+<p>密码升级，传入用户名和密码，如果用户名密码正确，并且密码长度&lt;8，自动升级成8位密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--有输入输出参数（密码作为输入参数也作为输出参数）</span><br><span class="line">--密码升级，传入用户名和密码，如果用户名密码正确，并且密码长度&lt;8，自动升级成8位密码</span><br><span class="line">select FLOOR(RAND()*10) --0-9之间随机数</span><br><span class="line">create proc procPwdUpgrade</span><br><span class="line">@cardno nvarchar(20),</span><br><span class="line">@pwd nvarchar(20) output</span><br><span class="line">as</span><br><span class="line">	if not exists(select * from BankCard where CardNo=@cardno and CardPwd=@pwd)</span><br><span class="line">		set @pwd = &#x27;&#x27;</span><br><span class="line">	else</span><br><span class="line">	begin</span><br><span class="line">		if len(@pwd) &lt; 8</span><br><span class="line">		begin</span><br><span class="line">			declare @len int = 8- len(@pwd)</span><br><span class="line">			declare @i int = 1</span><br><span class="line">			while @i &lt;= @len</span><br><span class="line">			begin</span><br><span class="line">				</span><br><span class="line">				set @pwd = @pwd + cast(FLOOR(RAND()*10) as varchar(1))</span><br><span class="line">				set @i = @i+1</span><br><span class="line">			end</span><br><span class="line">			update BankCard set CardPwd = @pwd where CardNo=@cardno</span><br><span class="line">		end</span><br><span class="line">	end</span><br><span class="line">go</span><br><span class="line">declare @pwd nvarchar(20) = &#x27;123456&#x27;</span><br><span class="line">exec procPwdUpgrade &#x27;6225547854125656&#x27;,@pwd output</span><br><span class="line">select @pwd</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">CJ菌</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://jasonjun.org.edu.kg/2024/03/12/SQLServer%E9%AB%98%E7%BA%A7/">https://jasonjun.org.edu.kg/2024/03/12/SQLServer%E9%AB%98%E7%BA%A7/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">CJ菌</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/SqlServer/">
+                                    <span class="chip bg-color">SqlServer</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'e0vx1JrP1gBkuuunvnVGwHpR-gzGzoHsz',
+        appKey: 'XlrVG3SCV9Id0mgpaqphEkfp',
+        serverURLs: 'https://e0vx1jrp.lc-cn-n1-shared.com',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2024/03/12/SQLServer%E9%AB%98%E7%BA%A7/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="SQLServer高级">
+                        
+                        <span class="card-title">SQLServer高级</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            CJ菌
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SqlServer/">
+                        <span class="chip bg-color">SqlServer</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/03/12/SQLServer%E5%88%9D%E7%BA%A7/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="SQLServer初级">
+                        
+                        <span class="card-title">SQLServer初级</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            CJ菌
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SqlServer/">
+                        <span class="chip bg-color">SqlServer</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2779826002"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.4'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2024</span>
+            
+            <a href="/about" target="_blank">CJ菌</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">xxxx</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/CJ-jun" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:997248629@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=997248629" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 997248629" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+        <div style="position:fixed;bottom:125px;right:16px;cursor: pointer;">
+            <a title="兔小巢" target="_blank" rel="noopener" href="https://support.qq.com/products/635783"><i class="fa fa-comments fa-3x"  aria-hidden="true"></i></a>
+        </div>
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

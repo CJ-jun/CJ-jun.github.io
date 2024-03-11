@@ -1,0 +1,1896 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SQLServer初级, CJ-blog">
+    <meta name="description" content="SQL SERVER介绍数据库：数据库是“按照数据结构来组织、存储和管理数据的仓库”。是一个长期存储在计算机内的、有组织的、可共享的、统一管理的大量数据的集合。
+应用场景：在软件系统中无处不在，几乎所有的软件系统背后都有数据库，例如（淘宝，">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="baidu-site-verification" content="codeva-qcrmNgx22N" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>SQLServer初级 | CJ-blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">CJ-blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>其他</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>视频</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/galleries">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>画廊</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">CJ-blog</div>
+        <div class="logo-desc">
+            
+            天青色等烟雨，我已在被窝里
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			其他
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:28px" ></i>
+			      
+		          <span>视频</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/musics " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:28px" ></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/galleries " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:28px" ></i>
+			      
+		          <span>画廊</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/CJ-jun" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/CJ-jun" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">SQLServer初级</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/SqlServer/">
+                                <span class="chip bg-color">SqlServer</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-03-12
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.9k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="SQL-SERVER介绍"><a href="#SQL-SERVER介绍" class="headerlink" title="SQL SERVER介绍"></a>SQL SERVER介绍</h1><p><strong>数据库：</strong>数据库是“按照数据结构来组织、存储和管理数据的仓库”。是一个长期存储在计算机内的、有组织的、可共享的、统一管理的大量数据的集合。</p>
+<p><strong>应用场景：</strong>在软件系统中无处不在，几乎所有的软件系统背后都有数据库，例如（淘宝，QQ，游戏等）。</p>
+<p><strong>数据表展现形式：</strong> （二维表）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403120141530.png" alt="001"></p>
+<p><strong>主流关系型数据库：</strong> SQL SERVER，MySQL，Oracle等。</p>
+<p><strong>数据库的安装：</strong></p>
+<p>（1）百度搜索”I tell you”，或者访问 <a target="_blank" rel="noopener" href="https://msdn.itellyou.cn/">https://msdn.itellyou.cn/</a></p>
+<p>（2）选择合适的版本，下载安装。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403120141633.png" alt="002"></p>
+<p><strong>打开数据库：</strong></p>
+<p>（1）启动服务：</p>
+<p>​	【1】命令行启动；【2】SQL SERVER配置管理器；【3】Windows服务；</p>
+<p>（2）打开SQL SERVER Management Studio，使用工具连接到数据库。</p>
+<p>​	【1】Windows身份验证；	【2】SQL SERVER身份验证；</p>
+<p> <strong>数据库基本操作：</strong></p>
+<p>（1）建库。</p>
+<p>（2）建表。</p>
+<p>（3）数据维护。</p>
+<p><strong>数据库的迁移：</strong></p>
+<p>（1）数据库的分离、附加；（分离和删除的区别在于硬盘上是否还留存有数据库文件）</p>
+<p>（2）数据库的备份，还原；</p>
+<p>（3）数据库脚本的保存；</p>
+<h1 id="建库建表"><a href="#建库建表" class="headerlink" title="建库建表"></a>建库建表</h1><h2 id="一、检查数据库名是否存在"><a href="#一、检查数据库名是否存在" class="headerlink" title="一、检查数据库名是否存在"></a>一、检查数据库名是否存在</h2><p>如果需要创建数据库，可能会出现数据库名字重名的现象，我们可以使用如下代码查询数据库名是否存在，存在则删除此数据库。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--删除数据库</span><br><span class="line">if exists(select * from sys.databases where name = &#x27;DBTEST&#x27;)</span><br><span class="line">	drop database DBTEST</span><br></pre></td></tr></table></figure>
+
+<p>此代码检查数据库中是否存在”DBTEST”数据库，如果存在则删除此数据库，此处理方式最好只在学习阶段使用，在正式生产环境中慎用，操作不当可能会删除重要数据。</p>
+<h2 id="二、创建数据库"><a href="#二、创建数据库" class="headerlink" title="二、创建数据库"></a>二、创建数据库</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--创建数据库</span><br><span class="line">create database DBTEST</span><br><span class="line">on  --数据文件</span><br><span class="line">(</span><br><span class="line">	name = &#x27;DBTEST&#x27;,   --逻辑名称</span><br><span class="line">	filename = &#x27;D:\Data\DBTEST.mdf&#x27;,  --物理路径及名称</span><br><span class="line">	size = 5MB,  --数据文件初始大小</span><br><span class="line">	filegrowth = 2MB --数据文件增长速度,也可以使用百分比来设置</span><br><span class="line">)</span><br><span class="line">log on  --日志文件</span><br><span class="line">(</span><br><span class="line">	name = &#x27;DBTEST_log&#x27;, --逻辑名称</span><br><span class="line">	filename = &#x27;D:\Data\DBTEST_log.ldf&#x27;, --物理路径及名称</span><br><span class="line">	size = 5MB, --日志文件初始大小</span><br><span class="line">	filegrowth = 2MB --日志文件增长速度,也可以使用百分比来设置</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>以上代码创建”DBTEST”数据库，并且分别使用on和log on规定了数据文件和日志文件的信息。</p>
+<p>创建数据库也可以按照如下简单语法来创建：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create database DBTEST</span><br></pre></td></tr></table></figure>
+
+<p>如果按照上述方式创建数据库，数据库的数据文件和日志文件的相关信息，全部采取默认值。</p>
+<h2 id="三、建表"><a href="#三、建表" class="headerlink" title="三、建表"></a>三、建表</h2><p><strong>使用数据库和删除数据表：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use DBTEST  --切换当前数据库为DBTEST</span><br><span class="line">--删除表(先判断表在当前数据库是否存在,存在则删除,其中type=&#x27;U&#x27;判断对象类型为用户定义表类型)</span><br><span class="line">if exists(select * from sys.objects where name = &#x27;Department&#x27; and type = &#x27;U&#x27;)</span><br><span class="line">	drop table Department</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建数据表语法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table 表名</span><br><span class="line">(</span><br><span class="line">	字段名1 数据类型(长度),</span><br><span class="line">	字段名2 数据类型(长度)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>其中数据类型，我们在后面用到什么类型，在介绍什么类型，有的类型可以不填写长度。</p>
+<p><strong>创建数据表示例（部门表，职级表，员工信息表）：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--创建部门表</span><br><span class="line">create table Department -</span><br><span class="line">(</span><br><span class="line">	--创建部门编号;int代表整数类型;primary key代表主键;identity(1,1)代表从1开始步长为1自增长;</span><br><span class="line">	DepartmentId int primary key identity(1,1),</span><br><span class="line">	--创建部门名称;nvarchar(50)代表长度50的字符串;not null代表不能为空;</span><br><span class="line">	DepartmentName nvarchar(50) not null,</span><br><span class="line">	--创建部门描述；text代表长文本;</span><br><span class="line">	DepartmentRemark text</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>字符串类型比较：</strong></p>
+<p>char：定长，例如 char(10)，不论你存储的数据是否达到了10个字节，都要占去10个字节的空间 。</p>
+<p>varchar：变长，例如varchar(10)，并不代表一定占用10个字节，而代表最多占用10个字节。最大长度8000，也可以使用varchar(max)表示2G以内的数据，但存储机制会和text一样，效率会降低。</p>
+<p>text：长文本， 最大长度为2^31-1(2,147,483,647)个字符 。</p>
+<p>nchar,nvarchar,ntext：名字前面多了一个n， 它表示存储的是Unicode数据类型的字符，区别varchar(100)可以存储100个英文字母或者50个汉字，而nvarchar(100)可以存储100个英文字母，也可以存储100个汉字。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--创建职级表，rank为系统关键字，此处使用[]代表自定义名字，而非系统关键字</span><br><span class="line">create table [Rank]</span><br><span class="line">(</span><br><span class="line">	RankId int primary key identity(1,1),</span><br><span class="line">	RankName nvarchar(50) not null,</span><br><span class="line">	RankRemark text</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--创建员工信息表</span><br><span class="line">create table People</span><br><span class="line">(</span><br><span class="line">	PeopleId int primary key identity(1,1),</span><br><span class="line">	--references代表外键引用,此字段必须符合与其它表的外键约束</span><br><span class="line">	DepartmentId int references Department(DepartmentId)  not null,</span><br><span class="line">	RankId int references [Rank](RankId) not null,</span><br><span class="line">	PeopleName nvarchar(50) not null,</span><br><span class="line">	--default代表字段默认值; check可以规定字段值的约束条件;</span><br><span class="line">	PeopleSex nvarchar(1) default(&#x27;男&#x27;) check(PeopleSex=&#x27;男&#x27; or PeopleSex=&#x27;女&#x27;) not null,</span><br><span class="line">	PeopleBirth datetime not null,</span><br><span class="line">	PeopleSalary decimal(12,2) check(PeopleSalary&gt;= 1000 and PeopleSalary &lt;= 100000) not null,</span><br><span class="line">	--unique代表唯一约束，为数据提供唯一性保证;</span><br><span class="line">	PeoplePhone nvarchar(20) unique not null,</span><br><span class="line">	PeopleAddress nvarchar(100),</span><br><span class="line">	--datetime和smalldatetime都可以表示时间类型，getdate()用于获取系统当前时间</span><br><span class="line">	PeopleAddTime smalldatetime default(getdate())</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h1 id="修改表结构"><a href="#修改表结构" class="headerlink" title="修改表结构"></a>修改表结构</h1><p> （1）如需在表中添加列，请使用下面的语法: </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">ADD column_name datatype</span><br></pre></td></tr></table></figure>
+
+<p>例如该员工表添加一列员工邮箱：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alter table People</span><br><span class="line">add PeopleMail nvarchar(100)</span><br></pre></td></tr></table></figure>
+
+<p>（2）如需在表中删除列，请使用下面的语法: </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">DROP COLUMN column_name</span><br></pre></td></tr></table></figure>
+
+<p>例如删除员工表中的邮箱这一列</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alter table People</span><br><span class="line">drop column PeopleMail</span><br></pre></td></tr></table></figure>
+
+<p>（3）如需改变表中列的数据类型，请使用下列语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALTER TABLE table_name</span><br><span class="line">ALTER COLUMN column_name datatype</span><br></pre></td></tr></table></figure>
+
+<p>例如需要改变邮箱列的数据类型为varchar(100)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alter table People</span><br><span class="line">alter column PeopleMail varchar(100)</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、删除添加约束"><a href="#五、删除添加约束" class="headerlink" title="五、删除添加约束"></a>五、删除添加约束</h2><p>删除约束语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if exists(select * from sysobjects where name=约束名)</span><br><span class="line">alter table 表名 drop constraint 约束名;</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<p>添加约束语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--添加主键约束</span><br><span class="line">alter table 表名 add constraint 约束名称 primary key(列名)</span><br><span class="line">--添加check约束</span><br><span class="line">alter table 表名 add constraint 约束名称 check(条件表达式)</span><br><span class="line">--添加unique约束</span><br><span class="line">alter table 表名 add constraint 约束名称 unique(列名)</span><br><span class="line">--添加default约束</span><br><span class="line">alter table 表名 add constraint 约束名称 default 默认值 for 列名</span><br><span class="line">--添加外键约束</span><br><span class="line">alter table 表名 add constraint 约束名称 foreign key (列名) references 关联表名(关联表列名)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h1><h2 id="一、向部门表插入数据"><a href="#一、向部门表插入数据" class="headerlink" title="一、向部门表插入数据"></a>一、向部门表插入数据</h2><p><strong>标准语法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into Department(DepartmentName,DepartmentRemark)</span><br><span class="line">values(&#x27;软件部&#x27;,&#x27;......&#x27;)</span><br><span class="line">insert into Department(DepartmentName,DepartmentRemark)</span><br><span class="line">values(&#x27;硬件部&#x27;,&#x27;......&#x27;)</span><br><span class="line">insert into Department(DepartmentName,DepartmentRemark)</span><br><span class="line">values(&#x27;市场部&#x27;,&#x27;......&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>简写语法：（省略字段名称）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into Department values(&#x27;行政部&#x27;,&#x27;公司主管行政工作的部门&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>此写法在给字段赋值的时候，必须保证顺序和数据表结构中字段顺序完全一致，不推荐使用此种写法，因为数据表结构变化的时候，数据会出错或产生错误数据。</p>
+<p><strong>一次插入多行数据:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into Department(DepartmentName,DepartmentRemark)</span><br><span class="line">select &#x27;市场部&#x27;,&#x27;吹牛的部门&#x27; union</span><br><span class="line">select &#x27;产品部&#x27;,&#x27;天马星空的部门&#x27; union</span><br><span class="line">select &#x27;总经办&#x27;,&#x27;都是领导的部门&#x27; </span><br></pre></td></tr></table></figure>
+
+<h2 id="二、向职级表插入数据"><a href="#二、向职级表插入数据" class="headerlink" title="二、向职级表插入数据"></a>二、向职级表插入数据</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into [Rank](RankName,RankRemark)</span><br><span class="line">values(&#x27;初级&#x27;,&#x27;辅助其他人完成任务&#x27;)</span><br><span class="line">insert into [Rank](RankName,RankRemark)</span><br><span class="line">values(&#x27;中级&#x27;,&#x27;具备独立处理事务的能力&#x27;)</span><br><span class="line">insert into [Rank](RankName,RankRemark)</span><br><span class="line">values(&#x27;高级&#x27;,&#x27;具备可以带动全场节奏的能力&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、向员工表插入数据"><a href="#三、向员工表插入数据" class="headerlink" title="三、向员工表插入数据"></a>三、向员工表插入数据</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(1,3,&#x27;刘备&#x27;,&#x27;男&#x27;,&#x27;1984-7-9&#x27;,20000,&#x27;13554785452&#x27;,&#x27;成都&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(1,2,&#x27;孙尚香&#x27;,&#x27;女&#x27;,&#x27;1987-7-9&#x27;,15000,&#x27;13256854578&#x27;,&#x27;荆州&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(1,1,&#x27;关羽&#x27;,&#x27;男&#x27;,&#x27;1988-8-8&#x27;,12000,&#x27;13985745871&#x27;,&#x27;荆州&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(2,1,&#x27;张飞&#x27;,&#x27;男&#x27;,&#x27;1990-8-8&#x27;,8000,&#x27;13535987412&#x27;,&#x27;宜昌&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(2,3,&#x27;赵云&#x27;,&#x27;男&#x27;,&#x27;1989-4-8&#x27;,9000,&#x27;13845789568&#x27;,&#x27;宜昌&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(3,3,&#x27;马超&#x27;,&#x27;男&#x27;,&#x27;1995-4-8&#x27;,9500,&#x27;13878562568&#x27;,&#x27;香港&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(3,2,&#x27;黄盖&#x27;,&#x27;男&#x27;,&#x27;1989-4-20&#x27;,8500,&#x27;13335457412&#x27;,&#x27;武汉&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(3,1,&#x27;貂蝉&#x27;,&#x27;女&#x27;,&#x27;1989-4-20&#x27;,6500,&#x27;13437100050&#x27;,&#x27;武汉&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(2,2,&#x27;曹操&#x27;,&#x27;男&#x27;,&#x27;1987-12-20&#x27;,25000,&#x27;13889562354&#x27;,&#x27;北京&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(2,3,&#x27;许褚&#x27;,&#x27;男&#x27;,&#x27;1981-11-11&#x27;,9000,&#x27;13385299632&#x27;,&#x27;北京&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(2,1,&#x27;典韦&#x27;,&#x27;男&#x27;,&#x27;1978-1-13&#x27;,8000,&#x27;13478545263&#x27;,&#x27;上海&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(1,1,&#x27;曹仁&#x27;,&#x27;男&#x27;,&#x27;1998-12-12&#x27;,7500,&#x27;13878523695&#x27;,&#x27;深圳&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(1,3,&#x27;孙坚&#x27;,&#x27;男&#x27;,&#x27;1968-11-22&#x27;,9000,&#x27;13698545841&#x27;,&#x27;广州&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(3,3,&#x27;孙策&#x27;,&#x27;男&#x27;,&#x27;1988-1-22&#x27;,11000,&#x27;13558745874&#x27;,&#x27;深圳&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(3,2,&#x27;孙权&#x27;,&#x27;男&#x27;,&#x27;1990-2-21&#x27;,12000,&#x27;13698745214&#x27;,&#x27;深圳&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(3,2,&#x27;大乔&#x27;,&#x27;女&#x27;,&#x27;1995-2-21&#x27;,13000,&#x27;13985478512&#x27;,&#x27;上海&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(2,1,&#x27;小乔&#x27;,&#x27;女&#x27;,&#x27;1996-2-21&#x27;,13500,&#x27;13778787874&#x27;,&#x27;北京&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(1,2,&#x27;周瑜&#x27;,&#x27;男&#x27;,&#x27;1992-10-11&#x27;,8000,&#x27;13987455214&#x27;,&#x27;武汉&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(2,3,&#x27;鲁肃&#x27;,&#x27;男&#x27;,&#x27;1984-9-10&#x27;,5500,&#x27;13254785965&#x27;,&#x27;成都&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(3,3,&#x27;吕蒙&#x27;,&#x27;男&#x27;,&#x27;1987-5-19&#x27;,8500,&#x27;13352197364&#x27;,&#x27;成都&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(1,1,&#x27;陆逊&#x27;,&#x27;男&#x27;,&#x27;1996-5-19&#x27;,7500,&#x27;13025457392&#x27;,&#x27;南京&#x27;,getdate())</span><br><span class="line"></span><br><span class="line">insert into People(DepartmentId,RankId,PeopleName,PeopleSex,PeopleBirth,</span><br><span class="line">PeopleSalary,PeoplePhone,PeopleAddress,PeopleAddTime)</span><br><span class="line">values(1,2,&#x27;太史慈&#x27;,&#x27;男&#x27;,&#x27;1983-6-1&#x27;,7500,&#x27;13077778888&#x27;,&#x27;上海&#x27;,getdate())</span><br></pre></td></tr></table></figure>
+
+<p>其中DepartmentId，RankId，PeopleSalary均为数字类型，在赋值的时候不需要添加单引号，而其它类型需要添加单引号。</p>
+<h2 id="四、查询数据是否插入成功"><a href="#四、查询数据是否插入成功" class="headerlink" title="四、查询数据是否插入成功"></a>四、查询数据是否插入成功</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from Department</span><br><span class="line">select * from [Rank]</span><br><span class="line">select * from People </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="修改和删除数据"><a href="#修改和删除数据" class="headerlink" title="修改和删除数据"></a>修改和删除数据</h1><h2 id="一、修改数据示例"><a href="#一、修改数据示例" class="headerlink" title="一、修改数据示例"></a>一、修改数据示例</h2><p>工资普调，为每个员工+500 元工资（批量修改）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update People set PeopleSalary = PeopleSalary + 500</span><br></pre></td></tr></table></figure>
+
+<p>将员工编号为8的工资+1000 元（根据条件修改）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update People set PeopleSalary = PeopleSalary + 1000 WHERE PeopleId = 8</span><br></pre></td></tr></table></figure>
+
+<p>将软件部（部门编号已知&#x3D;1）所有员工工资低于1万的全部调整成1 万（根据多条件修改）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update People set PEOPLESALARY = 10000 WHERE DepartmentId=1 and PEOPLESALARY &lt; 10000</span><br></pre></td></tr></table></figure>
+
+<p>修改刘备工资为以前的2 倍，并且修改其地址为北京（同时修改多个字段）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">UPDATE People SET PEOPLESALARY = PEOPLESALARY*2,PEOPLEADDRESS=&#x27;北京&#x27; WHERE PEOPLENAME = &#x27;刘备&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、删除数据示例"><a href="#二、删除数据示例" class="headerlink" title="二、删除数据示例"></a>二、删除数据示例</h2><p>删除员工表中所有数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DELETE FROM People</span><br></pre></td></tr></table></figure>
+
+<p>删除市场部(已知部门编号&#x3D;3)中工资大于15000 的所有员工</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DELETE FROM People WHERE DepartmentId = 3 and PEOPLESALARY &gt; 15000</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、drop、truncate、delete区别"><a href="#三、drop、truncate、delete区别" class="headerlink" title="三、drop、truncate、delete区别"></a>三、drop、truncate、delete区别</h2><p>drop table:删除表对象，表数据、表结构、表对象都进行了删除。</p>
+<p>delete和truncate table：删除表数据，表对象及表结构依然存在。</p>
+<p><strong>delete与truncate table的区别如下：</strong></p>
+<p>delete：</p>
+<p>（1）可以删除表所有数据，也可以根据条件删除数据。</p>
+<p>（2）如果有自动编号，删除后继续编号，例如delete删除表所有数据后，之前数据的自动编号是1，2，3，那么之后新增数据的编号从4开始。</p>
+<p>truncate table：</p>
+<p>（1）只能清空整个表数据，不能根据条件删除数据。</p>
+<p>（2）如果有自动编号，清空表数据后重新编号，例如truncate table清空表所有数据后，之前数据的自动编号是1，2，3，那么之后新增数据的编号仍然从1开始。</p>
+<h1 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h1><p>（1）查询所有行所有列</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--查询所有的部门</span><br><span class="line">SELECT * FROM Department</span><br><span class="line">--查询所有的职级</span><br><span class="line">SELECT * FROM [Rank]</span><br><span class="line">--查询所有的员工信息</span><br><span class="line">SELECT * FROM People</span><br></pre></td></tr></table></figure>
+
+<p>（2）指定列查询（姓名，性别，月薪，电话）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT PeopleName,PeopleSex,PeopleSalary,PeoplePhone from People</span><br></pre></td></tr></table></figure>
+
+<p>（3）指定列查询,并自定义中文列名（姓名，性别，月薪，电话）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT PeopleName 姓名,PeopleSex 性别,PeopleSalary 工资,PeoplePhone 电话 from People</span><br></pre></td></tr></table></figure>
+
+<p>（4）查询公司员工所在城市（不需要重复数据）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select distinct PeopleAddress from People</span><br></pre></td></tr></table></figure>
+
+<p>（5）假设工资普调10%，查询原始工资和调整后的工资，显示（姓名，性别，月薪，加薪后的月薪）（添加列查询）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT PeopleName 姓名,PeopleSex 性别,PeopleSalary 月薪,PeopleSalary*1.1 加薪后月薪 from People</span><br></pre></td></tr></table></figure>
+
+<h1 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h1><p><strong>SQL中常用运算符</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">=：等于，比较是否相等及赋值</span><br><span class="line">!=：比较不等于</span><br><span class="line">&gt;：比较大于</span><br><span class="line">&lt;：比较小于</span><br><span class="line">&gt;=：比较大于等于</span><br><span class="line">&lt;=：比较小于等于</span><br><span class="line">IS NULL：比较为空</span><br><span class="line">IS NOT NULL：比较不为空</span><br><span class="line">in：比较是否在其中</span><br><span class="line">like：模糊查询</span><br><span class="line">BETWEEN...AND...：比较是否在两者之间</span><br><span class="line">and：逻辑与（两个条件同时成立表达式成立）</span><br><span class="line">or：逻辑或（两个条件有一个成立表达式成立） </span><br><span class="line">not：逻辑非（条件成立，表达式则不成立；条件不成立，表达式则成立）</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询示例：</strong></p>
+<p>（1）根据指定列（姓名，性别，月薪，电话）查询性别为女的员工信息,并自定义中文列名</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT PeopleName 姓名,PeopleSex 性别,PeopleSalary 工资,PeoplePhone 电话 from People</span><br><span class="line">WHERE PEOPLESEX = &#x27;女&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（2）查询月薪大于等于10000 的员工信息( 单条件 )</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PeopleSalary &gt;= 10000 </span><br></pre></td></tr></table></figure>
+
+<p>（3）查询月薪大于等于10000 的女员工信息(多条件)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PeopleSalary &gt;= 10000 and PeopleSex = &#x27;女&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（4）显示出出身年月在1980-1-1之后，而且月薪大于等于10000的女员工信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PeopleBirth &gt;= &#x27;1980-1-1&#x27; and PeopleSalary &gt;= 10000 and PeopleSex = &#x27;女&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（5）显示出月薪大于等于15000 的员工,或者月薪大于等于8000的女员工信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PeopleSalary &gt;= 15000 or (PeopleSalary &gt;= 8000 and PeoPleSex = &#x27;女&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（6）查询月薪在10000-20000 之间员工信息( 多条件 )</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select * from People where PeopleSalary &gt;= 10000 and PeopleSalary &lt;= 20000</span><br><span class="line">--方案二：</span><br><span class="line">select * from People where PeopleSalary  between 10000 and 20000</span><br></pre></td></tr></table></figure>
+
+<p>（7）查询出地址在北京或者上海的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select * from People where PeopleAddress = &#x27;北京&#x27; or PeopleAddress = &#x27;上海&#x27;</span><br><span class="line">--方案二：</span><br><span class="line">select * from People where PeopleAddress in(&#x27;北京&#x27;,&#x27;上海&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（8）查询所有员工信息(根据工资排序，降序排列)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--order by: 排序  asc: 正序  desc: 倒序</span><br><span class="line">select * from People order by PeopleSalary desc</span><br></pre></td></tr></table></figure>
+
+<p>（9）显示所有的员工信息，按照名字的长度进行倒序排列</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People order by len(PeopleName) desc</span><br></pre></td></tr></table></figure>
+
+<p>（10）查询工资最高的5个人的信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select top 5 * from People order by PeopleSalary desc</span><br></pre></td></tr></table></figure>
+
+<p>（11）查询工资最高的10%的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select top 10 percent * from People order by PeopleSalary desc</span><br></pre></td></tr></table></figure>
+
+<p>（12）查询出地址没有填写的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PeopleAddress is null</span><br></pre></td></tr></table></figure>
+
+<p>（13）查询出地址已经填写的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PeopleAddress is not null</span><br></pre></td></tr></table></figure>
+
+<p>（14）查询所有的80后员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select * from People where PeopleBirth &gt;= &#x27;1980-1-1&#x27; and PeopleBirth &lt;= &#x27;1989-12-31&#x27;</span><br><span class="line">--方案二：</span><br><span class="line">select * from People where PeopleBirth between &#x27;1980-1-1&#x27; and &#x27;1989-12-31&#x27;</span><br><span class="line">--方案三：</span><br><span class="line">select * from People where year(PeopleBirth) &gt;= 1980 and year(PeopleBirth) &lt;= 1989</span><br></pre></td></tr></table></figure>
+
+<p>（15）查询年龄在30-40 之间，并且工资在15000-30000 之间的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select * from People where</span><br><span class="line">(year(getdate())-year(PeopleBirth) &gt;= 30 and year(getdate())-year(PeopleBirth) &lt;= 40) and</span><br><span class="line">(PeopleSalary &gt;= 15000 and PeopleSalary &lt;= 30000)</span><br><span class="line">--方案二：</span><br><span class="line">select * from People where</span><br><span class="line">(year(getdate())-year(PeopleBirth) between 30 and 40)</span><br><span class="line">and PeopleSalary between 15000 and 30000</span><br></pre></td></tr></table></figure>
+
+<p>（16）查询出巨蟹 6.22–7.22 的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where </span><br><span class="line">(month(PeopleBirth) = 6 and DAY(PeopleBirth) &gt;= 22) or</span><br><span class="line">(month(PeopleBirth) = 7 and DAY(PeopleBirth) &lt;= 22)</span><br></pre></td></tr></table></figure>
+
+<p>（17）查询工资比赵云高的人</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PeopleSalary &gt; </span><br><span class="line">(select PeopleSalary from People where PEOPLENAME = &#x27;赵云&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（18）查询出和赵云在同一个城市的人</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PEOPLEADDRESS = </span><br><span class="line">(select PEOPLEADDRESS from People where PEOPLENAME = &#x27;赵云&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（19）查询出生肖为鼠的人员信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where year(PeopleBirth) % 12 = 4</span><br></pre></td></tr></table></figure>
+
+<p>（20）查询所有员工信息，添加一列显示属相(鼠,牛,虎,兔,龙,蛇,马,羊,猴,鸡,狗,猪)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select PeopleName 姓名,PeopleSex 性别,PeopleSalary 工资,PeoplePhone 电话,PEOPLEBIRTH 生日,</span><br><span class="line">case</span><br><span class="line">	when year(PeopleBirth) % 12 = 4 then &#x27;鼠&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 5 then &#x27;牛&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 6 then &#x27;虎&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 7 then &#x27;兔&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 8 then &#x27;龙&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 9 then &#x27;蛇&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 10 then &#x27;马&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 11 then &#x27;羊&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 0 then &#x27;猴&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 1 then &#x27;鸡&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 2 then &#x27;狗&#x27;</span><br><span class="line">	when year(PeopleBirth) % 12 = 3 then &#x27;猪&#x27;</span><br><span class="line">	ELSE &#x27;&#x27;</span><br><span class="line">end 生肖</span><br><span class="line">from People</span><br><span class="line"></span><br><span class="line">--方案二：</span><br><span class="line">select PeopleName 姓名,PeopleSex 性别,PeopleSalary 工资,PeoplePhone 电话,PEOPLEBIRTH 生日,</span><br><span class="line">case year(PeopleBirth) % 12</span><br><span class="line">	when 4 then &#x27;鼠&#x27;</span><br><span class="line">	when 5 then &#x27;牛&#x27;</span><br><span class="line">	when 6 then &#x27;虎&#x27;</span><br><span class="line">	when 7 then &#x27;兔&#x27;</span><br><span class="line">	when 8 then &#x27;龙&#x27;</span><br><span class="line">	when 9 then &#x27;蛇&#x27;</span><br><span class="line">	when 10 then &#x27;马&#x27;</span><br><span class="line">	when 11 then &#x27;羊&#x27;</span><br><span class="line">	when 0 then &#x27;猴&#x27;</span><br><span class="line">	when 1 then &#x27;鸡&#x27;</span><br><span class="line">	when 2 then &#x27;狗&#x27;</span><br><span class="line">	when 3 then &#x27;猪&#x27;</span><br><span class="line">	ELSE &#x27;&#x27;</span><br><span class="line">end 生肖</span><br><span class="line">from People</span><br></pre></td></tr></table></figure>
+
+<h1 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h1><p>模糊查询使用like关键字和通配符结合来实现，通配符具体含义如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%：代表匹配0个字符、1个字符或多个字符。</span><br><span class="line">_：代表匹配有且只有1个字符。</span><br><span class="line">[]：代表匹配范围内</span><br><span class="line">[^]：代表匹配不在范围内</span><br></pre></td></tr></table></figure>
+
+<p>（1）查询姓刘的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People  where PeopleName like &#x27;刘%&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（2）查询名字中含有 “ 尚 “ 的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People  where PeopleName like &#x27;%尚%&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（3）显示名字中含有“尚”或者“史”的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People  where PeopleName like &#x27;%尚%&#x27; or PeopleName like &#x27;%史%&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（4）查询姓刘的员工，名字是2个字</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select * from People  where PeopleName like &#x27;刘_&#x27;</span><br><span class="line">--方案二：</span><br><span class="line">select * from People where SUBSTRING(PeopleName,1,1) = &#x27;刘&#x27; and LEN(PeopleName) = 2</span><br></pre></td></tr></table></figure>
+
+<p>（5）查询出名字最后一个字是香，名字一共三个字的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select * from People  where PeopleName like &#x27;__香&#x27;</span><br><span class="line">--方案二：</span><br><span class="line">select * from People where SUBSTRING(PeopleName,3,1) = &#x27;香&#x27; and LEN(PeopleName) = 3</span><br></pre></td></tr></table></figure>
+
+<p>（6）查询出电话号码开头138的员工信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People  where PeoplePhone like &#x27;138%&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（7）查询出电话号码开头138的员工信息,第4位可能是7，可能8 ，最后一个号码是5</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PeoplePhone like &#x27;138[7,8]%5&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（8）查询出电话号码开头133的员工信息,第4位是2-5之间的数字 ，最后一个号码不是2和3</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select * from People where PeoplePhone like &#x27;133[2,3,4,5]%[^2,3]&#x27;</span><br><span class="line">--方案二：</span><br><span class="line">select * from People where PeoplePhone like &#x27;133[2-5]%[^2-3]&#x27;</span><br></pre></td></tr></table></figure>
+
+<h1 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h1><p>SQL SERVER中聚合函数主要有：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">count:求数量</span><br><span class="line">max:求最大值</span><br><span class="line">min:求最小值</span><br><span class="line">sum:求和</span><br><span class="line">avg:求平均值</span><br></pre></td></tr></table></figure>
+
+<h2 id="一、聚合函数举例应用"><a href="#一、聚合函数举例应用" class="headerlink" title="一、聚合函数举例应用"></a>一、聚合函数举例应用</h2><p>（1）求员工总人数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select COUNT(*) 数量 from People</span><br></pre></td></tr></table></figure>
+
+<p>（2）求最大值，求最高工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select MAX(PeopleSalary) 最高工资 from People</span><br></pre></td></tr></table></figure>
+
+<p>（3）求最小时，求最小工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select MIN(PeopleSalary) 最低工资 from People</span><br></pre></td></tr></table></figure>
+
+<p>（4）求和，求所有员工的工资总和</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select SUM(PeopleSalary) 工资总和 from People</span><br></pre></td></tr></table></figure>
+
+<p>（5）求平均值，求所有员工的平均工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select AVG(PeopleSalary) 平均工资 from People</span><br><span class="line">--方案二：精确到2位小数</span><br><span class="line">select ROUND(AVG(PeopleSalary),2)  平均工资 from People</span><br><span class="line">--方案三：精确到2位小数</span><br><span class="line">select Convert(decimal(12,2),AVG(PeopleSalary))  平均工资 from People</span><br></pre></td></tr></table></figure>
+
+<p>ROUND函数用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">round(num,len,[type])</span><br><span class="line">其中:</span><br><span class="line">num表示需要处理的数字，len表示需要保留的长度，type处理类型(0是默认值代表四舍五入，非0代表直接截取)</span><br><span class="line">select ROUND(123.45454,3)  --123.45500</span><br><span class="line">select ROUND(123.45454,3,1) --123.45400</span><br></pre></td></tr></table></figure>
+
+<p>（6）求数量，最大值，最小值，总和，平均值，在一行显示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select COUNT(*) 数量,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资,SUM(PeopleSalary) 工资总和,AVG(PeopleSalary) 平均工资 from People</span><br></pre></td></tr></table></figure>
+
+<p>（7）查询出武汉地区的员工人数，总工资，最高工资，最低工资和平均工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select &#x27;武汉&#x27; 地区,COUNT(*) 数量,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资</span><br><span class="line">,SUM(PeopleSalary) 工资总和,AVG(PeopleSalary) 平均工资 from People </span><br><span class="line">WHERE PEOPLEADDRESS = &#x27;武汉&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（8）求出工资比平均工资高的人员信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People where PeopleSalary &gt; (select AVG(PeopleSalary) 平均工资 from People)</span><br></pre></td></tr></table></figure>
+
+<p>（9）求数量，年龄最大值，年龄最小值，年龄总和，年龄平均值，在一行显示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select COUNT(*) 数量,</span><br><span class="line">MAX(year(getdate())-year(PeopleBirth)) 最高年龄,</span><br><span class="line">MIN(year(getdate())-year(PeopleBirth)) 最低年龄,</span><br><span class="line">SUM(year(getdate())-year(PeopleBirth)) 年龄总和,</span><br><span class="line">AVG(year(getdate())-year(PeopleBirth)) 平均年龄 </span><br><span class="line">from People</span><br><span class="line">--方案二：</span><br><span class="line">select COUNT(*) 数量,</span><br><span class="line">MAX(DATEDIFF(year, PeopleBirth, getDate())) 最高年龄,</span><br><span class="line">MIN(DATEDIFF(year, PeopleBirth, getDate())) 最低年龄,</span><br><span class="line">SUM(DATEDIFF(year, PeopleBirth, getDate())) 年龄总和,</span><br><span class="line">AVG(DATEDIFF(year, PeopleBirth, getDate())) 平均年龄 </span><br><span class="line">from People</span><br></pre></td></tr></table></figure>
+
+<p>（10）计算出月薪在10000 以上的男性员工的最大年龄，最小年龄和平均年龄</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select &#x27;男&#x27; 性别,COUNT(*) 数量,</span><br><span class="line">MAX(year(getdate())-year(PeopleBirth)) 最高年龄,</span><br><span class="line">MIN(year(getdate())-year(PeopleBirth)) 最低年龄,</span><br><span class="line">SUM(year(getdate())-year(PeopleBirth)) 年龄总和,</span><br><span class="line">AVG(year(getdate())-year(PeopleBirth)) 平均年龄 </span><br><span class="line">from People where PeopleSex = &#x27;男&#x27; and PeopleSalary &gt;= 10000</span><br><span class="line">--方案二：</span><br><span class="line">select &#x27;男&#x27; 性别,COUNT(*) 数量,</span><br><span class="line">MAX(DATEDIFF(year, PeopleBirth, getDate())) 最高年龄,</span><br><span class="line">MIN(DATEDIFF(year, PeopleBirth, getDate())) 最低年龄,</span><br><span class="line">SUM(DATEDIFF(year, PeopleBirth, getDate())) 年龄总和,</span><br><span class="line">AVG(DATEDIFF(year, PeopleBirth, getDate())) 平均年龄 </span><br><span class="line">from People where PeopleSex = &#x27;男&#x27; and PeopleSalary &gt;= 10000</span><br></pre></td></tr></table></figure>
+
+<p>（11）统计出所在地在“武汉或上海”的所有女员工数量以及最大年龄，最小年龄和平均年龄</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select &#x27;武汉或上海&#x27; 地区,&#x27;女&#x27; 性别,COUNT(*) 数量,</span><br><span class="line">MAX(year(getdate())-year(PeopleBirth)) 最高年龄,</span><br><span class="line">MIN(year(getdate())-year(PeopleBirth)) 最低年龄,</span><br><span class="line">SUM(year(getdate())-year(PeopleBirth)) 年龄总和,</span><br><span class="line">AVG(year(getdate())-year(PeopleBirth)) 平均年龄  </span><br><span class="line">from People where PeopleSex = &#x27;女&#x27; and PeopleAddress in(&#x27;武汉&#x27;,&#x27;上海&#x27;)</span><br><span class="line">--方案二：</span><br><span class="line">select &#x27;武汉或上海&#x27; 地区,&#x27;女&#x27; 性别,COUNT(*) 数量,</span><br><span class="line">MAX(DATEDIFF(year, PeopleBirth, getDate())) 最高年龄,</span><br><span class="line">MIN(DATEDIFF(year, PeopleBirth, getDate())) 最低年龄,</span><br><span class="line">SUM(DATEDIFF(year, PeopleBirth, getDate())) 年龄总和,</span><br><span class="line">AVG(DATEDIFF(year, PeopleBirth, getDate())) 平均年龄  </span><br><span class="line">from People where PeopleSex = &#x27;女&#x27; and PeopleAddress in(&#x27;武汉&#x27;,&#x27;上海&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（12）求出年龄比平均年龄高的人员信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：</span><br><span class="line">select * from People where </span><br><span class="line">year(getdate())-year(PeopleBirth) &gt; </span><br><span class="line">(select AVG(year(getdate())-year(PeopleBirth)) </span><br><span class="line">from People)</span><br><span class="line">--方案二：</span><br><span class="line">select * from People where </span><br><span class="line">DATEDIFF(year, PeopleBirth, getDate()) &gt; </span><br><span class="line">(select AVG(DATEDIFF(year, PeopleBirth, getDate())) </span><br><span class="line">from People)</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、补充-SQL中常用时间处理函数"><a href="#二、补充-SQL中常用时间处理函数" class="headerlink" title="二、补充-SQL中常用时间处理函数"></a>二、补充-SQL中常用时间处理函数</h2><p>GETDATE() 返回当前的日期和时间</p>
+<p>DATEPART() 返回日期&#x2F;时间的单独部分</p>
+<p>DATEADD()  返回日期中添加或减去指定的时间间隔</p>
+<p>DATEDIFF() 返回两个日期直接的时间</p>
+<p>DATENAME() 返回指定日期的指定日期部分的整数</p>
+<p>CONVERT()  返回不同格式的时间</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select DATEDIFF(day, &#x27;2019-08-20&#x27;, getDate());    --获取指定时间单位的差值</span><br><span class="line">SELECT DATEADD(MINUTE,-5,GETDATE())               --加减时间,此处为获取五分钟前的时间,MINUTE 表示分钟，可为 YEAR,MONTH,DAY,HOUR</span><br><span class="line">select DATENAME(month, getDate());                --当前月份</span><br><span class="line">select DATENAME(WEEKDAY, getDate());              --当前星期几</span><br><span class="line">select DATEPART(month, getDate());                --当前月份</span><br><span class="line">select DAY(getDate());                            --返回当前日期天数</span><br><span class="line">select MONTH(getDate());                          --返回当前日期月数</span><br><span class="line">select YEAR(getDate());                           --返回当前日期年数</span><br><span class="line"></span><br><span class="line">SELECT CONVERT(VARCHAR(22),GETDATE(),20)          --2020-01-09 14:46:46</span><br><span class="line">SELECT CONVERT(VARCHAR(24),GETDATE(),21)          --2020-01-09 14:46:55.91</span><br><span class="line">SELECT CONVERT(VARCHAR(22),GETDATE(),23)		  --2020-01-09</span><br><span class="line">SELECT CONVERT(VARCHAR(22),GETDATE(),24)          --15:04:07</span><br><span class="line">Select CONVERT(varchar(20),GETDATE(),14)          --15:05:49:330</span><br></pre></td></tr></table></figure>
+
+<p><strong>时间格式控制字符串：</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>日期单位</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年</td>
+<td>year</td>
+<td>yyyy 或yy</td>
+</tr>
+<tr>
+<td>季度</td>
+<td>quarter</td>
+<td>qq,q</td>
+</tr>
+<tr>
+<td>月</td>
+<td>month</td>
+<td>mm,m</td>
+</tr>
+<tr>
+<td>一年中第几天</td>
+<td>dayofyear</td>
+<td>dy,y</td>
+</tr>
+<tr>
+<td>日</td>
+<td>day</td>
+<td>dd,d</td>
+</tr>
+<tr>
+<td>一年中第几周</td>
+<td>week</td>
+<td>wk,ww</td>
+</tr>
+<tr>
+<td>星期</td>
+<td>weekday</td>
+<td>dw</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>Hour</td>
+<td>hh</td>
+</tr>
+<tr>
+<td>分钟</td>
+<td>minute</td>
+<td>mi,n</td>
+</tr>
+<tr>
+<td>秒</td>
+<td>second</td>
+<td>ss,s</td>
+</tr>
+<tr>
+<td>毫秒</td>
+<td>millisecond</td>
+<td>ms</td>
+</tr>
+</tbody></table>
+<h1 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h1><p>（1）根据员工所在地区分组统计员工人数 ,员工工资总和 ,平均工资，最高工资和最低工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--方案一：使用union(此方案需要知道所有的地区，分别查询出所有地区的数据，然后使用union拼接起来。)</span><br><span class="line">select &#x27;武汉&#x27; 地区,COUNT(*) 数量,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资</span><br><span class="line">,SUM(PeopleSalary) 工资总和,AVG(PeopleSalary) 平均工资 from People</span><br><span class="line"> where PeopleAddress = &#x27;武汉&#x27; union</span><br><span class="line">select &#x27;北京&#x27; 地区,COUNT(*) 数量,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资</span><br><span class="line">,SUM(PeopleSalary) 工资总和,AVG(PeopleSalary) 平均工资 from People</span><br><span class="line"> where PeopleAddress = &#x27;北京&#x27;</span><br><span class="line"> --...其它地区数据</span><br><span class="line"> --...其他地区数据</span><br><span class="line"> </span><br><span class="line"> --方案二：使用Group by</span><br><span class="line">select PeopleAddress 地区,COUNT(*) 人数,SUM(PeopleSalary) 工资总和,</span><br><span class="line">AVG(PeopleSalary) 平均工资,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资 </span><br><span class="line">from People group by PeopleAddress</span><br></pre></td></tr></table></figure>
+
+<p>（2）根据员工所在地区分组统计员工人数，员工工资总和，平均工资，最高工资和最低工资，1985 年及以后出身的员工不参与统计。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select PeopleAddress 地区,COUNT(*) 人数,SUM(PeopleSalary) 工资总和,</span><br><span class="line">AVG(PeopleSalary) 平均工资,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资 </span><br><span class="line">from People</span><br><span class="line">where PeopleBirth &lt; &#x27;1985-1-1&#x27;</span><br><span class="line">group by PeopleAddress</span><br></pre></td></tr></table></figure>
+
+<p>（3）根据员工所在地区分组统计员工人数，员工工资总和，平均工资，最高工资和最低工资，要求筛选出员工人数至少在2人及以上的记录，并且1985年及以后出身的员工不参与统计。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select PeopleAddress 地区,COUNT(*) 人数,SUM(PeopleSalary) 工资总和,</span><br><span class="line">AVG(PeopleSalary) 平均工资,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资 </span><br><span class="line">from People </span><br><span class="line">where PeopleBirth &lt; &#x27;1985-1-1&#x27;</span><br><span class="line">group by PeopleAddress</span><br><span class="line">having COUNT(*) &gt;= 2</span><br></pre></td></tr></table></figure>
+
+<h1 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h1><h2 id="一、笛卡尔乘积"><a href="#一、笛卡尔乘积" class="headerlink" title="一、笛卡尔乘积"></a>一、笛卡尔乘积</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People,Department</span><br></pre></td></tr></table></figure>
+
+<p>此查询结果会将People表的所有数据和Department表的所有数据进行依次排列组合形成新的记录。例如People表有10条记录，Department表有3条记录，则排列组合之后查询结果会有10*3&#x3D;30条记录。</p>
+<h2 id="二、简单多表查询"><a href="#二、简单多表查询" class="headerlink" title="二、简单多表查询"></a>二、简单多表查询</h2><p>此种查询不符合主外建关系的数据不会被显示</p>
+<p><strong>查询员工信息，同时显示部门名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People,Department where People.DepartmentId = Department.DepartmentId </span><br></pre></td></tr></table></figure>
+
+<p><strong>查询员工信息，同时显示职级名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People,Rank where People.RankId = Rank.RankId</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询员工信息，同时显示部门名称，职位名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People,Department,Rank</span><br><span class="line">where People.DepartmentId = Department.DepartmentId and People.RankId = Rank.RankId</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、内连接"><a href="#三、内连接" class="headerlink" title="三、内连接"></a>三、内连接</h2><p>此种查询不符合主外建关系的数据不会被显示</p>
+<p><strong>查询员工信息，同时显示部门名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People inner join Department on People.DepartmentId = Department.DepartmentId </span><br></pre></td></tr></table></figure>
+
+<p><strong>查询员工信息，同时显示职级名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People inner join Rank on People.RankId = Rank.RankId</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询员工信息，同时显示部门名称，职位名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People </span><br><span class="line">inner join Department on People.DepartmentId = Department.DepartmentId </span><br><span class="line">inner join Rank on People.RankId = Rank.RankId</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、外连接"><a href="#三、外连接" class="headerlink" title="三、外连接"></a>三、外连接</h2><p>外连接分为左外连接、右外连接和全外连接。</p>
+<p>左外联接：以左表为主表显示全部数据，主外键关系找不到数据的地方null取代。</p>
+<p><strong>以下是左外连接的语法示例：</strong></p>
+<p><strong>查询员工信息，同时显示部门名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People left join Department on People.DepartmentId = Department.DepartmentId </span><br></pre></td></tr></table></figure>
+
+<p><strong>查询员工信息，同时显示职级名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People left join Rank on People.RankId = Rank.RankId</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询员工信息，同时显示部门名称，职位名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from People </span><br><span class="line">left join Department on People.DepartmentId = Department.DepartmentId </span><br><span class="line">left join Rank on People.RankId = Rank.RankId</span><br></pre></td></tr></table></figure>
+
+<p>右外连接（right join）：右外连接和左外连接类似，A left join B  &#x3D;&#x3D;  B right join A</p>
+<p>全外连接（full join）：两张表的所有数据无论是否符合主外键关系必须全部显示，不符合主外键关系的地方null取代。</p>
+<h2 id="四、多表查询综合示例"><a href="#四、多表查询综合示例" class="headerlink" title="四、多表查询综合示例"></a>四、多表查询综合示例</h2><p>（1）查询出武汉地区所有的员工信息，要求显示部门名称以及员工的详细资料</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select PeopleName 姓名,People.DepartmentId 部门编号 ,DepartmentName 部门名称,</span><br><span class="line">PeopleSex 性别,PeopleBirth 生日,</span><br><span class="line">PeopleSalary 月薪,PeoplePhone 电话,PeopleAddress 地区</span><br><span class="line">from People left join DEPARTMENT on Department.DepartmentId = People.DepartmentId</span><br><span class="line">where PeopleAddress = &#x27;武汉&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（2）查询出武汉地区所有的员工信息，要求显示部门名称，职级名称以及员工的详细资料</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select PeopleName 姓名,DepartmentName 部门名称,RankName 职位名称,</span><br><span class="line">PeopleSex 性别,PeopleBirth 生日,</span><br><span class="line">PeopleSalary 月薪,PeoplePhone 电话,PeopleAddress 地区</span><br><span class="line">from People left join DEPARTMENT on Department.DepartmentId = People.DepartmentId</span><br><span class="line">left join [Rank] on [Rank].RankId = People.RankId</span><br><span class="line">where PeopleAddress = &#x27;武汉&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（3）根据部门分组统计员工人数，员工工资总和，平均工资，最高工资和最低工资。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--提示：在进行分组统计查询的时候添加二表联合查询。</span><br><span class="line">select DepartmentName 部门名称,COUNT(*) 人数,SUM(PeopleSalary) 工资总和,</span><br><span class="line">AVG(PeopleSalary) 平均工资,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资 </span><br><span class="line">from People left join DEPARTMENT on Department.DepartmentId = People.DepartmentId</span><br><span class="line">group by Department.DepartmentId,DepartmentName</span><br></pre></td></tr></table></figure>
+
+<p>（4）根据部门分组统计员工人数，员工工资总和，平均工资，最高工资和最低工资，平均工资在10000 以下的不参与统计，并且根据平均工资降序排列。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select DepartmentName 部门名称,COUNT(*) 人数,SUM(PeopleSalary) 工资总和,</span><br><span class="line">AVG(PeopleSalary) 平均工资,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资 </span><br><span class="line">from People left join DEPARTMENT on Department.DepartmentId = People.DepartmentId</span><br><span class="line">group by Department.DepartmentId,DepartmentName</span><br><span class="line">having AVG(PeopleSalary) &gt;= 10000</span><br><span class="line">order by AVG(PeopleSalary) desc</span><br></pre></td></tr></table></figure>
+
+<p>（5）根据部门名称，然后根据职位名称，分组统计员工人数，员工工资总和，平均工资，最高工资和最低工资</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select DepartmentName 部门名称,RANKNAME 职级名称,COUNT(*) 人数,SUM(PeopleSalary) 工资总和,</span><br><span class="line">AVG(PeopleSalary) 平均工资,MAX(PeopleSalary) 最高工资,MIN(PeopleSalary) 最低工资 </span><br><span class="line">from People </span><br><span class="line">LEFT JOIN DEPARTMENT on Department.DepartmentId = People.DepartmentId</span><br><span class="line">LEFT JOIN [Rank] on [Rank].RANKID = People.RANKID</span><br><span class="line">group by Department.DepartmentId,DepartmentName,[Rank].RANKID,RANKNAME</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、自连接"><a href="#五、自连接" class="headerlink" title="五、自连接"></a>五、自连接</h2><p>自连接：自己连接自己。</p>
+<p>例如有如下结构和数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create table Dept</span><br><span class="line">(</span><br><span class="line">	DeptId int primary key,  --部门编号</span><br><span class="line">	DeptName varchar(50) not null, --部门名称</span><br><span class="line">	ParentId int not null,  --上级部门编号</span><br><span class="line">)</span><br><span class="line">insert into Dept(DeptId,DeptName,ParentId)</span><br><span class="line">values(1,&#x27;软件部&#x27;,0)</span><br><span class="line">insert into Dept(DeptId,DeptName,ParentId)</span><br><span class="line">values(2,&#x27;硬件部&#x27;,0)</span><br><span class="line"></span><br><span class="line">insert into Dept(DeptId,DeptName,ParentId)</span><br><span class="line">values(3,&#x27;软件研发部&#x27;,1)</span><br><span class="line">insert into Dept(DeptId,DeptName,ParentId)</span><br><span class="line">values(4,&#x27;软件测试部&#x27;,1)</span><br><span class="line">insert into Dept(DeptId,DeptName,ParentId)</span><br><span class="line">values(5,&#x27;软件实施部&#x27;,1)</span><br><span class="line"></span><br><span class="line">insert into Dept(DeptId,DeptName,ParentId)</span><br><span class="line">values(6,&#x27;硬件研发部&#x27;,2)</span><br><span class="line">insert into Dept(DeptId,DeptName,ParentId)</span><br><span class="line">values(7,&#x27;硬件测试部&#x27;,2)</span><br><span class="line">insert into Dept(DeptId,DeptName,ParentId)</span><br><span class="line">values(8,&#x27;硬件实施部&#x27;,2)</span><br></pre></td></tr></table></figure>
+
+<p>如果要查询出所有部门信息，并且查询出自己的上级部门，查询结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--部门编号      部门名称     上级部门</span><br><span class="line">-- 3           软件研发部     软件部</span><br><span class="line">-- 4           软件测试部     软件部</span><br><span class="line">-- 5           软件实施部     软件部</span><br><span class="line">-- 6           硬件研发部     硬件部</span><br><span class="line">-- 7           硬件测试部     硬件部</span><br><span class="line">-- 8           硬件实施部     硬件部</span><br><span class="line"></span><br><span class="line">select A.DeptId 部门编号,A.DeptName 部门名称,B.DeptName 上级名称 from Dept A </span><br><span class="line">inner join Dept B on A.ParentId = B.DeptId</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">CJ菌</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://jasonjun.org.edu.kg/2024/03/12/SQLServer%E5%88%9D%E7%BA%A7/">https://jasonjun.org.edu.kg/2024/03/12/SQLServer%E5%88%9D%E7%BA%A7/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">CJ菌</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/SqlServer/">
+                                    <span class="chip bg-color">SqlServer</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'e0vx1JrP1gBkuuunvnVGwHpR-gzGzoHsz',
+        appKey: 'XlrVG3SCV9Id0mgpaqphEkfp',
+        serverURLs: 'https://e0vx1jrp.lc-cn-n1-shared.com',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2024/03/12/SQLServer%E9%AB%98%E7%BA%A7/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="SQLServer高级">
+                        
+                        <span class="card-title">SQLServer高级</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            CJ菌
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SqlServer/">
+                        <span class="chip bg-color">SqlServer</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/03/09/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="数据中台">
+                        
+                        <span class="card-title">数据中台</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            CJ菌
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">数据开发</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="2779826002"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.4'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2024</span>
+            
+            <a href="/about" target="_blank">CJ菌</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">xxxx</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/CJ-jun" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:997248629@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=997248629" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 997248629" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+        <div style="position:fixed;bottom:125px;right:16px;cursor: pointer;">
+            <a title="兔小巢" target="_blank" rel="noopener" href="https://support.qq.com/products/635783"><i class="fa fa-comments fa-3x"  aria-hidden="true"></i></a>
+        </div>
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
