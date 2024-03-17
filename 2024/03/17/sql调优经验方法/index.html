@@ -4,20 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="帆软FCA-FineBI考试, CJ-blog">
-    <meta name="description" content="
-Part.1：判断题（总分：32分 得分：32）第1题
-判断题
-在编辑数据的时候可以调整字段的先后顺序。(得分：2分 满分：2分)
-正确答案：A
-你的答案：A
+    <meta name="keywords" content="sql调优经验方法, CJ-blog">
+    <meta name="description" content="SQL优化在工作的过程中，我们经常会在开发时或者开发做压力测试后需要做数据库优化，提高数据库性能。在我开发的工作经验中把数据库优化分为三层：
 
-正确
-A. 正确
-B. 错误
-第2题
-判断题
-在自助数据集中，文本字段和时间">
+业务上的优化
+sql层的优化（包含索引优化）
+硬件层优化（属于运维工作）
+
+业务层优化在表里有十">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -30,7 +24,7 @@ B. 错误
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>帆软FCA-FineBI考试 | CJ-blog</title>
+    <title>sql调优经验方法 | CJ-blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -448,12 +442,12 @@ B. 错误
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403140203395.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">帆软FCA-FineBI考试</h1>
+                    <h1 class="description center-align post-title">sql调优经验方法</h1>
                 </div>
             </div>
         </div>
@@ -477,8 +471,8 @@ B. 错误
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%B8%86%E8%BD%AF%E8%80%83%E8%AF%95/">
-                                <span class="chip bg-color">帆软考试</span>
+                            <a href="/tags/SQL/">
+                                <span class="chip bg-color">SQL</span>
                             </a>
                         
                     </div>
@@ -493,7 +487,7 @@ B. 错误
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-03-14
+                    2024-03-17
                 </div>
                 
 
@@ -502,7 +496,7 @@ B. 错误
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    1.4k
                 </div>
                 
 
@@ -522,429 +516,88 @@ B. 错误
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403140201139.gif" alt="logo"></p>
-<h3 id="Part-1：判断题（总分：32分-得分：32）"><a href="#Part-1：判断题（总分：32分-得分：32）" class="headerlink" title="Part.1：判断题（总分：32分 得分：32）"></a>Part.1：判断题（总分：32分 得分：32）</h3><p>第1题</p>
-<p>判断题</p>
-<p>在编辑数据的时候可以调整字段的先后顺序。(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第2题</p>
-<p>判断题</p>
-<p>在自助数据集中，文本字段和时间字段只能作为分组，数值字段只能作为指标进行汇总。(得分：2分 满分：2分)</p>
-<p>正确答案：B</p>
-<p>你的答案：B</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第3题</p>
-<p>判断题</p>
-<p>自助数据集中的上下合并可以进行超过两张的多张表合并。(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第4题</p>
-<p>判断题</p>
-<p>行转列可将一维表转成二维表(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第5题</p>
-<p>判断题</p>
-<p>分析主题不支持不同用户之间进行协作编辑(得分：2分 满分：2分)</p>
-<p>正确答案：B</p>
-<p>你的答案：B</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第6题</p>
-<p>判断题</p>
-<p>编辑数据时，我们可以利用「拆分行列」功能将字符串快速按我们的需求进行分割。(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第7题</p>
-<p>判断题</p>
-<p>表格「不支持」显示图片(得分：2分 满分：2分)</p>
-<p>正确答案：B</p>
-<p>你的答案：B</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第8题</p>
-<p>判断题</p>
-<p>关于仪表板样式(生效)优先级说法是否正确？– 单个组件样式优先级高于全局样式优先级(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第9题</p>
-<p>判断题</p>
-<p>想要在单个组件内实现钻取的效果，必须要先创建对应的钻取目录。(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第10题</p>
-<p>判断题</p>
-<p>分组表和交叉表支持设置数据条，明细表和图表不支持。(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第11题</p>
-<p>判断题</p>
-<p>可以在一个 Tab 组件内的不同 tab 页添加组件，并点击 tab 页标题切换不同 tab 页，每个tab页下支持「多个」组件元素。(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第12题</p>
-<p>判断题</p>
-<p>支持设置二次计算的功能(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第13题</p>
-<p>判断题</p>
-<p>同比环比的快速计算，不会因为时间控件的过滤而导致不在区间内的数据同比环比无法计算(得分：2分 满分：2分)</p>
-<p>正确答案：B</p>
-<p>你的答案：B</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第14题</p>
-<p>判断题</p>
-<p>FineBI 提供了添加计算字段的功能实现对已存在的字段再计算，从而可以得到新的字段。支持添加维度计算字段和指标计算字段(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第15题</p>
-<p>判断题</p>
-<p>如果有发布目录节点的管理权限，并且发布选择了该路径，可以不用审批。(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<p>第16题</p>
-<p>判断题</p>
-<p>普通用户A做了一张模板，他做的模板想要以公共链接的方式分享出去，那么分享出去的模板数据权限只有普通用户A的数据权限(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 正确</p>
-<p>B. 错误</p>
-<h3 id="Part-2：单选题（总分：44分-得分：44）"><a href="#Part-2：单选题（总分：44分-得分：44）" class="headerlink" title="Part.2：单选题（总分：44分 得分：44）"></a>Part.2：单选题（总分：44分 得分：44）</h3><p>第17题</p>
-<p>单选题</p>
-<p>用户可以在FineBI哪个模块搜索帮助文档？(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 用户中心-成长中心</p>
-<p>B. 用户中心-运营中心</p>
-<p>C. 用户中心-服务中心</p>
-<p>D. 用户中心-我的主页</p>
-<p>第18题</p>
-<p>单选题</p>
-<p>FineBI产品定义的数据类型不包含以下哪一种？(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 字符型</p>
-<p>B. 时间类型</p>
-<p>C. 数值类型</p>
-<p>D. 文本类型</p>
-<p>第19题</p>
-<p>单选题</p>
-<p>根据《门店销售明细表》分析，2017年5月长沙店的支出是多少？（支出&#x3D;销售额-毛利）(得分：3分 满分：3分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 101235</p>
-<p>B. 85489</p>
-<p>C. 183191</p>
-<p>D. 426106</p>
-<p>第20题</p>
-<p>单选题</p>
-<p>根据数据：Sample-Superstore-Subset-Excel.xlsx（数据下载），分析：「哪个区域」的「所有产品类别的利润均低于总体平均利润」？(得分：3分 满分：3分)</p>
-<p>正确答案：C</p>
-<p>你的答案：C</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. Central（中部）</p>
-<p>B. East（东部）</p>
-<p>C. South（南部）</p>
-<p>D. West（西部）</p>
-<p>第21题</p>
-<p>单选题</p>
-<p>根据《住院明细表.xlsx》分析，住院人群中，化验的人数占比为？(得分：3分 满分：3分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 48.14%</p>
-<p>B. 36.32%</p>
-<p>C. 51.86%</p>
-<p>D. 63.68%</p>
-<p>第22题</p>
-<p>单选题</p>
-<p>根据《公司商品销售表》分析，2019年哪个城市的销售额最高(得分：3分 满分：3分)</p>
-<p>正确答案：C</p>
-<p>你的答案：C</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 上海市</p>
-<p>B. 北京市</p>
-<p>C. 杭州市</p>
-<p>D. 深圳市</p>
-<p>第23题</p>
-<p>单选题</p>
-<p>根据《设备生产表》分析，求产品状态为生产的占比(得分：3分 满分：3分)</p>
-<p>正确答案：D</p>
-<p>你的答案：D</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 17.28%</p>
-<p>B. 38.08%</p>
-<p>C. 19.04%</p>
-<p>D. 25.60%</p>
-<p>第24题</p>
-<p>单选题</p>
-<p>根据数据：Sample-Superstore-Subset-Excel.xlsx（数据下载），分析：哪个产品子类别的装运成本与销售额之比高于 3%？(得分：3分 满分：3分)</p>
-<p>正确答案：C</p>
-<p>你的答案：C</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. Tables（桌子）</p>
-<p>B. Binders and Binder Accessories（书夹和书夹附件）</p>
-<p>C. Paper（纸张）</p>
-<p>D. Chairs &amp; Chairmats（椅子和椅垫）</p>
-<p>第25题</p>
-<p>单选题</p>
-<p>根据《住院明细表.xlsx》分析，哪个年龄段的住院人数最多？(得分：3分 满分：3分)</p>
-<p>正确答案：B</p>
-<p>你的答案：B</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 青年</p>
-<p>B. 老年</p>
-<p>C. 中年</p>
-<p>D. 幼年</p>
-<p>第26题</p>
-<p>单选题</p>
-<p>根据数据：Sample-Superstore-Subset-Excel.xlsx（数据下载），分析：看一看各个产品子类别的利润总和。哪个子类别的利润比所有类别的平均利润要少 $31,069？(得分：3分 满分：3分)</p>
-<p>正确答案：D</p>
-<p>你的答案：D</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. Appliances（电器）</p>
-<p>B. Bookcases</p>
-<p>C. Paper（纸张）</p>
-<p>D. Envelopes</p>
-<p>第27题</p>
-<p>单选题</p>
-<p>根据《设备生产表》分析，求生产设备QE-01的订单量是多少？(得分：3分 满分：3分)</p>
-<p>正确答案：B</p>
-<p>你的答案：B</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 7858</p>
-<p>B. 7107</p>
-<p>C. 4820</p>
-<p>D. 4590</p>
-<p>第28题</p>
-<p>单选题</p>
-<p>根据《产品销量表》，找出利润率最高的产品。（利润率&#x3D;利润&#x2F;含税出厂价）(得分：3分 满分：3分)</p>
-<p>正确答案：D</p>
-<p>你的答案：D</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 煤炭</p>
-<p>B. 硫酸</p>
-<p>C. 粗苯</p>
-<p>D. 液氨</p>
-<p>第29题</p>
-<p>单选题</p>
-<p>如图所示，小明想要用折线图展示【毛利额】、用柱形图展示【毛利额-环比增长率】，请问在哪里设置可以只让【毛利额】从柱形图变为折线图？(得分：2分 满分：2分)</p>
-<p>正确答案：C</p>
-<p>你的答案：C</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 直接图表类型&gt;选择折线图</p>
-<p>B. 图表属性&gt;全部</p>
-<p>C. 图表属性&gt;毛利率（求和）</p>
-<p>D. 纵轴&gt;毛利额</p>
-<p>第30题</p>
-<p>单选题</p>
-<p>表格组件作为展现数据的一个传统方式，在FineBI中提供了三种类型的表格。其中支持多维度，可制作行、列都有分组的报表，支持对指标的汇总和其他计算的表是什么表？(得分：2分 满分：2分)</p>
-<p>正确答案：C</p>
-<p>你的答案：C</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 分组表</p>
-<p>B. 明细表</p>
-<p>C. 交叉表</p>
-<p>第31题</p>
-<p>单选题</p>
-<p>函数运用：&#x3D;REPLACE(“finebi”,3,2,”*”)，结果为？(得分：2分 满分：2分)</p>
-<p>正确答案：B</p>
-<p>你的答案：B</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. fin*i</p>
-<p>B. fi*bi</p>
-<p>C. fin**i</p>
-<p>D. fi**bi</p>
-<p>第32题</p>
-<p>单选题</p>
-<p>函数运用: &#x3D;AND(1+7&gt;&#x3D;8,5+7&lt;&#x3D;11)，结果为？(得分：2分 满分：2分)</p>
-<p>正确答案：A</p>
-<p>你的答案：A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 0</p>
-<p>B. 1</p>
-<p>C. 2</p>
-<p>D. 3</p>
-<p>第33题</p>
-<p>单选题</p>
-<p>以下哪个选项可由快速计算实现？(得分：2分 满分：2分)</p>
-<p>正确答案：D</p>
-<p>你的答案：D</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 求同比</p>
-<p>B. 求环比</p>
-<p>C. 求累计值</p>
-<p>D. 都可以</p>
-<h3 id="Part-3：多选题（总分：24分-得分：24）"><a href="#Part-3：多选题（总分：24分-得分：24）" class="headerlink" title="Part.3：多选题（总分：24分 得分：24）"></a>Part.3：多选题（总分：24分 得分：24）</h3><p>第34题</p>
-<p>多选题</p>
-<p>新建分析主题的入口有哪些？(得分：3分 满分：3分)</p>
-<p>正确答案：A,B,C</p>
-<p>你的答案：B,C,A</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 在【公共数据】中选择想要进行分析的数据，点击右上方的「创建分析主题」按钮，可以重命名分析主题的名称、选择该分析主题放置的位置。</p>
-<p>B. 点击【我的分析】中的某一文件夹的[+&gt;分析主题]，可以在该文件下创建一个分析主题。</p>
-<p>C. 直接点击【我的分析】中大的蓝色的[新建分析主题]按钮。</p>
-<p>D. 在【公共数据】中直接点击[新建分析主题]按钮。</p>
-<p>第35题</p>
-<p>多选题</p>
-<p>关于文本组件以下正确的是？(得分：3分 满分：3分)</p>
-<p>正确答案：A,B,D</p>
-<p>你的答案：A,B,D</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 文本组件支持插入字段</p>
-<p>B. 文本组件支持插入超级链接</p>
-<p>C. 文本组件支持公式运算</p>
-<p>D. 文本组件支持定义文字对齐方式</p>
-<p>第36题</p>
-<p>多选题</p>
-<p>不支持设置跳转的组件有哪些？(得分：3分 满分：3分)</p>
-<p>正确答案：A,B,C,D</p>
-<p>你的答案：A,B,C,D</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 过滤组件</p>
-<p>B. 文本组件</p>
-<p>C. 图片组件</p>
-<p>D. web组件</p>
-<p>E. 表格组件</p>
-<p>第37题</p>
-<p>多选题</p>
-<p>FineBI 提供了一些快速计算功能，无需写复杂的函数，只需要简单的点击鼠标即可实现分析场景。以下哪些是FineBI中的快速计算可以直接实现的？(得分：3分 满分：3分)</p>
-<p>正确答案：A,B,C,D</p>
-<p>你的答案：A,B,C,D</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 同环比</p>
-<p>B. 占比</p>
-<p>C. 组内排名</p>
-<p>D. 累计值</p>
-<p>第38题</p>
-<p>多选题</p>
-<p>在FineBI中，以下哪些数据是可以直接被添加到分析主题内的？(得分：3分 满分：3分)</p>
-<p>正确答案：A,C,D</p>
-<p>你的答案：A,C,D</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 公共数据</p>
-<p>B. 回收站数据</p>
-<p>C. 我的分析中的数据</p>
-<p>D. 本地Excel文件</p>
-<p>第39题</p>
-<p>多选题</p>
-<p>「拆分行列」功能可以讲字段分割，我们可以选择的拆分方式有(得分：3分 满分：3分)</p>
-<p>正确答案：A,B</p>
-<p>你的答案：A,B</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 按分隔符</p>
-<p>B. 按字符数</p>
-<p>C. 按大小写</p>
-<p>D. 按字段长度</p>
-<p>第40题</p>
-<p>多选题</p>
-<p>仪表盘特有的图表属性有哪些？(最少2个选项，最多4个选项)(得分：3分 满分：3分)</p>
-<p>正确答案：A,D</p>
-<p>你的答案：A,D</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 指针值</p>
-<p>B. 大小</p>
-<p>C. 颜色</p>
-<p>D. 目标值</p>
-<p>E. 角度值</p>
-<p>第41题</p>
-<p>多选题</p>
-<p>目前在仪表板设计中，悬浮元素支持的种类有？(得分：3分 满分：3分)</p>
-<p>正确答案：A,B,C,D,E,F</p>
-<p>你的答案：A,B,C,D,E,F</p>
-<p><img src="https://cert.fanruan.com/img/timu_correct.png" alt="img"></p>
-<p>正确</p>
-<p>A. 文本组件</p>
-<p>B. 图片组件</p>
-<p>C. 图表组件</p>
-<p>D. 过滤控件</p>
-<p>E. 查询按钮</p>
-<p>F. Web组件</p>
+                <h2 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h2><p>在工作的过程中，我们经常会在开发时或者开发做压力测试后需要做数据库优化，提高数据库性能。在我开发的工作经验中把数据库优化分为三层：</p>
+<ol>
+<li>业务上的优化</li>
+<li>sql层的优化（包含索引优化）</li>
+<li>硬件层优化（属于运维工作）</li>
+</ol>
+<h2 id="业务层优化"><a href="#业务层优化" class="headerlink" title="业务层优化"></a>业务层优化</h2><p>在表里有十几亿的数据并且我们已经分库分表，集群了和索引也已经优化最好了。我们需要查询数据就需要分页查。我在做项目中一般分页查询也主要做以下两种：</p>
+<p>一种是在业务查询使用sql语句限制每次查询数目（count或limit），第二种是使用ES（<strong>elasticsearch</strong>分布式全文检索引擎）。</p>
+<h2 id="sql层的优化（主要）"><a href="#sql层的优化（主要）" class="headerlink" title="sql层的优化（主要）"></a>sql层的优化（主要）</h2><p>我在sql层面优化的套路是：</p>
+<ol>
+<li><h5 id="查看执行计划-explain-sql"><a href="#查看执行计划-explain-sql" class="headerlink" title="查看执行计划 explain sql"></a>查看执行计划 <code>explain sql</code></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">explain SELECT * FROM t1</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>执行计划包含的信息</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172055712.png" alt="这里写图片描述"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172326428.png" alt="image-20240317210225439"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172103253.jpeg" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172104427.jpeg" alt="img"></p>
+<ol start="2">
+<li><h5 id="开启慢查询"><a href="#开启慢查询" class="headerlink" title="开启慢查询"></a>开启慢查询</h5><p>慢查询，顾名思义，执行很慢的查询。有多慢？超过 long_query_time 参数设定的时间阈值（默认10s），就被认为是慢的，是需要优化的。慢查询被记录在慢查询日志里。</p>
+<p>然而，慢查询日志默认是不开启的，也就是说一般人没玩过这功能。如果你需要优化SQL语句，就可以开启这个功能，它可以让你很容易地知道哪些语句是需要优化的（想想一个SQL要10s就可怕）。</p>
+<p>打开慢查询两种方法：</p>
+<ul>
+<li>方式一：</li>
+</ul>
+<p>修改配置文件 在 my.ini 增加几行: 主要是慢查询的定义时间（超过2秒就是慢查询），以及慢查询log日志记录（ slow_query_log）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172134129.png" alt="image-20240317213445332"></p>
+<ul>
+<li>方式二：</li>
+</ul>
+</li>
+</ol>
+<p>通过命令数据库开启慢查询:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172137152.png" alt="image-20240317213723531"></p>
+<p>打开之后可以配合explain使用，然后对慢查询进行优化。</p>
+<ol start="3">
+<li><h5 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h5><ol>
+<li>要尽量避免全表扫描，首先应考虑在 <strong>where</strong> 及 <strong>order by</strong> 涉及的列上建立索引。</li>
+<li>在经常需要进行检索的字段上创建索引，一个表的索引数最好不要超过<strong>6</strong>个，索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。</li>
+<li>创建联合索引，减少回表查询。（就是索引覆盖）</li>
+</ol>
+</li>
+<li><h5 id="调整Where字句中的连接顺序"><a href="#调整Where字句中的连接顺序" class="headerlink" title="调整Where字句中的连接顺序"></a>调整Where字句中的连接顺序</h5><ol>
+<li><p>DBMS一般采用<strong>自下而上</strong>的顺序解析where字句，根据这个原理<strong>表连接</strong>最好写在其他where条件之前，那些可以过滤掉最大数量记录的条件必须写在WHERE子句的末尾。</p>
+<p>例如：</p>
+<p>(低效，执行时间156.3秒)</p>
+<p>SELECT *</p>
+<p>FROM EMP E</p>
+<p>WHERE SAL &gt; 50000</p>
+<p>AND  JOB &#x3D; ‘MANAGER’</p>
+<p>AND  25 &lt; <strong>(SELECT COUNT(*) FROM EMP</strong></p>
+<p>​       <strong>WHERE MGR&#x3D;E.EMPNO);</strong></p>
+<p>(高效，执行时间10.6秒)</p>
+<p>SELECT *</p>
+<p>FROM EMP E</p>
+<p><strong>WHERE 25 &lt; (SELECT COUNT(*) FROM EMP</strong></p>
+<p>​       <strong>WHERE MGR&#x3D;E.EMPNO)</strong></p>
+<p>AND  SAL &gt; 50000</p>
+<p>AND  JOB &#x3D; ‘MANAGER’;</p>
+</li>
+</ol>
+</li>
+<li><h5 id="用where字句替换HAVING字句"><a href="#用where字句替换HAVING字句" class="headerlink" title="用where字句替换HAVING字句"></a>用where字句替换HAVING字句</h5><p>​	避免使用HAVING字句，因为HAVING只会在检索出<strong>所有</strong>记录之后才对结果集进行<strong>过滤</strong>，而where则是在聚合前刷选记录，如果能通过where字句限制记录的数目，那就能减少这方面的开销。HAVING中的条件一般用于<strong>聚合函数</strong>的过滤，除此之外，应该将条件写在where字句中。</p>
+</li>
+<li><h5 id="用union-all替换union"><a href="#用union-all替换union" class="headerlink" title="用union all替换union"></a>用union all替换union</h5><p>​	当SQL语句需要union两个查询结果集合时，<strong>即使检索结果中不会有重复的记录，如果使用union这两个结果集同样会尝试进行合并</strong>，然后在输出最终结果前进行排序，因此如果可以判断检索结果中<strong>不会有重复的记录</strong>时候，应该用union all，这样效率就会因此得到提高。</p>
+</li>
+<li><h5 id="只在必要的情况下才使用事务begin-translation"><a href="#只在必要的情况下才使用事务begin-translation" class="headerlink" title="只在必要的情况下才使用事务begin translation"></a>只在必要的情况下才使用事务begin translation</h5><p>​	SQL Server中一句<strong>SQL语句默认就是一个事务</strong>，在该语句执行完成后也是<strong>默认commit</strong>的。在该大事务提交之前，必然会阻塞别的语句，造成block很多。Begin tran使用的原则是，在保证数据一致性的前提下，<strong>begin tran 套住的SQL语句越少越好！</strong>有些情况下可以采用<strong>触发器</strong>同步数据，不一定要用begin tran。</p>
+</li>
+<li><h5 id="尽量避免使用游标"><a href="#尽量避免使用游标" class="headerlink" title="尽量避免使用游标"></a>尽量避免使用游标</h5><p>​	尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。因为游标的效率较差，如果游标操作的数据<strong>超过1万行</strong>，那么就应该考虑改写。</p>
+</li>
+<li><h5 id="用varchar-nvarchar-代替-char-nchar（SQLServer）"><a href="#用varchar-nvarchar-代替-char-nchar（SQLServer）" class="headerlink" title="用varchar&#x2F;nvarchar 代替 char&#x2F;nchar（SQLServer）"></a>用varchar&#x2F;nvarchar 代替 char&#x2F;nchar（SQLServer）</h5><p>​	尽可能的使用 varchar&#x2F;nvarchar 代替 char&#x2F;nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。</p>
+</li>
+<li><h5 id="查询select语句优化"><a href="#查询select语句优化" class="headerlink" title="查询select语句优化"></a>查询select语句优化</h5><ol>
+<li><p>任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回<strong>用不到</strong>的任何字段。</p>
+</li>
+<li><p>应尽量<strong>避免</strong>在 where 子句中对字段进行 <strong>null 值判断</strong>，否则将导致引擎放弃使用索引而进行全表扫描。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="硬件层优化"><a href="#硬件层优化" class="headerlink" title="硬件层优化"></a>硬件层优化</h2><p>​	我们使用数据库，不管是读操作还是写操作，最终都是要访问磁盘，所以说磁盘的性能决定了数据库的性能。一块PCIE固态硬盘的性能是普通机械硬盘的几十倍不止。其他运营知识还需要慢慢学习在工作中积累经验。</p>
+<p>最后引用优秀B站up<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147490337">敖丙</a>一张导图当做学习记录借鉴：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172244679.jpeg" alt="img"></p>
 
                 
             </div>
@@ -971,7 +624,7 @@ B. 错误
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jasonjun.org.edu.kg/2024/03/14/%E5%B8%86%E8%BD%AFFCA-FineBI%E8%80%83%E8%AF%95/">https://jasonjun.org.edu.kg/2024/03/14/%E5%B8%86%E8%BD%AFFCA-FineBI%E8%80%83%E8%AF%95/</a>
+                    <a href="https://jasonjun.org.edu.kg/2024/03/17/sql%E8%B0%83%E4%BC%98%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/">https://jasonjun.org.edu.kg/2024/03/17/sql%E8%B0%83%E4%BC%98%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1009,8 +662,8 @@ B. 错误
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%B8%86%E8%BD%AF%E8%80%83%E8%AF%95/">
-                                    <span class="chip bg-color">帆软考试</span>
+                                <a href="/tags/SQL/">
+                                    <span class="chip bg-color">SQL</span>
                                 </a>
                             
                         </div>
@@ -1360,6 +1013,51 @@ B. 错误
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2024/03/17/%E4%BB%80%E4%B9%88%E6%98%AFmysql%E7%9A%84%E5%9B%9E%E8%A1%A8%E5%B9%B6%E4%B8%94%E7%84%B6%E5%90%8E%E9%81%BF%E5%85%8D/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="什么是mysql的回表并且然后避免">
+                        
+                        <span class="card-title">什么是mysql的回表并且然后避免</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            CJ菌
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2024/03/15/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%EF%BC%9A%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%B8%BB%E9%A2%98%E5%9F%9F%EF%BC%9F/">
                     <div class="card-image">
                         
@@ -1376,9 +1074,9 @@ B. 错误
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1392,50 +1090,6 @@ B. 错误
                     
                     <a href="/tags/%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0/">
                         <span class="chip bg-color">数据中台</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/03/14/%E5%B8%86%E8%BD%AFFCA-FineReport%E8%80%83%E8%AF%95/">
-                    <div class="card-image">
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403140046533.jpeg" class="responsive-img" alt="帆软FCA-FineReport考试">
-                        
-                        <span class="card-title">帆软FCA-FineReport考试</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            CJ菌
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%B8%86%E8%BD%AF%E8%80%83%E8%AF%95/">
-                        <span class="chip bg-color">帆软考试</span>
                     </a>
                     
                 </div>

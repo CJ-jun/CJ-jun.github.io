@@ -4,6 +4,63 @@
   
     
     <entry>
+      <title>什么是mysql的回表并且然后避免</title>
+      <link href="/2024/03/17/%E4%BB%80%E4%B9%88%E6%98%AFmysql%E7%9A%84%E5%9B%9E%E8%A1%A8%E5%B9%B6%E4%B8%94%E7%84%B6%E5%90%8E%E9%81%BF%E5%85%8D/"/>
+      <url>/2024/03/17/%E4%BB%80%E4%B9%88%E6%98%AFmysql%E7%9A%84%E5%9B%9E%E8%A1%A8%E5%B9%B6%E4%B8%94%E7%84%B6%E5%90%8E%E9%81%BF%E5%85%8D/</url>
+      
+        <content type="html"><![CDATA[<h1 id="什么是MySQL的回表"><a href="#什么是MySQL的回表" class="headerlink" title="什么是MySQL的回表?"></a>什么是MySQL的回表?</h1><p>​MySQL中的索引有很多中不同的分类方式，可以按照数据结构分，可以按照逻辑角度分，也可以按照物理存储分，其中，按照物理存储方式，可以分为<strong>聚簇索引</strong>和<strong>非聚簇索引</strong>。</p><p>​我们日常所说的<strong>主键索引</strong>，其实就是聚簇索引(Clustered lndex);主键索引之外。其他的都称之为非主键索引（非聚簇索引），非主键索引也被称为二级索引(Secondary Index)，或者叫作辅助索引。<br>​对于主键索引和非主键索引，使用的数据结构都是B+Tree，唯一的区别在于叶子结点中存储的内容不同:</p><p>​主键索引的叶子结点存储的是一行完整的数据。非主键索引的叶子结点存储的则是主键值。这就是两者最大的区别。所以，当我们需要查询的时候:</p><p><strong>现在有一张user 表 字段有id，username，password。id为主键索引，username建立普通索引。</strong></p><p>​1.如果是通过主键索引来查询数据，例如 <code>select * from user where id=100</code>，因为id为主键索引那么此时只需要搜索主键索引的B+Tree就可以找到数据。<br>​2．如果是通过非主键索引来查询数据，例如 <code>select * from user where username= &#39;CJ菌&#39;</code>，由于username建立了普通索引，那么此时需要先搜索username这一列索引的B+Tree，搜索完成后我们发现 username索引里面只存放了username值和对应的主键 id，并找不到我们要的 password的信息。那么怎么办呢？就必须去搜索主键索引的B+Tree,就可以获取到一行完整的数据。</p><p>​对于第二种查询方式而言，一共搜索了两棵B+Tree，第一次搜索B+Tree拿到主键值后再去搜索主键索引的B+Tree，这个过程就是所谓的<strong>回表</strong>。</p><h1 id="如何避免回表？"><a href="#如何避免回表？" class="headerlink" title="如何避免回表？"></a>如何避免回表？</h1><p>​从上面的分析中我们也能看出，通过非主键索引查询要扫描两棵B+Tree，而通过主键索引查询只需要扫描一棵B+Tree，所以如果条件允许，还是建议在查询中优先选择通过主键索引进行搜索。</p><p>但是我们有时候避免不了回表查询，那我们应该怎么解决呢？</p><p>​解决回表查询的关键就是：<strong>索引覆盖</strong></p><p>​<strong>具体解决步骤呢？</strong></p><p>​就是username和password建立联合索引实现索引覆盖解决回表问题。</p><p>​创建联合索引的语法：<code>create index 索引名 on 表名（字段名1，字段名2）</code></p><p>​给username和password<strong>创建联合索引</strong>：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create index  up_index on user (username,password)</span><br></pre></td></tr></table></figure><p>​然后这样查询就不会回表了: </p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select id, username, password from user where username =&#x27;CJ菌&#x27;</span><br></pre></td></tr></table></figure><p>解决完回表问题，接下来也会涉及到索引最左前缀原则问题。这个下一章有空再写。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> SQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sql调优经验方法</title>
+      <link href="/2024/03/17/sql%E8%B0%83%E4%BC%98%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/"/>
+      <url>/2024/03/17/sql%E8%B0%83%E4%BC%98%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h2><p>在工作的过程中，我们经常会在开发时或者开发做压力测试后需要做数据库优化，提高数据库性能。在我开发的工作经验中把数据库优化分为三层：</p><ol><li>业务上的优化</li><li>sql层的优化（包含索引优化）</li><li>硬件层优化（属于运维工作）</li></ol><h2 id="业务层优化"><a href="#业务层优化" class="headerlink" title="业务层优化"></a>业务层优化</h2><p>在表里有十几亿的数据并且我们已经分库分表，集群了和索引也已经优化最好了。我们需要查询数据就需要分页查。我在做项目中一般分页查询也主要做以下两种：</p><p>一种是在业务查询使用sql语句限制每次查询数目（count或limit），第二种是使用ES（<strong>elasticsearch</strong>分布式全文检索引擎）。</p><h2 id="sql层的优化（主要）"><a href="#sql层的优化（主要）" class="headerlink" title="sql层的优化（主要）"></a>sql层的优化（主要）</h2><p>我在sql层面优化的套路是：</p><ol><li><h5 id="查看执行计划-explain-sql"><a href="#查看执行计划-explain-sql" class="headerlink" title="查看执行计划 explain sql"></a>查看执行计划 <code>explain sql</code></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">explain SELECT * FROM t1</span><br></pre></td></tr></table></figure></li></ol><p>执行计划包含的信息</p><p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172055712.png" alt="这里写图片描述"></p><p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172326428.png" alt="image-20240317210225439"></p><p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172103253.jpeg" alt="img"></p><p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172104427.jpeg" alt="img"></p><ol start="2"><li><h5 id="开启慢查询"><a href="#开启慢查询" class="headerlink" title="开启慢查询"></a>开启慢查询</h5><p>慢查询，顾名思义，执行很慢的查询。有多慢？超过 long_query_time 参数设定的时间阈值（默认10s），就被认为是慢的，是需要优化的。慢查询被记录在慢查询日志里。</p><p>然而，慢查询日志默认是不开启的，也就是说一般人没玩过这功能。如果你需要优化SQL语句，就可以开启这个功能，它可以让你很容易地知道哪些语句是需要优化的（想想一个SQL要10s就可怕）。</p><p>打开慢查询两种方法：</p><ul><li>方式一：</li></ul><p>修改配置文件 在 my.ini 增加几行: 主要是慢查询的定义时间（超过2秒就是慢查询），以及慢查询log日志记录（ slow_query_log）</p><p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172134129.png" alt="image-20240317213445332"></p><ul><li>方式二：</li></ul></li></ol><p>通过命令数据库开启慢查询:</p><p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172137152.png" alt="image-20240317213723531"></p><p>打开之后可以配合explain使用，然后对慢查询进行优化。</p><ol start="3"><li><h5 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h5><ol><li>要尽量避免全表扫描，首先应考虑在 <strong>where</strong> 及 <strong>order by</strong> 涉及的列上建立索引。</li><li>在经常需要进行检索的字段上创建索引，一个表的索引数最好不要超过<strong>6</strong>个，索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。</li><li>创建联合索引，减少回表查询。（就是索引覆盖）</li></ol></li><li><h5 id="调整Where字句中的连接顺序"><a href="#调整Where字句中的连接顺序" class="headerlink" title="调整Where字句中的连接顺序"></a>调整Where字句中的连接顺序</h5><ol><li><p>DBMS一般采用<strong>自下而上</strong>的顺序解析where字句，根据这个原理<strong>表连接</strong>最好写在其他where条件之前，那些可以过滤掉最大数量记录的条件必须写在WHERE子句的末尾。</p><p>例如：</p><p>(低效，执行时间156.3秒)</p><p>SELECT *</p><p>FROM EMP E</p><p>WHERE SAL &gt; 50000</p><p>AND  JOB &#x3D; ‘MANAGER’</p><p>AND  25 &lt; <strong>(SELECT COUNT(*) FROM EMP</strong></p><p>​       <strong>WHERE MGR&#x3D;E.EMPNO);</strong></p><p>(高效，执行时间10.6秒)</p><p>SELECT *</p><p>FROM EMP E</p><p><strong>WHERE 25 &lt; (SELECT COUNT(*) FROM EMP</strong></p><p>​       <strong>WHERE MGR&#x3D;E.EMPNO)</strong></p><p>AND  SAL &gt; 50000</p><p>AND  JOB &#x3D; ‘MANAGER’;</p></li></ol></li><li><h5 id="用where字句替换HAVING字句"><a href="#用where字句替换HAVING字句" class="headerlink" title="用where字句替换HAVING字句"></a>用where字句替换HAVING字句</h5><p>​避免使用HAVING字句，因为HAVING只会在检索出<strong>所有</strong>记录之后才对结果集进行<strong>过滤</strong>，而where则是在聚合前刷选记录，如果能通过where字句限制记录的数目，那就能减少这方面的开销。HAVING中的条件一般用于<strong>聚合函数</strong>的过滤，除此之外，应该将条件写在where字句中。</p></li><li><h5 id="用union-all替换union"><a href="#用union-all替换union" class="headerlink" title="用union all替换union"></a>用union all替换union</h5><p>​当SQL语句需要union两个查询结果集合时，<strong>即使检索结果中不会有重复的记录，如果使用union这两个结果集同样会尝试进行合并</strong>，然后在输出最终结果前进行排序，因此如果可以判断检索结果中<strong>不会有重复的记录</strong>时候，应该用union all，这样效率就会因此得到提高。</p></li><li><h5 id="只在必要的情况下才使用事务begin-translation"><a href="#只在必要的情况下才使用事务begin-translation" class="headerlink" title="只在必要的情况下才使用事务begin translation"></a>只在必要的情况下才使用事务begin translation</h5><p>​SQL Server中一句<strong>SQL语句默认就是一个事务</strong>，在该语句执行完成后也是<strong>默认commit</strong>的。在该大事务提交之前，必然会阻塞别的语句，造成block很多。Begin tran使用的原则是，在保证数据一致性的前提下，<strong>begin tran 套住的SQL语句越少越好！</strong>有些情况下可以采用<strong>触发器</strong>同步数据，不一定要用begin tran。</p></li><li><h5 id="尽量避免使用游标"><a href="#尽量避免使用游标" class="headerlink" title="尽量避免使用游标"></a>尽量避免使用游标</h5><p>​尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。因为游标的效率较差，如果游标操作的数据<strong>超过1万行</strong>，那么就应该考虑改写。</p></li><li><h5 id="用varchar-nvarchar-代替-char-nchar（SQLServer）"><a href="#用varchar-nvarchar-代替-char-nchar（SQLServer）" class="headerlink" title="用varchar&#x2F;nvarchar 代替 char&#x2F;nchar（SQLServer）"></a>用varchar&#x2F;nvarchar 代替 char&#x2F;nchar（SQLServer）</h5><p>​尽可能的使用 varchar&#x2F;nvarchar 代替 char&#x2F;nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。</p></li><li><h5 id="查询select语句优化"><a href="#查询select语句优化" class="headerlink" title="查询select语句优化"></a>查询select语句优化</h5><ol><li><p>任何地方都不要使用 select * from t ，用具体的字段列表代替“*”，不要返回<strong>用不到</strong>的任何字段。</p></li><li><p>应尽量<strong>避免</strong>在 where 子句中对字段进行 <strong>null 值判断</strong>，否则将导致引擎放弃使用索引而进行全表扫描。</p></li></ol></li></ol><h2 id="硬件层优化"><a href="#硬件层优化" class="headerlink" title="硬件层优化"></a>硬件层优化</h2><p>​我们使用数据库，不管是读操作还是写操作，最终都是要访问磁盘，所以说磁盘的性能决定了数据库的性能。一块PCIE固态硬盘的性能是普通机械硬盘的几十倍不止。其他运营知识还需要慢慢学习在工作中积累经验。</p><p>最后引用优秀B站up<a href="https://zhuanlan.zhihu.com/p/147490337">敖丙</a>一张导图当做学习记录借鉴：</p><p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403172244679.jpeg" alt="img"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> SQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据仓库：如何确定主题域？</title>
+      <link href="/2024/03/15/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%EF%BC%9A%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%B8%BB%E9%A2%98%E5%9F%9F%EF%BC%9F/"/>
+      <url>/2024/03/15/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%EF%BC%9A%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E4%B8%BB%E9%A2%98%E5%9F%9F%EF%BC%9F/</url>
+      
+        <content type="html"><![CDATA[<p><em>数据仓库是一个面向主题的、集成的、相对稳定的、反映历史变化的数据集合，用于支持管理决策。在数据仓库的设计中，主题域的确定是一个关键步骤。主题域是指数据仓库中<a href="https://cloud.baidu.com/product/bos.html">存储</a>的数据主题，它是数据模型的核心部分，对于数据分析和决策支持具有重要意义。在这一篇中，我们将解答如何确定数据仓库的主题域。</em></p><p>​首先，我们需要理解主题域的含义和作用。主题域是指一组相关的、共享同一词汇、概念和含义的数据。在数据仓库中，主题域被用来组织和描述数据，它反映了数据仓库中数据的一个特定领域。通过确定主题域，我们可以明确数据仓库要存储哪些方面的数据，同时也有助于我们构建正确的数据模型。</p><p>确定数据仓库的主题域需要经过以下步骤：</p><ol><li><p><strong>理解业务需求</strong>：首先，我们需要深入理解客户的需求和业务目标。这可以通过与业务人员和利益相关者的交流来实现。了解业务需求有助于我们确定数据仓库需要存储哪些方面的数据。</p></li><li><p><strong>确定主题</strong>：在理解业务需求后，我们需要将业务需求转化为主题。主题是对业务需求的一种抽象，它是对数据的一种描述。例如，如果一个零售商需要跟踪销售情况，那么主题可以是“销售”。</p></li><li><p><strong>定义主题域</strong>：一旦我们确定了主题，我们需要将其归类到特定的主题域中。主题域应该反映业务需求的主要领域。例如，在一个零售商的数据仓库中，主题域可以包括“销售”、“商品”、“客户”等。</p></li><li><p><strong>验证和修正</strong>：在确定主题域后，我们需要进行验证和修正。这可以通过与利益相关者进行讨论来实现。我们需要确保主题域覆盖了所有的业务需求，并且符合业务的需求和目标。</p><p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403152247236.png"></p></li></ol><p>在确定主题域的过程中，还有一些关键的因素需要注意：</p><ol><li><strong>避免重复</strong>：我们需要避免在多个主题域中出现重复的数据。这可以帮助我们避免数据的冗余和矛盾。</li><li><strong>关注质量</strong>：我们需要关注数据的质我们需要注意数据的质良，以确保数据能够准确地反映业务需求。如果数据质量低，可能会对数据分析结果造成负面影响。</li><li><strong>与数据处理相结合</strong>：在确定主题域时，我们需要考虑数据处理的需求。例如，我们需要考虑数据的收集、清理、转换和存储等方面的问题。</li><li><strong>灵活性</strong>：随着业务需求的变化和发展，我们需要确保主题域的灵活性。这意味着我们需要设计可扩展的数据模型，以便在需要时能够轻松地添加新的主题域或修改现有的主题域。</li></ol><p>总的来说，确定主题域是数据仓库设计的一个重要步骤。通过理解业务需求、确定主题、定义主题域以及验证和修正，我们可以确保数据仓库的主题域满足业务需求并支持决策制定。同时，我们还需要关注数据的质良、避免重复、与数据处理相结合以及保持灵活性，以支持数据仓库的长期发展和成功。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 数据中台 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>帆软FCA-FineBI考试</title>
       <link href="/2024/03/14/%E5%B8%86%E8%BD%AFFCA-FineBI%E8%80%83%E8%AF%95/"/>
       <url>/2024/03/14/%E5%B8%86%E8%BD%AFFCA-FineBI%E8%80%83%E8%AF%95/</url>
