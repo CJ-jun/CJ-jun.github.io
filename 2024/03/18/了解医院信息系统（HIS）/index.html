@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="什么是mysql的回表并且然后避免, CJ-blog">
-    <meta name="description" content="什么是MySQL的回表?​	MySQL中的索引有很多中不同的分类方式，可以按照数据结构分，可以按照逻辑角度分，也可以按照物理存储分，其中，按照物理存储方式，可以分为聚簇索引和非聚簇索引。
-​		我们日常所说的主键索引，其实就是聚簇索引(Cl">
+    <meta name="keywords" content="了解医院信息系统（HIS）, CJ-blog">
+    <meta name="description" content="一、什么是HIS系统HIS系统（Hospital Information System）是医院信息化建设的核心组成部分，它是为了管理和运营医院而设计和开发的一套综合性的信息系统。HIS系统通过整合医院各个部门和业务流程的数据和信息，实现了医">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>什么是mysql的回表并且然后避免 | CJ-blog</title>
+    <title>了解医院信息系统（HIS） | CJ-blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -442,7 +441,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">什么是mysql的回表并且然后避免</h1>
+                    <h1 class="description center-align post-title">了解医院信息系统（HIS）</h1>
                 </div>
             </div>
         </div>
@@ -466,8 +465,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SQL/">
-                                <span class="chip bg-color">SQL</span>
+                            <a href="/tags/%E4%BA%86%E8%A7%A3%E5%8C%BB%E7%96%97%E8%A1%8C%E4%B8%9A/">
+                                <span class="chip bg-color">了解医疗行业</span>
                             </a>
                         
                     </div>
@@ -482,7 +481,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-03-17
+                    2024-03-18
                 </div>
                 
 
@@ -491,7 +490,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    752
+                    1.7k
                 </div>
                 
 
@@ -511,31 +510,36 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="什么是MySQL的回表"><a href="#什么是MySQL的回表" class="headerlink" title="什么是MySQL的回表?"></a>什么是MySQL的回表?</h1><p>​	MySQL中的索引有很多中不同的分类方式，可以按照数据结构分，可以按照逻辑角度分，也可以按照物理存储分，其中，按照物理存储方式，可以分为<strong>聚簇索引</strong>和<strong>非聚簇索引</strong>。</p>
-<p>​		我们日常所说的<strong>主键索引</strong>，其实就是聚簇索引(Clustered lndex);主键索引之外。其他的都称之为非主键索引（非聚簇索引），非主键索引也被称为二级索引(Secondary Index)，或者叫作辅助索引。<br>​		对于主键索引和非主键索引，使用的数据结构都是B+Tree，唯一的区别在于叶子结点中存储的内容不同:</p>
-<p>​		主键索引的叶子结点存储的是一行完整的数据。非主键索引的叶子结点存储的则是主键值。这就是两者最大的区别。所以，当我们需要查询的时候:</p>
-<p><strong>现在有一张user 表 字段有id，username，password。id为主键索引，username建立普通索引。</strong></p>
-<p>​		1.如果是通过主键索引来查询数据，例如 <code>select * from user where id=100</code>，因为id为主键索引那么此时只需要搜索主键索引的B+Tree就可以找到数据。<br>​		2．如果是通过非主键索引来查询数据，例如 <code>select * from user where username= &#39;CJ菌&#39;</code>，由于username建立了普通索引，那么此时需要先搜索username这一列索引的B+Tree，搜索完成后我们发现 username索引里面只存放了username值和对应的主键 id，并找不到我们要的 password的信息。那么怎么办呢？就必须去搜索主键索引的B+Tree,就可以获取到一行完整的数据。</p>
-<p>​		对于第二种查询方式而言，一共搜索了两棵B+Tree，第一次搜索B+Tree拿到主键值后再去搜索主键索引的B+Tree，这个过程就是所谓的<strong>回表</strong>。</p>
-<h1 id="如何避免回表？"><a href="#如何避免回表？" class="headerlink" title="如何避免回表？"></a>如何避免回表？</h1><p>​		从上面的分析中我们也能看出，通过非主键索引查询要扫描两棵B+Tree，而通过主键索引查询只需要扫描一棵B+Tree，所以如果条件允许，还是建议在查询中优先选择通过主键索引进行搜索。</p>
-<p>但是我们有时候避免不了回表查询，那我们应该怎么解决呢？</p>
-<p>​		解决回表查询的关键就是：<strong>索引覆盖</strong></p>
-<p>​			<strong>具体解决步骤呢？</strong></p>
-<p>​			就是username和password建立联合索引实现索引覆盖解决回表问题。</p>
-<p>​				创建联合索引的语法：<code>create index 索引名 on 表名（字段名1，字段名2）</code></p>
-<p>​				给username和password<strong>创建联合索引</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create index  up_index on user (username,password)</span><br></pre></td></tr></table></figure>
-
-<p>​				然后这样查询就不会回表了: </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select id, username, password from user where username =&#x27;CJ菌&#x27;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<p>解决完回表问题，接下来也会涉及到索引最左前缀原则问题。这个下一章有空再写。</p>
+                <h1 id="一、什么是HIS系统"><a href="#一、什么是HIS系统" class="headerlink" title="一、什么是HIS系统"></a>一、什么是HIS系统</h1><p>HIS系统（Hospital Information System）是医院信息化建设的核心组成部分，它是为了管理和运营医院而设计和开发的一套综合性的信息系统。HIS系统通过整合医院各个部门和业务流程的数据和信息，实现了医院内部的信息共享和协同工作，提高了医疗服务的质量和效率。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403180131325.webp" alt="img"></p>
+<p>HIS系统的目标是提高医院的管理效率、提供优质的医疗服务、实现医院信息化的全面发展。通过HIS系统，医院可以实现信息共享、流程优化、数据分析等功能，提高医疗质量和效率，为医院的发展和患者的健康提供支持。</p>
+<h1 id="二、HIS系统的功能模块"><a href="#二、HIS系统的功能模块" class="headerlink" title="二、HIS系统的功能模块"></a>二、HIS系统的功能模块</h1><p>HIS系统的主要功能包括：</p>
+<p>门诊管理：包括挂号、排班、门诊医生工作站、门诊收费等功能，用于管理医院的门诊业务流程。</p>
+<p>住院管理：包括病案管理、床位管理、护士工作站、医嘱管理等功能，用于管理医院的住院业务流程。</p>
+<p>医技管理：包括检验、检查、手术、药房等功能，用于管理医院的医技业务流程。</p>
+<p>药品管理：包括药品采购、库存管理、药房发药等功能，用于管理医院的药品业务流程。</p>
+<p>财务管理：包括费用结算、报表统计、财务分析等功能，用于管理医院的财务流程。</p>
+<p>统计分析：包括医疗数据统计、业务分析、绩效评价等功能，用于对医院的各项指标进行统计和分析。</p>
+<p>患者管理：包括患者档案管理、预约挂号、就诊记录等功能，用于管理医院与患者的关系和信息。</p>
+<p>系统管理：包括用户权限管理、数据备份与恢复、系统设置等功能，用于管理HIS系统的配置和运维。</p>
+<h1 id="三、HIS系统为什么复杂"><a href="#三、HIS系统为什么复杂" class="headerlink" title="三、HIS系统为什么复杂"></a>三、HIS系统为什么复杂</h1><p>HIS系统相对于其他系统而言可能更加复杂的主要原因有以下几点：</p>
+<p><strong>医疗业务的复杂性：</strong>医疗业务本身就非常复杂，涉及到多个部门和环节的协同工作，包括门诊、住院、医技、药房等多个业务流程。因此，HIS系统需要支持多个模块和功能，以满足医院各个部门的需求。</p>
+<p><strong>数据的复杂性：</strong>医疗数据通常包括患者的个人信息、病历、医嘱、检验结果、影像资料等多种类型的数据，这些数据之间存在复杂的关联和交互。HIS系统需要能够有效地管理和处理这些数据，并提供相应的查询和分析功能。 </p>
+<p><strong>法律法规的要求</strong>：医疗行业受到严格的法律法规的监管，包括医疗隐私保护、数据安全、药品管理等方面的要求。HIS系统需要遵守这些法规，确保数据的安全和隐私的保护。</p>
+<p><strong>多方利益相关者的需求：</strong>医院的HIS系统需要满足多方利益相关者的需求，包括医生、护士、药师、患者、管理人员等。不同的角色和职责对系统的需求可能存在差异，因此HIS系统需要具备灵活性和定制化的能力。 </p>
+<p><strong>技术的挑战：</strong>HIS系统通常需要与其他系统进行集成，包括医疗设备、电子病历系统、电子药房系统等。这要求HIS系统具备良好的技术架构和接口能力，以实现数据的无缝流动和共享。</p>
+<p>综上所述，HIS系统相对于其他系统而言更加复杂，主要是因为医疗业务的复杂性、数据的复杂性、法律法规的要求、多方利益相关者的需求以及技术的挑战等因素的综合影响。</p>
+<h1 id="四、HIS系统在设计和开发时有哪些注意事项"><a href="#四、HIS系统在设计和开发时有哪些注意事项" class="headerlink" title="四、HIS系统在设计和开发时有哪些注意事项"></a>四、HIS系统在设计和开发时有哪些注意事项</h1><p>在设计和开发HIS系统时，需要注意以下几个重要的事项：</p>
+<p><strong>理解医疗业务需求：</strong>在开始设计和开发HIS系统之前，需要充分了解医院的业务需求和流程。与医院的各个部门和相关人员进行沟通，了解他们的需求和痛点，确保系统能够满足实际业务需求。</p>
+<p><strong>数据模型设计：</strong>HIS系统需要设计合理的数据模型，以支持医疗数据的存储和管理。需要考虑数据的关联性、完整性和一致性，确保数据的准确性和可靠性。</p>
+<p><strong>用户界面设计</strong>：HIS系统的用户界面应该简洁、直观、易于使用。需要考虑不同用户角色的需求，提供相应的功能和界面定制化选项。</p>
+<p><strong>安全和隐私保护：</strong>HIS系统处理的是敏感的医疗数据，因此安全和隐私保护是非常重要的。系统需要采取适当的安全措施，包括数据加密、权限管理、访问控制等，确保数据的安全性和隐私保护。</p>
+<p><strong>可扩展性和灵活性</strong>：HIS系统需要具备良好的可扩展性和灵活性，以应对不断变化的业务需求和技术发展。系统的架构应该能够支持模块化和组件化的开发，方便后续的功能扩展和升级。</p>
+<p><strong>集成和接口设计</strong>：HIS系统通常需要与其他系统进行集成，包括医疗设备、电子病历系统、药房系统等。在设计时需要考虑系统之间的接口和数据交换方式，确保数据的无缝流动和共享。</p>
+<p><strong>测试和质量保证</strong>：在开发完成后，需要进行充分的测试和质量保证工作，确保系统的稳定性和可靠性。包括功能测试、性能测试、安全测试等方面的工作。</p>
+<p><strong>用户培训和支持：</strong>在系统上线之前，需要进行用户培训和支持工作，确保用户能够熟练使用系统并解决问题。还需要建立相应的技术支持机制，及时响应用户的需求和反馈。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/CJ-jun/MyPic@img/img/202403180134247.webp" alt="img"></p>
+<p>综上所述，设计和开发HIS系统时需要注意医疗业务需求、数据模型设计、用户界面设计、安全和隐私保护、可扩展性和灵活性、集成和接口设计、测试和质量保证、用户培训和支持等方面的事项，以确保系统能够满足医院的需求并提供良好的使用体验。</p>
 
                 
             </div>
@@ -562,7 +566,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jasonjun.org.edu.kg/2024/03/17/%E4%BB%80%E4%B9%88%E6%98%AFmysql%E7%9A%84%E5%9B%9E%E8%A1%A8%E5%B9%B6%E4%B8%94%E7%84%B6%E5%90%8E%E9%81%BF%E5%85%8D/">https://jasonjun.org.edu.kg/2024/03/17/%E4%BB%80%E4%B9%88%E6%98%AFmysql%E7%9A%84%E5%9B%9E%E8%A1%A8%E5%B9%B6%E4%B8%94%E7%84%B6%E5%90%8E%E9%81%BF%E5%85%8D/</a>
+                    <a href="https://jasonjun.org.edu.kg/2024/03/18/%E4%BA%86%E8%A7%A3%E5%8C%BB%E9%99%A2%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%EF%BC%88HIS%EF%BC%89/">https://jasonjun.org.edu.kg/2024/03/18/%E4%BA%86%E8%A7%A3%E5%8C%BB%E9%99%A2%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%EF%BC%88HIS%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -600,8 +604,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SQL/">
-                                    <span class="chip bg-color">SQL</span>
+                                <a href="/tags/%E4%BA%86%E8%A7%A3%E5%8C%BB%E7%96%97%E8%A1%8C%E4%B8%9A/">
+                                    <span class="chip bg-color">了解医疗行业</span>
                                 </a>
                             
                         </div>
@@ -947,9 +951,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2024/03/18/%E4%BA%86%E8%A7%A3%E5%8C%BB%E9%99%A2%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%EF%BC%88HIS%EF%BC%89/">
                     <div class="card-image">
@@ -967,9 +972,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -978,6 +983,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -996,13 +1002,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/03/17/sql%E8%B0%83%E4%BC%98%E7%BB%8F%E9%AA%8C%E6%96%B9%E6%B3%95/">
+                <a href="/2024/03/17/%E4%BB%80%E4%B9%88%E6%98%AFmysql%E7%9A%84%E5%9B%9E%E8%A1%A8%E5%B9%B6%E4%B8%94%E7%84%B6%E5%90%8E%E9%81%BF%E5%85%8D/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="sql调优经验方法">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="什么是mysql的回表并且然后避免">
                         
-                        <span class="card-title">sql调优经验方法</span>
+                        <span class="card-title">什么是mysql的回表并且然后避免</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
